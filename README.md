@@ -4,6 +4,6 @@
 
 This is a barebones save editor for your Clan and cats.
 
-It is located within Clangen/save-editor.
+Drop the folder in your main Clangen folder (so it is Clangen/save-editor).
 
-Just use main.py to run it! And back up your saves! 💙
+Just double click "clangen_save_editor"! And back up your saves! 💙
