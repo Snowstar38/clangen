@@ -1,4 +1,3 @@
-import age_sort, cat_dictionary, clanfile_ID_update, edit_cats, ID_reassign
 import os
 import tkinter as tk
 from tkinter import messagebox, filedialog
@@ -18,6 +17,7 @@ def run_script(script_name):
     # Check whether the script ran successfully
     if response != 0:
         messagebox.showerror("Error", f"An error occurred while trying to run the {script_name} script. Please check that the necessary files exist.")
+
 
 def run_age_sort():
     run_script('age_sort')
