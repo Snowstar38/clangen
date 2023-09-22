@@ -1,4 +1,5 @@
 import sys
+import re
 import ujson
 import tkinter as tk
 from cat_dictionary import *
@@ -50,15 +51,16 @@ def save_changes():
     for widget in window.grid_slaves():
         if isinstance(widget, ttk.Entry) or isinstance(widget, ttk.Checkbutton) or isinstance(widget, tk.Text):
             for subkey, combobox, entry, checkbox in skill_dict_widgets:
-                skill_type = combobox.get()
-                skill_level = entry.get()
-                skill_hidden = checkbox.var.get()
-    
-                if not skill_type and not skill_level and not skill_hidden:
-                    if cat_to_edit['skill_dict'] and cat_to_edit['skill_dict'].get(subkey):
-                        cat_to_edit['skill_dict'][subkey] = None
-                else:
-                    cat_to_edit['skill_dict'][subkey] = f"{skill_type},{skill_level},{skill_hidden}"
+                if widget.key == 'skill_dict':
+                    skill_type = combobox.get()
+                    skill_level = entry.get()
+                    skill_hidden = checkbox.var.get()
+        
+                    if not skill_type and not skill_level and not skill_hidden:
+                        if cat_to_edit['skill_dict'] and cat_to_edit['skill_dict'].get(subkey):
+                            cat_to_edit['skill_dict'][subkey] = None
+                    else:
+                        cat_to_edit['skill_dict'][subkey] = f"{skill_type},{skill_level},{skill_hidden}"
                     
             number_string_fields = ["ID", "parent1", "parent2", "mentor"]
   
@@ -84,7 +86,13 @@ def save_changes():
                     if any(unwanted_char in value for unwanted_char in ["[", "]", "{", "}", "\"", "\'"]):  # Define any unwanted characters here
                         tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}.\nString fields can't contain brackets or quotes.\nYou entered:\n{value}")
                         return
-
+                if desired_type == list:
+                    temp_value = re.sub(r"'([^']*)'", r'"\1"', value)
+                    try:
+                        ujson.loads(temp_value)
+                    except ujson.JSONDecodeError:  
+                        tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}. \nExpected a list, got: {type(value)}. \nYou entered: \n{value} \nExample(s): \n{example_str}")
+                        return
                 try:
                     if isinstance(value, desired_type):
                         pass 
@@ -94,8 +102,6 @@ def save_changes():
                         value = int(value)
                     elif desired_type == float:
                         value = float(value)
-                    elif desired_type == list:
-                        value = ujson.loads(value)
                     elif desired_type == dict:
                         value = ujson.loads(value)
                     elif desired_type == str:
