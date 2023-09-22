@@ -1,8 +1,8 @@
 import sys
 import ujson
 import tkinter as tk
-from dictionary import *
-from tkinter import ttk
+from cat_dictionary import *
+from tkinter import ttk, messagebox
 
 # Define field classes
 name_fields = ['ID', 'name_prefix', 'name_suffix', 'specsuffix_hidden']
@@ -17,6 +17,8 @@ categories = {
     "Relationships": relationship_fields,
     "Stats": stats_fields
 }
+
+skill_dict_widgets = []
 
 def validate_value(key, value):
     val_type = desired_types.get(key)
@@ -42,48 +44,82 @@ def validate_value(key, value):
         return ujson.loads(value)  # Convert string lists to list objects
 
     return value
-skill_dict_widgets = []
+
+
 def save_changes():
     for widget in window.grid_slaves():
         if isinstance(widget, ttk.Entry) or isinstance(widget, ttk.Checkbutton) or isinstance(widget, tk.Text):
-            # Separate loop for skill_dict fields
             for subkey, combobox, entry, checkbox in skill_dict_widgets:
                 skill_type = combobox.get()
                 skill_level = entry.get()
                 skill_hidden = checkbox.var.get()
-                
-                # Update edge case: if all values are empty or false, set the dictionary key as null instead of deleting it
+    
                 if not skill_type and not skill_level and not skill_hidden:
                     if cat_to_edit['skill_dict'] and cat_to_edit['skill_dict'].get(subkey):
                         cat_to_edit['skill_dict'][subkey] = None
                 else:
-                    # Add or update the dictionary key with the new values
-                    cat_to_edit['skill_dict'][subkey] = f"{skill_type},{skill_level},{skill_hidden}"        
+                    cat_to_edit['skill_dict'][subkey] = f"{skill_type},{skill_level},{skill_hidden}"
+                    
+            number_string_fields = ["ID", "parent1", "parent2", "mentor"]
+  
             if isinstance(widget, ttk.Entry):
-                # Skip the "pronouns" field specifically
+                example_str = '\n'.join(examples[widget.key]) 
                 if widget.key == 'pronouns':  
                     continue
                 value = widget.get()
-                # Handle boolean values
                 if value.lower() == "true":
                     value = True
                 elif value.lower() == "false":
                     value = False
-                # Validate and convert value to desired datatype
-                value = validate_value(widget.key, value)
-                cat_to_edit[widget.key] = value
-            elif isinstance(widget, ttk.Checkbutton):
+
+                if widget.key in number_string_fields:  
+                    if value not in ["None", ""] and not value.isdigit():
+                        tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}. \nExpected a number, got: \n{value} \nExample(s): \n{example_str}")
+                        return
+
+                desired_type = desired_types.get(widget.key)
+
+                # Additional checks for string fields
+                if desired_type == str:
+                    if any(unwanted_char in value for unwanted_char in ["[", "]", "{", "}", "\"", "\'"]):  # Define any unwanted characters here
+                        tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}.\nString fields can't contain brackets or quotes.\nYou entered:\n{value}")
+                        return
+
+                try:
+                    if isinstance(value, desired_type):
+                        pass 
+                    elif desired_type == bool:
+                        value = bool(value)
+                    elif desired_type == int:
+                        value = int(value)
+                    elif desired_type == float:
+                        value = float(value)
+                    elif desired_type == list:
+                        value = ujson.loads(value)
+                    elif desired_type == dict:
+                        value = ujson.loads(value)
+                    elif desired_type == str:
+                        if widget.key in number_string_fields: 
+                            if value == "" or value.isdigit():
+                                pass 
+                            else:
+                                raise ValueError
+
+                    cat_to_edit[widget.key] = value
+                except ValueError:
+                    tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}. \nExpected {desired_type}, got {type(value)}. \nYou entered: \n{value} \nExample(s): \n{example_str}")
+                    return
+
+            if isinstance(widget, ttk.Checkbutton):
                 cat_to_edit[widget.key] = widget.var.get()
             elif isinstance(widget, ttk.Combobox):
                 value = widget.get()
                 if value == "<None>":
                     value = None
                 else:
-                    # Validate and convert dropdown value to desired datatype
-                    value = validate_value(widget.key, value)      
+                    value = validate_value(widget.key, value)
                 cat_to_edit[widget.key] = value
             elif isinstance(widget, tk.Text):
-                # Convert string representation of dict to actual dict
                 try:
                     value = ujson.loads(widget.get('1.0', 'end'))
                 except ujson.JSONDecodeError as ex:
