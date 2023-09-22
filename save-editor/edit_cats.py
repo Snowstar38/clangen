@@ -51,16 +51,15 @@ def save_changes():
     for widget in window.grid_slaves():
         if isinstance(widget, ttk.Entry) or isinstance(widget, ttk.Checkbutton) or isinstance(widget, tk.Text):
             for subkey, combobox, entry, checkbox in skill_dict_widgets:
-                if widget.key == 'skill_dict':
-                    skill_type = combobox.get()
-                    skill_level = entry.get()
-                    skill_hidden = checkbox.var.get()
-        
-                    if not skill_type and not skill_level and not skill_hidden:
-                        if cat_to_edit['skill_dict'] and cat_to_edit['skill_dict'].get(subkey):
-                            cat_to_edit['skill_dict'][subkey] = None
-                    else:
-                        cat_to_edit['skill_dict'][subkey] = f"{skill_type},{skill_level},{skill_hidden}"
+                skill_type = combobox.get()
+                skill_level = entry.get()
+                skill_hidden = checkbox.var.get()
+    
+                if not skill_type and not skill_level and not skill_hidden:
+                    if cat_to_edit['skill_dict'] and cat_to_edit['skill_dict'].get(subkey):
+                        cat_to_edit['skill_dict'][subkey] = None
+                else:
+                    cat_to_edit['skill_dict'][subkey] = f"{skill_type},{skill_level},{skill_hidden}"
                     
             number_string_fields = ["ID", "parent1", "parent2", "mentor"]
   
@@ -150,6 +149,8 @@ def save_changes():
 
 def update_cat_form(cat_id_to_edit):
     global cat_to_edit, options_values
+    global skill_dict_widgets  # Added new global variable
+    skill_dict_widgets = []    # Clear list
     for widget in window.grid_slaves():
         if widget.grid_info()['row'] > 0:  # Excluding dropdown row
             widget.destroy()
@@ -332,7 +333,7 @@ def edit_cats():
 
     top_frame = tk.Frame(window)
     top_frame.grid(row=0, column=0, columnspan=10)
-
+    ttk.Button(top_frame, text="Save", command=save_changes).grid(column=1, row=0)
     variable = tk.StringVar(window)
     cat_select_dropdown = ttk.Combobox(top_frame, width=27, textvariable=variable)
     cat_select_dropdown['values'] = [cat['ID']+": "+cat['name_prefix']+(cat['name_suffix'] and cat['name_suffix'] or '') for cat in cats]
@@ -340,7 +341,6 @@ def edit_cats():
     cat_select_dropdown.grid(column=0, row=0)
     cat_select_dropdown.bind('<<ComboboxSelected>>', lambda _: update_cat_form(variable.get().split(':')[0]))
 
-    ttk.Button(top_frame, text="Save", command=save_changes).grid(column=1, row=0)
 
     # Initially update the form to show the first cat's details.
     update_cat_form(cat_select_dropdown.get().split(':')[0])
