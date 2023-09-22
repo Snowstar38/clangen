@@ -75,46 +75,58 @@ def save_changes():
                     value = False
 
                 if widget.key in number_string_fields:  
-                    if value not in ["None", ""] and not value.isdigit():
-                        tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}. \nExpected a number, got: \n{value} \nExample(s): \n{example_str}")
-                        return
-
+                    if value not in ["None", ""]:
+                        if not value.isdigit():
+                            tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}. \nExpected a number, got: \n{value} \nExample(s): \n{example_str}")
+                            return
+                    else:
+                        value = None
                 desired_type = desired_types.get(widget.key)
 
-                # Additional checks for string fields
-                if desired_type == str:
-                    if any(unwanted_char in value for unwanted_char in ["[", "]", "{", "}", "\"", "\'"]):  # Define any unwanted characters here
-                        tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}.\nString fields can't contain brackets or quotes.\nYou entered:\n{value}")
-                        return
-                if desired_type == list:
-                    temp_value = re.sub(r"'([^']*)'", r'"\1"', value)
-                    try:
-                        ujson.loads(temp_value)
-                    except ujson.JSONDecodeError:  
-                        tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}. \nExpected a list, got: {type(value)}. \nYou entered: \n{value} \nExample(s): \n{example_str}")
-                        return
-                try:
-                    if isinstance(value, desired_type):
-                        pass 
-                    elif desired_type == bool:
-                        value = bool(value)
-                    elif desired_type == int:
-                        value = int(value)
-                    elif desired_type == float:
-                        value = float(value)
-                    elif desired_type == dict:
-                        value = ujson.loads(value)
-                    elif desired_type == str:
-                        if widget.key in number_string_fields: 
-                            if value == "" or value.isdigit():
-                                pass 
-                            else:
-                                raise ValueError
+                if value is not None:
+                    # Additional checks for string fields
+                    if desired_type == str:
+                        if any(unwanted_char in value for unwanted_char in ["[", "]", "{", "}", "\"", "\'"]):  # Define any unwanted characters here
+                            tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}.\nString fields can't contain brackets or quotes.\nYou entered:\n{value}")
+                            return
+                    if desired_type == list:
+                        temp_value = value
+                        dq_value = re.sub(r"'([^']*)'", r'"\1"', temp_value)
+                        try:
+                            ujson.loads(dq_value)
+                        except ujson.JSONDecodeError:  
+                            tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}. \nExpected a list, got: {type(value)}. \nYou entered: \n{value} \nExample(s): \n{example_str}")
+                            return
+                        import ast
 
+                        value = ast.literal_eval(value)
+
+                    try:
+                        if isinstance(value, desired_type):
+                            pass 
+                        elif desired_type == bool:
+                            value = bool(value)
+                        elif desired_type == int:
+                            value = int(value)
+                        elif desired_type == float:
+                            value = float(value)
+                        elif desired_type == list:
+                            value = ujson.loads(value)
+                        elif desired_type == dict:
+                            value = ujson.loads(value)
+                        elif desired_type == str:
+                            if widget.key in number_string_fields: 
+                                if value == "" or value.isdigit():
+                                    pass 
+                                else:
+                                    raise ValueError
+
+                        cat_to_edit[widget.key] = value
+                    except ValueError:
+                        tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}. \nExpected {desired_type}, got {type(value)}. \nYou entered: \n{value} \nExample(s): \n{example_str}")
+                        return
+                else:
                     cat_to_edit[widget.key] = value
-                except ValueError:
-                    tk.messagebox.showerror("Validation Error", f"Invalid value for field: {widget.key}. \nExpected {desired_type}, got {type(value)}. \nYou entered: \n{value} \nExample(s): \n{example_str}")
-                    return
 
             if isinstance(widget, ttk.Checkbutton):
                 cat_to_edit[widget.key] = widget.var.get()
