@@ -5,7 +5,7 @@ from tkinter import ttk
 
 # Get current working directory
 current_working_directory = os.getcwd()
-# messagebox.showwarning("Backup your data", "Please remember to make backup copies of your save files before making changes with this tool!")
+messagebox.showwarning("Backup your data", "Please remember to make backup copies of your save files before making changes with this tool!")
 # Defining functions to call scripts
 def run_script(script_name):
     clan = clan_var.get()
@@ -85,11 +85,11 @@ ToolTip(sort_cats_button, "Sort all cats in the clan in clan_cats.json by their 
 
 reassign_ID_button = ttk.Button(root, text="Reassign Cat IDs", command=run_ID_reassign)
 reassign_ID_button.grid(column=0, row=3)
-ToolTip(reassign_ID_button, "Assign new unique IDs to each cat, starting at 1 - WILL REMOVE RELATIONSHIPS")
+ToolTip(reassign_ID_button, "Assign new unique IDs to each cat, starting at 1 - BUGGY, WILL REMOVE RELATIONSHIPS")
 
 update_ID_list_button = ttk.Button(root, text="Update Clan ID Lists", command=run_clanfile_ID_update)
 update_ID_list_button.grid(column=0, row=4)
-ToolTip(update_ID_list_button, "Update the saved list of cat IDs for the clan in clan.json - WILL REMOVE RELATIONSHIPS")
+ToolTip(update_ID_list_button, "Update the saved list of cat IDs for the clan in clan.json - BUGGY, WILL REMOVE RELATIONSHIPS")
 
 edit_cats_button = ttk.Button(root, text="Edit Cats", command=run_edit_cats)
 edit_cats_button.grid(column=0, row=5)

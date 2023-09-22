@@ -17,8 +17,10 @@ id_mates_apprentices = {"mate", "previous_mates", "current_apprentice", "former_
 
 # First handle the special positions
 for cat in cats:
-    if cat['status'] in IDs:
+    if cat['status'] in IDs and cat['dead'] == False:
         cat['ID'] = str(IDs[cat['status']])
+        if cat['status'] == 'medicine cat':
+            IDs[cat['status']] += 1  # Increment ID for next medicine cat
         # Clear out related cats
         for key in id_mates_apprentices:
             if key in cat:

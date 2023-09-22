@@ -29,9 +29,9 @@ with open(secondary_filename, "r") as file:
 
 # Update fields
 secondary_data["instructor"] = instructor
-secondary_data["leader"] = next((cat["ID"] for cat in cats if cat["status"] == "leader"), None)
-secondary_data["deputy"] = next((cat["ID"] for cat in cats if cat["status"] == "deputy"), None)
-secondary_data["med_cat"] = next((cat["ID"] for cat in cats if cat["status"] == "medicine cat"), None)
+secondary_data["leader"] = next((cat["ID"] for cat in cats if cat["status"] == "leader" and cat["dead"] == "false"), None)
+secondary_data["deputy"] = next((cat["ID"] for cat in cats if cat["status"] == "deputy" and cat["dead"] == "false"), None)
+secondary_data["med_cat"] = next((cat["ID"] for cat in cats if cat["status"] == "medicine cat" and cat["dead"] == "false"), None)
 secondary_data["clan_cats"] = updated_clan_cats
 
 # Write the updated JSON data back to the file
