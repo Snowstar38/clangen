@@ -116,7 +116,7 @@ def save_changes():
                         elif desired_type == str:
                             if widget.key in number_string_fields: 
                                 if value == "" or value.isdigit():
-                                    pass 
+                                    pass
                                 else:
                                     raise ValueError
 

@@ -13,7 +13,8 @@ with open(filename, "r") as file:
 
 IDs = {"leader": 1, "deputy": 2, "medicine cat": 3}
 id_count = 4
-id_mates_apprentices = {"mate", "previous_mates", "current_apprentice", "former_apprentices", "mentor", "former_mentor"}
+id_mates_apprentices = {"mate", "previous_mates", "current_apprentice", "former_apprentices", "former_mentor"}
+id_mentor = {"mentor"}
 
 # First handle the special positions
 for cat in cats:
@@ -25,6 +26,7 @@ for cat in cats:
         for key in id_mates_apprentices:
             if key in cat:
                 cat[key] = []
+        cat['mentor'] = None
     else:
         cat['ID'] = str(id_count)
         id_count += 1
