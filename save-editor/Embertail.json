@@ -1,0 +1,20 @@
+{
+    "pelt_name": "Calico",
+    "pelt_color": "DARKGREY",
+    "eye_colour": "PALEGREEN",
+    "eye_colour2": null,
+    "skin": "LIGHTBROWN",
+    "tortie_base": "single",
+    "pattern": "ONE",
+    "tortie_color": "DARKGINGER",
+    "tortie_pattern": "ticked",
+    "white_patches": "TAIL",
+    "points": null,
+    "vitiligo": null,
+    "scars": [],
+    "accessory": null,
+    "tint": "black",
+    "white_patches_tint": "darkcream",
+    "reverse": false,
+    "opacity": 100
+}

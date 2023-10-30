@@ -1,0 +1,20 @@
+{
+    "pelt_name": "Marbled",
+    "pelt_color": "GHOST",
+    "eye_colour": "PALEGREEN",
+    "eye_colour2": null,
+    "skin": "BLACK",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "SPARKLE",
+    "points": "SEPIAPOINT",
+    "vitiligo": "VITILIGO",
+    "scars": [],
+    "accessory": null,
+    "tint": "purple",
+    "white_patches_tint": null,
+    "reverse": false,
+    "opacity": 100
+}

@@ -3,7 +3,10 @@ import re
 import ujson
 import tkinter as tk
 from cat_dictionary import *
-from tkinter import ttk, messagebox
+from tkinter import ttk, messagebox, filedialog
+import os
+import tempfile
+import shutil
 
 # Define field classes
 name_fields = ['ID', 'name_prefix', 'name_suffix', 'specsuffix_hidden']
@@ -46,8 +49,47 @@ def validate_value(key, value):
 
     return value
 
+# Save cat appearance to a file
+def save_appearance():
+    cat_id = cat_to_edit.get('ID')
+    cat_appearance_data = {field:cat_to_edit.get(field) for field in appearance_fields if field != 'pelt_length'}
+    
+    filename = filedialog.asksaveasfilename(defaultextension=".json", title="Save cat appearance")
+    if filename:
+        with open(filename, "w") as file:
+            ujson.dump(cat_appearance_data, file, indent=4)
+
+# Load the cat appearance from a file
+def load_appearance():
+    global temp_file_path
+
+    filename = filedialog.askopenfilename(filetypes=[("Json files", "*.json")], title="Load cat appearance")
+    if filename:
+        with open(filename, "r") as file:
+            cat_appearance_data = ujson.load(file)
+
+        # Update the cat_to_edit data with the loaded appearance
+        for field, value in cat_appearance_data.items():
+            cat_to_edit[field] = value
+
+        # Save the updated cat data back to the temporary file
+        for cat in cats:
+            if cat['ID'] == cat_to_edit.get('ID'):
+                cat.update(cat_to_edit)
+
+        # Create a temporary file
+        temp_fd, temp_file_path = tempfile.mkstemp()
+        with open(temp_file_path, 'w') as file:
+            ujson.dump(cats, file, indent=4)
+        
+        # Refresh the form with temp file
+        update_cat_form(cat_to_edit.get('ID'))
+
+# A global variable that references the temporary file throughout:
+temp_file_path = None
 
 def save_changes():
+    global temp_file_path
     for widget in window.grid_slaves():
         if isinstance(widget, ttk.Entry) or isinstance(widget, ttk.Checkbutton) or isinstance(widget, tk.Text):
             for subkey, combobox, entry, checkbox in skill_dict_widgets:
@@ -144,8 +186,13 @@ def save_changes():
                     return
                 cat_to_edit[widget.key] = value
 
-    with open(filename, 'w') as file:
-        ujson.dump(cats, file, indent=4)
+    # We create and open the temporary file within a 'with' block
+    with tempfile.NamedTemporaryFile(mode='w', delete=False) as temp_file:
+        ujson.dump(cats, temp_file, indent=4)
+        temp_file_path = temp_file.name
+
+    # Now you can freely move the temporary file to the required path
+    shutil.move(temp_file_path, filename)
 
 def update_cat_form(cat_id_to_edit):
     global cat_to_edit, options_values
@@ -223,6 +270,9 @@ def update_cat_form(cat_id_to_edit):
                     index = options.index(cat_value)
                     widget.current(0)
 
+
+# An empty dictionary to store all widget references.
+widget_references = {}
 
 def draw_form(i, key, value, column):
     label = ttk.Label(window, text=key+":")
@@ -322,11 +372,21 @@ def draw_form(i, key, value, column):
         entry.insert(0, str(value))
     entry.grid(row=i, column=2*column+1, sticky="ew")
     entry.key = key
+    # For every widget created, save its reference in the dictionary.
+    if key in appearance_fields and key != 'pelt_length':
+        widget_references[key] = entry
 
 def edit_cats():
-    global window, cats, cat_to_edit
+    global window, cats, cat_to_edit, filename, temp_file_path, temp_fd
     window = tk.Tk()
     window.title("Edit Cats")
+
+    filename = f"../saves/{clan_name}/clan_cats.json"
+
+    # Before starting, copy the source file to a new temporary file.
+    temp_fd, temp_file_path = tempfile.mkstemp()
+
+    shutil.copy2(filename, temp_file_path)
 
     with open(filename,"r") as file:
         cats = ujson.load(file)
@@ -334,6 +394,8 @@ def edit_cats():
     top_frame = tk.Frame(window)
     top_frame.grid(row=0, column=0, columnspan=10)
     ttk.Button(top_frame, text="Save", command=save_changes).grid(column=1, row=0)
+    ttk.Button(top_frame, text="Save Appearance", command=save_appearance).grid(column=2, row=0)  # The Save Appearance button
+    ttk.Button(top_frame, text="Load Appearance", command=load_appearance).grid(column=3, row=0)  # The Load Appearance button
     variable = tk.StringVar(window)
     cat_select_dropdown = ttk.Combobox(top_frame, width=27, textvariable=variable)
     cat_select_dropdown['values'] = [cat['ID']+": "+cat['name_prefix']+(cat['name_suffix'] and cat['name_suffix'] or '') for cat in cats]
