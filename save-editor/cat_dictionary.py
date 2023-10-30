@@ -184,7 +184,7 @@ accessories = plant_accessories + wild_accessories + tail_accessories + collars
 tabbies = ["Tabby", "Ticked", "Mackerel", "Classic", "Sokoke", "Agouti"]
 spotted = ["Speckled", "Rosette"]
 plain = ["SingleColour", "TwoColour", "Smoke", "Singlestripe"]
-exotic = ["Bengal", "Marbled"]
+exotic = ["Bengal", "Marbled", "Masked"]
 torties = ["Tortie", "Calico"]
 pelt_names = tabbies + spotted + plain + exotic + torties
 
