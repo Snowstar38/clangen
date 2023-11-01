@@ -305,7 +305,7 @@ def draw_form(i, key, value, column):
 
             # Checkbox for skill_hidden, set 'row=j'
             var = tk.BooleanVar()
-            var.set(bool(skill_hidden))
+            var.set(skill_hidden)
             checkbox = ttk.Checkbutton(skill_dict_frame, variable=var)
             checkbox.grid(row=j, column=2, sticky="w")
             checkbox.var = var
