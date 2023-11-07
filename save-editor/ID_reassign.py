@@ -12,7 +12,7 @@ with open(filename, "r") as file:
     cats = ujson.load(file)
 
 id_count = 1 # Start ID count from 1
-id_mates_apprentices = {"mate", "previous_mates", "current_apprentice", "former_apprentices", "former_mentor"}
+id_mates_apprentices = {"mate", "previous_mates", "current_apprentice", "former_apprentices", "former_mentor", "mentor"}
 
 normal_cats = []  # A list to store the remaining cats 
 

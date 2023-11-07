@@ -24,6 +24,29 @@ categories = {
 
 skill_dict_widgets = []
 
+class ToolTip(object):
+    def __init__(self, widget, text):
+        self.widget = widget
+        self.text = text
+        self.tooltip = None
+        self.widget.bind("<Enter>", self.show_tooltip)
+        self.widget.bind("<Leave>", self.hide_tooltip)
+        
+    def show_tooltip(self, event=None):
+        x, y, _, _ = self.widget.bbox("insert")
+        x += self.widget.winfo_rootx() + 25
+        y += self.widget.winfo_rooty() + 35
+        self.tooltip = tk.Toplevel(self.widget)
+        self.tooltip.wm_overrideredirect(True)
+        self.tooltip.wm_geometry(f"+{int(x)}+{int(y)}")
+        label = tk.Label(self.tooltip, text=self.text, background="white")
+        label.pack()
+    
+    def hide_tooltip(self, event=None):
+        if self.tooltip:
+            self.tooltip.destroy()
+            self.tooltip = None
+
 def validate_value(key, value):
     val_type = desired_types.get(key)
 
@@ -251,6 +274,8 @@ def update_cat_form(cat_id_to_edit):
                 options = tint
             elif widget.key == 'white_patches_tint':
                 options = white_patches_tint
+            elif widget.key == 'status':
+                options = statuses
             else:
                 options = None
             if options is not None:
@@ -307,6 +332,7 @@ def draw_form(i, key, value, column):
             var = tk.BooleanVar()
             var.set(skill_hidden)
             checkbox = ttk.Checkbutton(skill_dict_frame, variable=var)
+            ToolTip(checkbox, "Check if cat is still a kit or apprentice")
             checkbox.grid(row=j, column=2, sticky="w")
             checkbox.var = var
 
@@ -350,6 +376,8 @@ def draw_form(i, key, value, column):
         options = tint
     elif key == 'white_patches_tint':
         options = white_patches_tint
+    elif key == 'status':
+        options = statuses
 
     else:
         options = None

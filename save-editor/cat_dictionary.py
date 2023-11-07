@@ -205,6 +205,8 @@ backstories = [
   
 skills = ['TEACHER', 'HUNTER', 'FIGHTER', 'RUNNER', 'CLIMBER', 'SWIMMER', 'SPEAKER', 'MEDIATOR', 'CLEVER', 'INSIGHTFUL', 'SENSE', 'KIT', 'STORY', 'LORE', 'CAMP', 'HEALER', 'STAR', 'DARK', 'OMEN', 'DREAM', 'CLAIRVOYANT', 'PROPHET', 'GHOST']
 
+statuses = ['leader', 'deputy', 'medicine cat', 'warrior', 'mediator', 'apprentice', 'medicine cat apprentice', 'mediator apprentice', 'kitten', 'newborn', 'elder', 'kittypet', 'loner', 'rogue', 'former Clancat']
+
 options_values = {
     'pelt_color': pelt_colours,
     'pelt_name': pelt_names,
