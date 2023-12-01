@@ -27,8 +27,7 @@ skill_dict_widgets = []
 temp_file_path = None
 
 def cleanup_temp_file():
-    global temp_file_path
-    os.close(temp_fd)  # Close the file descriptor
+    os.close(temp_fd)
     if temp_file_path and os.path.exists(temp_file_path):
         os.remove(temp_file_path)
 
@@ -114,10 +113,8 @@ def save_appearance():
     
     filename = filedialog.asksaveasfilename(defaultextension=".json", title="Save cat appearance")
     if filename:
-        # Use NamedTemporaryFile for automatic deletion
-        with tempfile.NamedTemporaryFile(mode='w', delete=True) as temp_file:
-            ujson.dump(cats, temp_file, indent=4)
-            temp_file_path = temp_file.name
+        with open(filename, "w") as file:
+            ujson.dump(cat_appearance_data, file, indent=4)
 
 
 # Load the cat appearance from a file
@@ -139,11 +136,9 @@ def load_appearance():
                 cat.update(cat_to_edit)
 
         # Create a temporary file
-        temp_fd, temp_file_path = tempfile.mkstemp()
-        with tempfile.NamedTemporaryFile(mode='w', delete=True) as temp_file:
+        with open(temp_file_path, 'w') as temp_file:
             ujson.dump(cats, temp_file, indent=4)
             temp_file_path = temp_file.name
-        
         # Refresh the form with temp file
         update_cat_form(cat_to_edit.get('ID'))
 
@@ -246,7 +241,7 @@ def save_changes():
                 cat_to_edit[widget.key] = value
 
     # We create and open the temporary file within a 'with' block
-    with tempfile.NamedTemporaryFile(mode='w', delete=False) as temp_file:
+    with tempfile.NamedTemporaryFile(mode='w', delete=True) as temp_file:
         ujson.dump(cats, temp_file, indent=4)
         temp_file_path = temp_file.name
 
