@@ -5,6 +5,7 @@ from tkinter import ttk
 
 # Get current working directory
 current_working_directory = os.getcwd()
+<<<<<<< Updated upstream
 messagebox.showwarning("Backup your data", "Please remember to make backup copies of your save files before making changes with this tool!")
 # Defining functions to call scripts
 def run_script(script_name):
@@ -17,23 +18,41 @@ def run_script(script_name):
     # Check whether the script ran successfully
     if response != 0:
         messagebox.showerror("Error", f"An error occurred while trying to run the {script_name} script. Please check that the necessary files exist.")
+=======
+#messagebox.showwarning("Backup your data", "Please remember to make backup copies of your save files before making changes with this tool!")
+>>>>>>> Stashed changes
 
+def update_dir():
+    global save_dir
+    global script_dir
+    parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    script_dir = os.path.dirname(os.path.abspath(__file__))  # Path to the directory of main.py
+    try:
+        with open('config.txt', 'r') as config_file:
+            folder_path = config_file.readline().strip()
+            if os.path.isdir(folder_path):
+                normalized_path = os.path.normpath(folder_path)  # Normalize the path
+                save_dir = os.path.join(normalized_path, 'saves')
+                print(f"Updated save directory: {save_dir}")
+                return
+    except FileNotFoundError:
+        pass
 
-def run_age_sort():
-    run_script('age_sort')
-
-def run_ID_reassign():
-    run_script('ID_reassign')
-
-def run_clanfile_ID_update():
-    run_script('clanfile_ID_update')
-
-def run_edit_cats():
-    run_script('edit_cats')
+    # Default behavior if config.txt doesn't exist or is invalid
+    save_dir = os.path.join(parent_dir, 'saves')
+    save_dir = os.path.normpath(save_dir)  # Normalize the default path as well
+    print(f"Default save directory: {save_dir}")
+    print(f"Script directory: {script_dir}")
 
 # Get list of subdirectories in the 'saves' directory
-def get_clan_names(dir='../saves'):  
-    return next(os.walk(dir))[1]
+def get_clan_names():
+    if not os.path.exists(save_dir):
+        print(f"Saves directory {save_dir} does not exist")
+    try:
+        return next(os.walk(save_dir))[1]
+    except StopIteration:
+        print("No subdirectories found in the saves directory.")
+        return []
 
 # Initialize the tkinter window
 root = tk.Tk()
@@ -51,6 +70,49 @@ ttk.Label(root, text="Select a Clan:").grid(column=0, row=0)
 # Create a dropdown menu
 clan_var = tk.StringVar()
 clan_dropdown = ttk.Combobox(root, width=27, textvariable=clan_var)
+
+def refresh_clan_dropdown():
+    clan_dropdown['values'] = get_clan_names()
+    clan_dropdown.set('')  # Clear the current selection
+
+# Call update_dir at the beginning to set the initial save_dir
+update_dir()
+refresh_clan_dropdown()
+
+# Function to choose Clangen folder
+def choose_clangen_folder():
+    folder_selected = filedialog.askdirectory()
+    if folder_selected:
+        with open('config.txt', 'w') as config_file:
+            config_file.write(folder_selected)
+        update_dir()
+        refresh_clan_dropdown()
+
+# Defining functions to call scripts
+def run_script(script_name):
+    update_dir()
+    clan = clan_var.get()
+    # Handle case in which no Clan is selected
+    if not clan:
+        messagebox.showwarning("No Clan Selected", "Please select a Clan from the dropdown menu before proceeding.")
+        return
+    response = os.system('python {}/{}.py {} {}'.format(script_dir, script_name, clan, save_dir))
+    # Check whether the script ran successfully
+    if response != 0:
+        messagebox.showerror("Error", f"An error occurred while trying to run the {script_name} script. Please check that the necessary files exist.")
+
+
+def run_age_sort():
+    run_script('age_sort')
+
+def run_ID_reassign():
+    run_script('ID_reassign')
+
+def run_clanfile_ID_update():
+    run_script('clanfile_ID_update')
+
+def run_edit_cats():
+    run_script('edit_cats')
 
 # Set the choices in the dropdown to be the clan names
 clan_dropdown['values'] = get_clan_names() 
@@ -99,6 +161,11 @@ ToolTip(edit_cats_button, "Open the cat editor")
 quit_button = ttk.Button(root, text="Quit", command=root.destroy)
 quit_button.grid(column=1, row=6)
 ToolTip(quit_button, "Close the application")
+
+# Add a button to the GUI for folder selection
+choose_folder_button = ttk.Button(root, text="Choose Clangen Folder", command=choose_clangen_folder)
+choose_folder_button.grid(column=1, row=7)
+ToolTip(choose_folder_button, "Select the Clangen folder")
 
 # Add a button to close the application
 ttk.Button(root, text="Quit", command=root.destroy).grid(column=1, row=6)

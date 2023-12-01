@@ -3,10 +3,11 @@ import ujson
 
 # Get the clan name from command line arguments
 clan_name = sys.argv[1]
+save_dir = sys.argv[2]
 
-# Generate the file paths
-filename = f"../saves/{clan_name}/clan_cats.json"
-secondary_filename = f"../saves/{clan_name}Clan.json"
+# Now generate the file paths
+filename = f"{save_dir}/{clan_name}/clan_cats.json"
+secondary_filename = f"{save_dir}/{clan_name}Clan.json"
 
 # Open and load clan cats file
 with open(filename, "r") as file:

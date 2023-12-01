@@ -4,7 +4,7 @@ import ujson
 import tkinter as tk
 from cat_dictionary import *
 from tkinter import ttk, messagebox, filedialog
-import os
+import os, atexit
 import tempfile
 import shutil
 
@@ -23,6 +23,16 @@ categories = {
 }
 
 skill_dict_widgets = []
+
+temp_file_path = None
+
+def cleanup_temp_file():
+    global temp_file_path
+    os.close(temp_fd)  # Close the file descriptor
+    if temp_file_path and os.path.exists(temp_file_path):
+        os.remove(temp_file_path)
+
+atexit.register(cleanup_temp_file)
 
 class ToolTip(object):
     def __init__(self, widget, text):
@@ -46,6 +56,31 @@ class ToolTip(object):
         if self.tooltip:
             self.tooltip.destroy()
             self.tooltip = None
+
+def update_dir():
+    global save_dir
+    global script_dir
+    parent_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+    parent_dir = os.path.normpath(parent_dir)
+    script_dir = os.path.dirname(os.path.abspath(__file__))  # Path to the directory of main.py
+    try:
+        with open('config.txt', 'r') as config_file:
+            folder_path = config_file.readline().strip()
+            if os.path.isdir(folder_path):
+                normalized_path = os.path.normpath(folder_path)  # Normalize the path
+                save_dir = os.path.join(normalized_path, 'saves')
+                print(f"Updated save directory: {save_dir}")
+                return
+    except FileNotFoundError:
+        pass
+
+    # Default behavior if config.txt doesn't exist or is invalid
+    save_dir = os.path.join(parent_dir, 'saves')
+    save_dir = os.path.normpath(save_dir)  # Normalize the default path as well
+    print(f"Default save directory: {save_dir}")
+    print(f"Script directory: {script_dir}")
+
+update_dir()
 
 def validate_value(key, value):
     val_type = desired_types.get(key)
@@ -79,8 +114,11 @@ def save_appearance():
     
     filename = filedialog.asksaveasfilename(defaultextension=".json", title="Save cat appearance")
     if filename:
-        with open(filename, "w") as file:
-            ujson.dump(cat_appearance_data, file, indent=4)
+        # Use NamedTemporaryFile for automatic deletion
+        with tempfile.NamedTemporaryFile(mode='w', delete=True) as temp_file:
+            ujson.dump(cats, temp_file, indent=4)
+            temp_file_path = temp_file.name
+
 
 # Load the cat appearance from a file
 def load_appearance():
@@ -102,14 +140,12 @@ def load_appearance():
 
         # Create a temporary file
         temp_fd, temp_file_path = tempfile.mkstemp()
-        with open(temp_file_path, 'w') as file:
-            ujson.dump(cats, file, indent=4)
+        with tempfile.NamedTemporaryFile(mode='w', delete=True) as temp_file:
+            ujson.dump(cats, temp_file, indent=4)
+            temp_file_path = temp_file.name
         
         # Refresh the form with temp file
         update_cat_form(cat_to_edit.get('ID'))
-
-# A global variable that references the temporary file throughout:
-temp_file_path = None
 
 def save_changes():
     global temp_file_path
@@ -404,15 +440,20 @@ def draw_form(i, key, value, column):
     if key in appearance_fields and key != 'pelt_length':
         widget_references[key] = entry
 
-def edit_cats():
+def edit_cats(save_dir, script_dir):
+    update_dir()  # Update save_dir
+
     global window, cats, cat_to_edit, filename, temp_file_path, temp_fd
     window = tk.Tk()
     window.title("Edit Cats")
 
-    filename = f"../saves/{clan_name}/clan_cats.json"
+    clan_name = sys.argv[1]  # Get clan name from command-line argument
+    filename = os.path.join(save_dir, clan_name, 'clan_cats.json')  # Correctly construct the path
 
-    # Before starting, copy the source file to a new temporary file.
-    temp_fd, temp_file_path = tempfile.mkstemp()
+    # Use script_dir for temporary files
+    temp_fd, temp_file_path = tempfile.mkstemp(dir=script_dir)
+    
+    temp_file_path = os.path.normpath(temp_file_path)
 
     shutil.copy2(filename, temp_file_path)
 
@@ -438,5 +479,4 @@ def edit_cats():
     window.mainloop()
 
 clan_name = sys.argv[1]
-filename = f"../saves/{clan_name}/clan_cats.json"
-edit_cats()
+edit_cats(save_dir, script_dir)
