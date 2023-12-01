@@ -3,25 +3,6 @@ import tkinter as tk
 from tkinter import messagebox, filedialog
 from tkinter import ttk
 
-# Get current working directory
-current_working_directory = os.getcwd()
-<<<<<<< Updated upstream
-messagebox.showwarning("Backup your data", "Please remember to make backup copies of your save files before making changes with this tool!")
-# Defining functions to call scripts
-def run_script(script_name):
-    clan = clan_var.get()
-    # Handle case in which no Clan is selected
-    if not clan:
-        messagebox.showwarning("No Clan Selected", "Please select a Clan from the dropdown menu before proceeding.")
-        return
-    response = os.system('python {}/{}.py {}'.format(current_working_directory, script_name, clan))
-    # Check whether the script ran successfully
-    if response != 0:
-        messagebox.showerror("Error", f"An error occurred while trying to run the {script_name} script. Please check that the necessary files exist.")
-=======
-#messagebox.showwarning("Backup your data", "Please remember to make backup copies of your save files before making changes with this tool!")
->>>>>>> Stashed changes
-
 def update_dir():
     global save_dir
     global script_dir
