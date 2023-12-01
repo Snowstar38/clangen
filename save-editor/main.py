@@ -123,32 +123,30 @@ class ToolTip(object):
             self.tooltip = None
 
 # Add script execution buttons
+
+edit_cats_button = ttk.Button(root, text="Edit Cats", command=run_edit_cats)
+edit_cats_button.grid(column=0, row=2)
+ToolTip(edit_cats_button, "Open the cat editor")
+
 sort_cats_button = ttk.Button(root, text="Sort Cats by Age", command=run_age_sort)
-sort_cats_button.grid(column=0, row=2)
+sort_cats_button.grid(column=0, row=3)
 ToolTip(sort_cats_button, "Sort all cats in the clan in clan_cats.json by their ages")
 
 #reassign_ID_button = ttk.Button(root, text="Reassign Cat IDs", command=run_ID_reassign)
-#reassign_ID_button.grid(column=0, row=3)
+#reassign_ID_button.grid(column=0, row=4)
 #ToolTip(reassign_ID_button, "Assign new unique IDs to each cat, starting at 1 - BUGGY, WILL REMOVE RELATIONSHIPS")
 
 #update_ID_list_button = ttk.Button(root, text="Update Clan ID Lists", command=run_clanfile_ID_update)
-#update_ID_list_button.grid(column=0, row=4)
+#update_ID_list_button.grid(column=0, row=5)
 #ToolTip(update_ID_list_button, "Update the saved list of cat IDs for the clan in clan.json - BUGGY, WILL REMOVE RELATIONSHIPS")
-
-edit_cats_button = ttk.Button(root, text="Edit Cats", command=run_edit_cats)
-edit_cats_button.grid(column=0, row=5)
-ToolTip(edit_cats_button, "Open the cat editor")
-
-quit_button = ttk.Button(root, text="Quit", command=root.destroy)
-quit_button.grid(column=1, row=6)
-ToolTip(quit_button, "Close the application")
 
 # Add a button to the GUI for folder selection
 choose_folder_button = ttk.Button(root, text="Choose Clangen Folder", command=choose_clangen_folder)
-choose_folder_button.grid(column=1, row=7)
+choose_folder_button.grid(column=1, row=2)
 ToolTip(choose_folder_button, "Select the Clangen folder")
 
-# Add a button to close the application
-ttk.Button(root, text="Quit", command=root.destroy).grid(column=1, row=6)
+quit_button = ttk.Button(root, text="Quit", command=root.destroy)
+quit_button.grid(column=1, row=5)
+ToolTip(quit_button, "Close the application")
 
 root.mainloop()
