@@ -192,7 +192,7 @@ pelt_names = tabbies + spotted + plain + exotic + torties
 skin_sprites = ['BLACK',  'PINK', 'DARKBROWN', 'BROWN', 'LIGHTBROWN', 'DARK', 'DARKGREY', 'GREY', 'DARKSALMON',
                 'SALMON', 'PEACH', 'DARKMARBLED', 'MARBLED', 'LIGHTMARBLED', 'DARKBLUE', 'BLUE', 'LIGHTBLUE', 'RED']
                 
-tint = ['pink', 'gray', 'red', 'black', 'orange', 'yellow', 'purple', 'blue']
+tint = ['pink', 'gray', 'red', 'black', 'orange', 'yellow', 'purple', 'blue', 'green']
 
 white_patches_tint = ["darkcream", "cream", "offwhite", "gray", "pink"]
                 

@@ -111,9 +111,9 @@ def save_appearance():
     cat_id = cat_to_edit.get('ID')
     cat_appearance_data = {field:cat_to_edit.get(field) for field in appearance_fields if field != 'pelt_length'}
     
-    filename = filedialog.asksaveasfilename(defaultextension=".json", title="Save cat appearance")
-    if filename:
-        with open(filename, "w") as file:
+    s_app_filename = filedialog.asksaveasfilename(defaultextension=".json", title="Save cat appearance")
+    if s_app_filename:
+        with open(s_app_filename, "w") as file:
             ujson.dump(cat_appearance_data, file, indent=4)
 
 
@@ -121,9 +121,9 @@ def save_appearance():
 def load_appearance():
     global temp_file_path
 
-    filename = filedialog.askopenfilename(filetypes=[("Json files", "*.json")], title="Load cat appearance")
-    if filename:
-        with open(filename, "r") as file:
+    l_app_filename = filedialog.askopenfilename(filetypes=[("Json files", "*.json")], title="Load cat appearance")
+    if l_app_filename:
+        with open(l_app_filename, "r") as file:
             cat_appearance_data = ujson.load(file)
 
         # Update the cat_to_edit data with the loaded appearance
@@ -240,13 +240,8 @@ def save_changes():
                     return
                 cat_to_edit[widget.key] = value
 
-    # We create and open the temporary file within a 'with' block
-    with tempfile.NamedTemporaryFile(mode='w', delete=True) as temp_file:
-        ujson.dump(cats, temp_file, indent=4)
-        temp_file_path = temp_file.name
-
-    # Now you can freely move the temporary file to the required path
-    shutil.move(temp_file_path, filename)
+    with open(filename, "w") as file:
+        ujson.dump(cats, file, indent=4)
 
 def update_cat_form(cat_id_to_edit):
     global cat_to_edit, options_values
