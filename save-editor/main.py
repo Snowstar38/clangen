@@ -39,7 +39,7 @@ def get_clan_names():
 root = tk.Tk()
 
 # New! Add a reminder for players to backup their saves
-# reminder = tk.Label(root, text="Please remember to back up your saves!", fg="red")  # fg="red" makes the text red
+reminder = tk.Label(root, text="Please remember to back up your saves!", fg="red")  # fg="red" makes the text red
 reminder.grid(column=1, row=1, columnspan=2)  # Place it above the clan dropdown
 
 # Add a label
