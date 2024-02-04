@@ -291,13 +291,11 @@ class ChooseMentorScreen(Screens):
             object_id="#text_box_22_horizcenter_vertcenter_spacing_95",
             manager=MANAGER)
 
-        name = str(self.the_cat.name)  # get name
-        if 11 <= len(name):  # check name length
-            short_name = str(name)[0:9]
-            name = short_name + '...'
+        name = str(self.the_cat.name)
+        short_name = shorten_text_to_fit(name, 239, 34)
         self.apprentice_details["apprentice_name"] = pygame_gui.elements.ui_label.UILabel(
-            scale(pygame.Rect((1240, 230), (220, 60))),
-            name,
+            scale(pygame.Rect((1240, 230), (235, 65))),
+            short_name,
             object_id="#text_box_34_horizcenter", manager=MANAGER)
 
         self.find_next_previous_cats()  # Determine where the next and previous cat buttons lead
@@ -415,12 +413,10 @@ class ChooseMentorScreen(Screens):
                                                                                    manager=MANAGER)
 
             name = str(self.selected_mentor.name)  # get name
-            if 11 <= len(name):  # check name length
-                short_name = str(name)[0:9]
-                name = short_name + '...'
+            short_name = shorten_text_to_fit(name, 239, 34)
             self.selected_details["mentor_name"] = pygame_gui.elements.ui_label.UILabel(
-                scale(pygame.Rect((130, 230), (220, 60))),
-                name,
+                scale(pygame.Rect((130, 230), (235, 65))),
+                short_name,
                 object_id="#text_box_34_horizcenter", manager=MANAGER)
 
     def update_cat_list(self):
