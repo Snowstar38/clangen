@@ -39,7 +39,7 @@ def get_clan_names():
 root = tk.Tk()
 
 # New! Add a reminder for players to backup their saves
-reminder = tk.Label(root, text="Please remember to back up your saves!", fg="red")  # fg="red" makes the text red
+# reminder = tk.Label(root, text="Please remember to back up your saves!", fg="red")  # fg="red" makes the text red
 reminder.grid(column=1, row=1, columnspan=2)  # Place it above the clan dropdown
 
 # Add a label
@@ -132,13 +132,13 @@ sort_cats_button = ttk.Button(root, text="Sort Cats by Age", command=run_age_sor
 sort_cats_button.grid(column=0, row=3)
 ToolTip(sort_cats_button, "Sort all cats in the clan in clan_cats.json by their ages")
 
-#reassign_ID_button = ttk.Button(root, text="Reassign Cat IDs", command=run_ID_reassign)
-#reassign_ID_button.grid(column=0, row=4)
-#ToolTip(reassign_ID_button, "Assign new unique IDs to each cat, starting at 1 - BUGGY, WILL REMOVE RELATIONSHIPS")
+reassign_ID_button = ttk.Button(root, text="Reassign Cat IDs", command=run_ID_reassign)
+reassign_ID_button.grid(column=0, row=4)
+ToolTip(reassign_ID_button, "Assign new unique IDs to each cat, starting at 1 - BUGGY, WILL REMOVE RELATIONSHIPS")
 
-#update_ID_list_button = ttk.Button(root, text="Update Clan ID Lists", command=run_clanfile_ID_update)
-#update_ID_list_button.grid(column=0, row=5)
-#ToolTip(update_ID_list_button, "Update the saved list of cat IDs for the clan in clan.json - BUGGY, WILL REMOVE RELATIONSHIPS")
+update_ID_list_button = ttk.Button(root, text="Update Clan ID Lists", command=run_clanfile_ID_update)
+update_ID_list_button.grid(column=0, row=5)
+ToolTip(update_ID_list_button, "Update the saved list of cat IDs for the clan in clan.json - BUGGY, WILL REMOVE RELATIONSHIPS")
 
 # Add a button to the GUI for folder selection
 choose_folder_button = ttk.Button(root, text="Choose Clangen Folder", command=choose_clangen_folder)
