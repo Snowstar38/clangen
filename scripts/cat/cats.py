@@ -302,10 +302,12 @@ class Cat():
             else:
                 self.genderalign = self.gender
 
-            """if self.genderalign in ["female", "trans female"]:
+            if self.genderalign in ["female", "trans female"]:
                 self.pronouns = [self.default_pronouns[1].copy()]
             elif self.genderalign in ["male", "trans male"]:
-                self.pronouns = [self.default_pronouns[2].copy()]"""
+                self.pronouns = [self.default_pronouns[2].copy()]
+            else:
+                self.pronouns = [self.default_pronouns[0].copy()]
 
             # APPEARANCE
             self.pelt = Pelt.generate_new_pelt(self.gender, [Cat.fetch_cat(i) for i in (self.parent1, self.parent2) if i], self.age)
@@ -441,8 +443,6 @@ class Cat():
             game.just_died.append(self.ID)
             self.thought = 'Is surprised to find themselves walking the stars of Silverpelt'
 
-        # Clear Relationships. 
-        self.relationships = {}
 
         for app in self.apprentice.copy():
             fetched_cat = Cat.fetch_cat(app)
@@ -2876,7 +2876,7 @@ class Cat():
                 "specsuffix_hidden": self.name.specsuffix_hidden,
                 "gender": self.gender,
                 "gender_align": self.genderalign,
-                #"pronouns": self.pronouns,
+                "pronouns": self.pronouns,
                 "birth_cooldown": self.birth_cooldown,
                 "status": self.status,
                 "backstory": self.backstory if self.backstory else None,

@@ -2022,12 +2022,12 @@ class Events:
 
             involved_cats = [cat.ID]
             if cat.age == 'adolescent':
-                transing_chance = random.getrandbits(8)  # 2/256
+                transing_chance = random.getrandbits(9)  # 2/256
             elif cat.age == 'young adult':
-                transing_chance = random.getrandbits(9)  # 2/512
+                transing_chance = random.getrandbits(10)  # 2/512
             else:
                 # adult, senior adult, elder
-                transing_chance = random.getrandbits(10)  # 2/1028
+                transing_chance = random.getrandbits(11)  # 2/1028
 
             if transing_chance:
                 # transing_chance != 0, no trans kitties today...    L
@@ -2036,13 +2036,13 @@ class Events:
             if random.getrandbits(1):  # 50/50
                 if cat.gender == "male":
                     cat.genderalign = "trans female"
-                    # cat.pronouns = [cat.default_pronouns[1].copy()]
+                    cat.pronouns = [cat.default_pronouns[1].copy()]
                 else:
                     cat.genderalign = "trans male"
-                    # cat.pronouns = [cat.default_pronouns[2].copy()]
+                    cat.pronouns = [cat.default_pronouns[2].copy()]
             else:
                 cat.genderalign = "nonbinary"
-                # cat.pronouns = [cat.default_pronouns[0].copy()]
+                cat.pronouns = [cat.default_pronouns[0].copy()]
 
             if cat.gender == 'male':
                 gender = 'tom'
