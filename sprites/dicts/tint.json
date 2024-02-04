@@ -27,7 +27,7 @@
     "cool": ["blue", "purple", "black"],
     "white": ["yellow"],
     "monochrome": ["blue", "black"],
-    "brown": ["yellow", "purple", "black"]
+    "brown": ["yellow", "purple", "black", "green"]
   },
   "tint_colours":
   {
@@ -39,6 +39,7 @@
     "yellow": [250, 248, 225],
     "purple": [235, 225, 244],
     "blue": [218, 237, 245],
+    "green": [230, 245, 230],
     "none": null
   }
 }
