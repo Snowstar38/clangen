@@ -1,0 +1,20 @@
+{
+    "pelt_name": "Tortie",
+    "pelt_color": "DARKGREY",
+    "eye_colour": "DARKBLUE",
+    "eye_colour2": null,
+    "skin": "DARKBLUE",
+    "tortie_base": "bengal",
+    "pattern": "BODY",
+    "tortie_color": "GREY",
+    "tortie_pattern": "bengal",
+    "white_patches": "BROKENBLAZE",
+    "points": null,
+    "vitiligo": null,
+    "scars": [],
+    "accessory": null,
+    "tint": "purple",
+    "white_patches_tint": null,
+    "reverse": true,
+    "opacity": 100
+}
