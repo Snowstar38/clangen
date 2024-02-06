@@ -543,8 +543,11 @@ class ChooseMentorScreen(Screens):
                     is_valid = False
 
                 # Check for no former apprentices filter
-                if self.show_only_no_former_app_mentors and cat.former_apprentices:
-                    is_valid = False
+                if self.show_only_no_former_app_mentors:
+                    if cat.former_apprentices:
+                        is_valid = False
+                    elif cat.apprentice:
+                        is_valid = False
 
                 # Check for no current apprentices filter
                 if self.show_only_no_current_app_mentors and cat.apprentice:

@@ -555,23 +555,25 @@ def get_personality_compatibility(cat1, cat2):
 
     return None
 
+def get_skills(cat):
+    # Gathering primary and secondary skills of a cat, if they exist
+    skills = []
+    if cat.skills.primary:
+        skills.append(cat.skills.primary.path)
+    if hasattr(cat.skills, 'secondary') and cat.skills.secondary:
+        skills.append(cat.skills.secondary.path)
+    return skills
+
 def mentor_skill_compatibility(mentor, apprentice):
-    # making sure both cats have primary skills before comparison
-    if mentor.skills.primary and apprentice.skills.primary:
-        if mentor.skills.primary.path == apprentice.skills.primary.path:
+    # Getting the list of skills for both mentor and apprentice
+    mentor_skills = get_skills(mentor)
+    apprentice_skills = get_skills(apprentice)
+
+    # Checking for any common skills between mentor and apprentice
+    for skill in mentor_skills:
+        if skill in apprentice_skills:
             return True
-        elif mentor.skills.secondary:
-            if mentor.skills.secondary.path == apprentice.skills.primary.path:
-                return True
-            elif apprentice.skills.secondary:
-                if mentor.skills.primary.path == apprentice.skills.secondary.path:
-                    return True
-                elif mentor.skills.secondary.path == apprentice.skills.secondary.path:
-                    return True
-        else:
-            return False
-
-
+    return False
 
 def get_mentor_compatibility(mentor, apprentice):
     """Returns:
