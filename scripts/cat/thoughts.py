@@ -321,6 +321,7 @@ class Thoughts():
         return chosen_thought
     
     def create_death_thoughts(self, inter_list) -> list:
+        #helper function for death thoughts
         created_list = []
         for inter in inter_list:
             created_list.append(inter)
@@ -328,7 +329,7 @@ class Thoughts():
     
     def leader_death_thought(self, lives_left, darkforest):
         #loading the special leader death thoughts, since they function differently than regular ones
-        base_path = f"resources/dicts/thoughts/death"
+        base_path = f"resources/dicts/thoughts/ondeath"
         if darkforest is False:
             spec_dir = "/starclan"
         elif darkforest:
@@ -354,8 +355,7 @@ class Thoughts():
             chosen_thought = "Prrrp! You shouldn't see this! Report as a bug."
 
     def new_death_thought(self, darkforest, isoutside):
-        #loading the special death thoughts, since they function differently than regular ones
-        base_path = f"resources/dicts/thoughts/death"
+        base_path = f"resources/dicts/thoughts/ondeath"
         if isoutside:
             spec_dir = "/unknownresidence"
         elif darkforest is False:
