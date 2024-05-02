@@ -1,0 +1,20 @@
+{
+    "pelt_name": "Calico",
+    "pelt_color": "SIENNA",
+    "eye_colour": "COPPER",
+    "eye_colour2": null,
+    "skin": "BLACK",
+    "tortie_base": "smoke",
+    "pattern": "REDTAIL",
+    "tortie_color": "BLACK",
+    "tortie_pattern": "smoke",
+    "white_patches": "SHOOTINGSTAR",
+    "points": null,
+    "vitiligo": null,
+    "scars": [],
+    "accessory": null,
+    "tint": "red",
+    "white_patches_tint": "offwhite",
+    "reverse": false,
+    "opacity": 100
+}

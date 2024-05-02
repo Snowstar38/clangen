@@ -1,0 +1,22 @@
+{
+    "pelt_name": "Speckled",
+    "pelt_color": "SILVER",
+    "eye_colour": "CYAN",
+    "eye_colour2": null,
+    "skin": "MARBLED",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "BIB",
+    "points": "COLOURPOINT",
+    "vitiligo": null,
+    "scars": [
+        "TAILBASE"
+    ],
+    "accessory": "CYAN",
+    "tint": null,
+    "white_patches_tint": null,
+    "reverse": true,
+    "opacity": 99
+}
