@@ -1,0 +1,20 @@
+{
+    "pelt_name": "Singlestripe",
+    "pelt_color": "DARKGREY",
+    "eye_colour": "DARKBLUE",
+    "eye_colour2": null,
+    "skin": "BLUE",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "ROSINA",
+    "points": "SEALPOINT",
+    "vitiligo": null,
+    "scars": [],
+    "accessory": null,
+    "tint": "gray",
+    "white_patches_tint": "offwhite",
+    "reverse": false,
+    "opacity": 100
+}

@@ -1,0 +1,20 @@
+{
+    "pelt_name": "Tortie",
+    "pelt_color": "BLACK",
+    "eye_colour": "HEATHERBLUE",
+    "eye_colour2": "CYAN",
+    "skin": "BLUE",
+    "tortie_base": "agouti",
+    "pattern": "HALF",
+    "tortie_color": "WHITE",
+    "tortie_pattern": "agouti",
+    "white_patches": "VEE",
+    "points": null,
+    "vitiligo": "VITILIGOTWO",
+    "scars": [],
+    "accessory": null,
+    "tint": "blue",
+    "white_patches_tint": null,
+    "reverse": false,
+    "opacity": 100
+}

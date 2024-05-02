@@ -1,0 +1,20 @@
+{
+    "pelt_name": "Mackerel",
+    "pelt_color": "BROWN",
+    "eye_colour": "CYAN",
+    "eye_colour2": null,
+    "skin": "DARKBROWN",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "FADEBELLY",
+    "points": "MINKPOINT",
+    "vitiligo": null,
+    "scars": [],
+    "accessory": null,
+    "tint": "blue",
+    "white_patches_tint": null,
+    "reverse": true,
+    "opacity": 100
+}

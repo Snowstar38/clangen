@@ -1,0 +1,20 @@
+{
+    "pelt_name": "Rosette",
+    "pelt_color": "CHOCOLATE",
+    "eye_colour": "BRONZE",
+    "eye_colour2": "CYAN",
+    "skin": "DARKBROWN",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": null,
+    "points": "MINKPOINT",
+    "vitiligo": null,
+    "scars": [],
+    "accessory": null,
+    "tint": "black",
+    "white_patches_tint": "gray",
+    "reverse": false,
+    "opacity": 100
+}
