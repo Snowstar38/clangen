@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: ascii -*-
+from copy import deepcopy
 import random
 from random import choice, randint, choices
 from typing import List, Tuple
@@ -380,7 +381,27 @@ class Patrol():
             for x in combinations(self.patrol_cats, 2):
                 if x[0].ID not in x[1].mate:
                     return False
+        
+        # check if all cats are mates with p_l (they do not have to be mates with each other)
+        if "mates_with_pl" in patrol.relationship_constraints:
+            # First test if there is more then one cat
+            if len(self.patrol_cats) == 1:
+                return False
+            
+            # Check each patrol cat to see if it is mates with the patrol leader
+            for cat in self.patrol_cats:
+                if cat.ID == self.patrol_leader.ID:
+                    continue
                 
+                if cat.ID not in self.patrol_leader.mate:
+                    return False
+
+        # check if all cats are not mates
+        if "not_mates" in patrol.relationship_constraints:
+            # opposite of mate check
+            for x in combinations(self.patrol_cats, 2):
+                if x[0].ID in x[1].mate:
+                    return False
 
         # check if the cats are in a parent/child relationship
         if "parent/child" in patrol.relationship_constraints:
@@ -532,7 +553,7 @@ class Patrol():
         romantic_patrols = []
         special_date = get_special_date()
         # This make sure general only gets hunting, border, or training patrols
-		# chose fix type will make it not depending on the content amount
+        # chose fix type will make it not depending on the content amount
         if patrol_type == "general":
             patrol_type = random.choice(["hunting", "border", "training"])
 
@@ -582,7 +603,7 @@ class Patrol():
 
             # cruel season tag check
             if "cruel_season" in patrol.tags:
-                if game.clan.game_mode != 'cruel_season':
+                if game.clan and game.clan.game_mode != 'cruel_season':
                     continue
 
             if "romantic" in patrol.tags:
@@ -618,6 +639,7 @@ class Patrol():
                 biome=patrol.get("biome"),
                 season=patrol.get("season"),
                 tags=patrol.get("tags"),
+                weight=patrol.get("weight", 20),
                 types=patrol.get("types"),
                 intro_text=patrol.get("intro_text"),
                 patrol_art=patrol.get("patrol_art"),
@@ -813,8 +835,8 @@ class Patrol():
                     increment = int(adaption.split("_")[0])
                     new_idx = prey_size.index(chosen_prey_size) + increment
                     # check that the increment does not lead to a overflow
-                    new_idx = new_idx if new_idx <= len(chosen_prey_size) else len(chosen_prey_size)
-                    chosen_prey_size = prey_size[new_idx]
+                    new_idx = new_idx if new_idx < len(prey_size) else len(prey_size)-1
+                    chosen_prey_size = deepcopy(prey_size[new_idx])
 
             # now count the outcomes + prey size
             prey_types = {}
@@ -831,9 +853,9 @@ class Patrol():
             # get the prey size with the most outcomes
             most_prey_size = ""
             max_occurrences = 0
-            for prey_size, amount in prey_types.items():
+            for size, amount in prey_types.items():
                 if amount >= max_occurrences and most_prey_size != chosen_prey_size:
-                    most_prey_size = prey_size
+                    most_prey_size = size
 
             if chosen_prey_size == most_prey_size:
                 filtered_patrols.append(patrol)
@@ -1021,8 +1043,8 @@ class Patrol():
                 f"WARNING: No history found for {self.patrol_event.patrol_id}, it may not need one but double check please!")
         if scar and "scar" in self.patrol_event.history_text:
             adjust_text = self.patrol_event.history_text['scar']
-            adjust_text = adjust_text.replace("r_c", str(cat.name))
-            adjust_text = adjust_text.replace("o_c_n", str(self.other_clan.name))
+            adjust_text = adjust_text.replace("o_c_n", f"{str(self.other_clan.name)}Clan")
+            adjust_text = process_text(adjust_text, {"r_c": (str(cat.name), choice(cat.pronouns))})
             if possible:
                 History.add_possible_history(cat, condition=condition, scar_text=adjust_text)
             else:
@@ -1031,8 +1053,8 @@ class Patrol():
             if cat.status == 'leader':
                 if "lead_death" in self.patrol_event.history_text:
                     adjust_text = self.patrol_event.history_text['lead_death']
-                    adjust_text = adjust_text.replace("r_c", str(cat.name))
-                    adjust_text = adjust_text.replace("o_c_n", str(self.other_clan.name))
+                    adjust_text = adjust_text.replace("o_c_n", f"{str(self.other_clan.name)}Clan")
+                    adjust_text = process_text(adjust_text, {"r_c": (str(cat.name), choice(cat.pronouns))})
                     if possible:
                         History.add_possible_history(cat, condition=condition, death_text=adjust_text)
                     else:
@@ -1040,8 +1062,8 @@ class Patrol():
             else:
                 if "reg_death" in self.patrol_event.history_text:
                     adjust_text = self.patrol_event.history_text['reg_death']
-                    adjust_text = adjust_text.replace("r_c", str(cat.name))
-                    adjust_text = adjust_text.replace("o_c_n", str(self.other_clan.name))
+                    adjust_text = adjust_text.replace("o_c_n", f"{str(self.other_clan.name)}Clan")
+                    adjust_text = process_text(adjust_text, {"r_c": (str(cat.name), choice(cat.pronouns))})
                     if possible:
                         History.add_possible_history(cat, condition=condition, death_text=adjust_text)
                     else:
