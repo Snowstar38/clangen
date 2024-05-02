@@ -1,0 +1,20 @@
+{
+    "pelt_name": "Bengal",
+    "pelt_color": "CHOCOLATE",
+    "eye_colour": "SUNLITICE",
+    "eye_colour2": null,
+    "skin": "RED",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "BULLSEYE",
+    "points": null,
+    "vitiligo": null,
+    "scars": [],
+    "accessory": null,
+    "tint": "red",
+    "white_patches_tint": "none",
+    "reverse": true,
+    "opacity": 99
+}

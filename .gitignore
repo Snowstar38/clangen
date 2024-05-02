@@ -177,3 +177,12 @@ cache/
 download.tmp
 version.ini
 *.xml
+save-editor/.gitattributes
+save-editor/age_sort.py
+save-editor/clanfile_ID_update.py
+save-editor/dict.py
+save-editor/dictionary.py
+save-editor/edit_cats.py
+save-editor/ID_listprint.py
+save-editor/ID_reassign.py
+save-editor/main.py

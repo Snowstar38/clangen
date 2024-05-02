@@ -181,7 +181,7 @@ def json_load():
                     cat["scar_event"] if "scar_event" in cat else []
                 )
 
-            # new_cat.pronouns = cat["pronouns"] if "pronouns" in cat else [new_cat.default_pronouns[0].copy()]
+            new_cat.pronouns = cat["pronouns"] if "pronouns" in cat else [new_cat.default_pronouns[0].copy()]
             all_cats.append(new_cat)
 
         except KeyError as e:
@@ -206,12 +206,9 @@ def json_load():
 
         # load the relationships
         try:
-            if not cat.dead:
-                cat.load_relationship_of_cat()
-                if cat.relationships is not None and len(cat.relationships) < 1:
-                    cat.init_all_relationships()
-            else:
-                cat.relationships = {}
+            cat.load_relationship_of_cat()
+            if cat.relationships is not None and len(cat.relationships) < 1:
+                cat.init_all_relationships()
         except Exception as e:
             logger.exception(f'There was an error loading relationships for cat #{cat}.')
             game.switches['error_message'] = f'There was an error loading relationships for cat #{cat}.'
