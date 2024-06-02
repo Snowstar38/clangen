@@ -1,0 +1,20 @@
+{
+    "pelt_name": "Agouti",
+    "pelt_color": "SIENNA",
+    "eye_colour": "SAGE",
+    "eye_colour2": null,
+    "skin": "BLACK",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "PRINCESS",
+    "points": null,
+    "vitiligo": null,
+    "scars": [],
+    "accessory": null,
+    "tint": "red",
+    "white_patches_tint": "offwhite",
+    "reverse": true,
+    "opacity": 100
+}

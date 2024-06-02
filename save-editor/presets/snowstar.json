@@ -1,0 +1,20 @@
+{
+    "pelt_name": "Bengal",
+    "pelt_color": "WHITE",
+    "eye_colour": "CYAN",
+    "eye_colour2": null,
+    "skin": "DARKSALMON",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "KROPKA",
+    "points": "COLOURPOINT",
+    "vitiligo": null,
+    "scars": [],
+    "accessory": null,
+    "tint": "blue",
+    "white_patches_tint": null,
+    "reverse": true,
+    "opacity": 100
+}

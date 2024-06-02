@@ -1,0 +1,20 @@
+{
+    "pelt_name": "Tortie",
+    "pelt_color": "SIENNA",
+    "eye_colour": "HAZEL",
+    "eye_colour2": null,
+    "skin": "SALMON",
+    "tortie_base": "masked",
+    "pattern": "CHIMERA",
+    "tortie_color": "GHOST",
+    "tortie_pattern": "masked",
+    "white_patches": "SPARKLE",
+    "points": null,
+    "vitiligo": null,
+    "scars": [],
+    "accessory": null,
+    "tint": "gray",
+    "white_patches_tint": "darkcream",
+    "reverse": false,
+    "opacity": 100
+}
