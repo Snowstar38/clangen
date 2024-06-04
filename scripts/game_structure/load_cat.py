@@ -103,6 +103,9 @@ def json_load():
                 pattern=cat["pattern"],
                 skin=cat["skin"],
                 tint=cat["tint"] if "tint" in cat else "none",
+                physical_trait_1=cat["physical_trait_1"],
+                physical_trait_2=cat["physical_trait_2"],
+                physical_trait_hidden=cat["physical_trait_hidden"],
                 scars=cat["scars"] if "scars" in cat else [],
                 accessory=cat["accessory"],
                 opacity=cat["opacity"] if "opacity" in cat else 100
@@ -383,9 +386,15 @@ def csv_load(all_cats):
                     the_cat.exiled = bool(attr[39])
                 if len(attr) > 40:
                     the_cat.genderalign = attr[40]
+                if len(attr) > 41:
+                    the_cat.pelt.physical_trait_1 = bool(attr[41])
+                if len(attr) > 42:
+                    the_cat.pelt.physical_trait_2 = bool(attr[42])
+                if len(attr) > 43:
+                    the_cat.pelt.physical_trait_3 = bool(attr[43])
                 if len(attr
-                       ) > 41 and attr[41] is not None:  # KEEP THIS AT THE END
-                    the_cat.former_apprentices = attr[41].split(';')
+                       ) > 44 and attr[44] is not None:  # KEEP THIS AT THE END
+                    the_cat.former_apprentices = attr[44].split(';')
         game.switches[
             'error_message'] = 'There was an error loading this clan\'s mentors, apprentices, relationships, or sprite info.'
         for inter_cat in all_cats.values():
