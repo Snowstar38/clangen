@@ -910,6 +910,70 @@ class ProfileScreen(Screens):
                 output += "\n"
                 break
 
+        trait_descriptions = {
+            'UPPERFANGS': 'long upper fangs',
+            'SABRETEETH': 'sabre teeth',
+            'UNDERBITE': 'underbite',
+            'SMALL': 'small ears',
+            'BIG': 'big ears',
+            'TALL': 'tall ears',
+            'PANTHER': 'rounded ears',
+            'FOLDBOTH': 'folded ears',
+            'FOLDONE': 'one folded ear',
+            'FORELOCK': 'forelock',
+            'COWLICK': 'cowlick',
+            'MOHAWK': 'mohawk',
+            'LONG': 'long cheek fur',
+            'POINTED': 'pointed cheek fur',
+            'SILKY': 'silky mane',
+            'FLUFFY': 'fluffy mane',
+            'RUFF': 'ruff',
+            'WAVY': 'wavy fur',
+            'CURLY': 'curly fur',
+            'SHORT': 'short muzzle',
+            'BROAD': 'broad muzzle',
+            'LONG': 'long muzzle',
+            'BROADSHOULDERS': 'broad shoulders',
+            'COMPACT': 'compact',
+            'WIRY': 'wiry',
+            'LITHE': 'lithe',
+            'SKINNY': 'skinny',
+            'BUFF': 'muscular',
+            'TINY': 'tiny',
+            'SMALL': 'small',
+            'SHORT': 'short',
+            'TALL': 'tall',
+            'LARGE': 'large',
+            'HUGE': 'huge',
+            'EARTUFTS': 'ear tufts',
+            'POLYDACTYL': 'polydactyl',
+            'LASHESUPPER': 'upper lashes',
+            'LASHESLOWER': 'lower lashes',
+            'LONGWHISKERS': 'long whiskers',
+            'CROOKEDTAIL': 'crooked tail',
+            'LONGTAIL': 'long tail',
+            'FEATHERTAIL': 'feathered tail',
+            'LONGCLAWS': 'unusually long claws'
+        }
+
+        if the_cat.pelt.physical_trait_1 or the_cat.pelt.physical_trait_2:
+            trait_list = []
+            if the_cat.pelt.physical_trait_1:
+                trait_list.append(the_cat.pelt.physical_trait_1)
+            if the_cat.pelt.physical_trait_2:
+                trait_list.append(the_cat.pelt.physical_trait_2)
+            
+            if trait_list:
+                output += "traits: "
+                for trait in trait_list:
+                    if trait in trait_descriptions:
+                        output += trait_descriptions[trait] + ", "
+                    else:
+                        output += trait + ", "  # In case the trait is not found in the dictionary
+                output = output.rstrip(", ")  # Remove the trailing comma and space
+                # NEWLINE ----------
+                output += "\n"
+
         if the_cat.is_injured():
             if "recovering from birth" in the_cat.injuries:
                 output += 'recovering from birth!'
