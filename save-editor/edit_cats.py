@@ -11,7 +11,7 @@ import shutil
 # Define field classes
 name_fields = ['ID', 'name_prefix', 'name_suffix', 'specsuffix_hidden']
 appearance_fields = ['pelt_name', 'pelt_color', 'pelt_length', 'eye_colour', 'eye_colour2', 'skin', 'tortie_base', 'pattern', 'tortie_color', 'tortie_pattern',
-    'white_patches', 'points', 'vitiligo', 'scars', 'accessory', 'tint', 'white_patches_tint', 'reverse', 'opacity']
+    'white_patches', 'points', 'vitiligo', 'scars', 'accessory', 'tint', 'white_patches_tint', 'reverse', 'opacity', 'physical_trait_1', 'physical_trait_2', 'physical_trait_hidden']
 relationship_fields = ['parent1', 'parent2', 'adoptive_parents', 'mentor', 'former_mentor', 'patrol_with_mentor', 'mate', 'previous_mates', 'current_apprentice', 'former_apprentices', 'faded_offspring']
 stats_fields = ['status', 'dead', 'df', 'exiled', 'outside', 'backstory', 'moons', 'dead_moons', 'skill_dict', 'trait', 'facets', 'experience']
 

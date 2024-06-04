@@ -188,8 +188,8 @@
 		"wildcard_tortie": 9,
 		"vit_chance": 8,
 		"random_point_chance": 5,
-		"physical_trait_chance": 90,
-		"physical_trait_inherit_chance": 50
+		"physical_trait_chance": 20,
+		"physical_trait_inherit_chance": 60
 	},
 	"cat_name_controls": {
 		"always_name_after_appearance": false,

@@ -59,7 +59,10 @@ desired_types = {
     'faded_offspring': list,
     'opacity': int,
     'prevent_fading': bool,
-    'favourite': bool
+    'favourite': bool,
+    'physical_trait_1': str,
+    'physical_trait_2': str,
+    'physical_trait_hidden': str
 }
 
 number_string_fields = ["ID", "parent1", "parent2", "mentor"]
@@ -126,6 +129,9 @@ examples = {
     'opacity': ["100"],
     'prevent_fading': ["False", "True"],
     'favourite': ["False", "True"],
+    'physical_trait_1': ["TINY", "UNDERBITE"],
+    'physical_trait_2': ["TINY", "UNDERBITE"],
+    'physical_trait_hidden': ["TINY", "UNDERBITE"],
 }
 
 pelt_colours = [
