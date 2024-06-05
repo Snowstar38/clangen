@@ -60,17 +60,17 @@ class Pelt():
     blue_eyes = ['BLUE', 'DARKBLUE', 'CYAN', 'PALEBLUE', 'HEATHERBLUE', 'COBALT', 'SUNLITICE', 'GREY']
     green_eyes = ['PALEGREEN', 'GREEN', 'EMERALD', 'SAGE', 'HAZEL']
     
-    physical_trait_teeth = [ 'TEETHUPPER', 'TEETHSABRE', 'TEETHUNDERBITE' ]
-    physical_trait_ear_type = [ 'EARSMALL', 'EARBIG', 'EARTALL', 'EARPANTHER' ]
-    physical_trait_ear_fold = [ 'FOLDBOTH', 'FOLDONE' ]
-    physical_trait_headfur = [ 'HEADFORELOCK', 'HEADCOWLICK', 'HEADMOHAWK', 'HEADTUFT' ]
-    physical_trait_cheekfur = [ 'CHEEKLONG', 'CHEEKPOINTED' ]
-    physical_trait_mane = [ 'MANESILKY', 'MANEFLUFFY', 'MANERUFF' ]
-    physical_trait_fur_type = [ 'FURWAVY', 'FURCURLY' ]
-    physical_trait_muzzle_type = [ 'MUZZLESHORT', 'MUZZLEBROAD', 'MUZZLELONG' ]
-    physical_trait_body_type = [ 'BODYBROAD', 'BODYCOMPACT', 'BODYWIRY', 'BODYLITHE', 'BODYSKINNY', 'BODYBUFF' ]
-    physical_trait_size = [ 'SIZETINY', 'SIZESMALL', 'SIZESHORT', 'SIZETALL', 'SIZELARGE', 'SIZEHUGE' ]
-    physical_trait_misc = [ 'EARTUFTS', 'POLYDACTYL', 'LASHESUPPER', 'LASHESLOWER', 'WHISKERSLONG', 'TAILCROOKED', 'TAILLONG', 'TAILFEATHER', 'CLAWSLONG' ]
+    physical_trait_teeth = ['TEETHUPPER', 'TEETHSABRE', 'TEETHUNDERBITE']
+    physical_trait_ear_type = ['EARSMALL', 'EARBIG', 'EARTALL', 'EARPANTHER']
+    physical_trait_ear_fold = ['FOLDBOTH', 'FOLDONE']
+    physical_trait_headfur = ['HEADFORELOCK', 'HEADCOWLICK', 'HEADMOHAWK', 'HEADTUFT']
+    physical_trait_cheekfur = ['CHEEKLONG', 'CHEEKPOINTED']
+    physical_trait_mane = ['MANESILKY', 'MANEFLUFFY', 'MANERUFF']
+    physical_trait_fur_type = ['FURWAVY', 'FURCURLY']
+    physical_trait_muzzle_type = ['MUZZLESHORT', 'MUZZLEBROAD', 'MUZZLELONG']
+    physical_trait_body_type = ['BODYBROAD', 'BODYCOMPACT', 'BODYWIRY', 'BODYLITHE', 'BODYSKINNY', 'BODYBUFF']
+    physical_trait_size = ['SIZETINY', 'SIZESMALL', 'SIZESHORT', 'SIZETALL', 'SIZELARGE', 'SIZEHUGE']
+    physical_trait_misc = ['EARTUFTS', 'POLYDACTYL', 'LASHESUPPER', 'LASHESLOWER', 'WHISKERSLONG', 'TAILCROOKED', 'TAILLONG', 'TAILFEATHER', 'CLAWSLONG', 'BACKFLUFF']
     
     # scars1 is scars from other cats, other animals - scars2 is missing parts - scars3 is "special" scars that could only happen in a special event
     # bite scars by @wood pank on discord
@@ -976,13 +976,16 @@ class Pelt():
                 if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
                     self.physical_trait_1 = random.choice(list(par_traits))
                     par_traits.remove(self.physical_trait_1)
-                if len(par_traits) > 0:
-                    inherit_trait_chance = int(random.random() * 100)
-                    if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
-                        self.physical_trait_2 = random.choice(list(par_traits))
-                        par_traits.remove(self.physical_trait_2)
-                if len(par_traits) > 0:
-                    self.physical_trait_hidden = random.choice(list(par_traits))
+                    if len(par_traits) > 0:
+                        inherit_trait_chance = int(random.random() * 100)
+                        if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                            self.physical_trait_2 = random.choice(list(par_traits))
+                            par_traits.remove(self.physical_trait_2)
+                    if len(par_traits) > 0:
+                        # +25% chance of any remaining genes being inherited as hidden
+                        inherit_trait_chance = int((random.random() * 100) - 25)
+                        if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                            self.physical_trait_hidden = random.choice(list(par_traits))
                 if self.physical_trait_2 and not self.physical_trait_1:
                     self.physical_trait_1 = self.physical_trait_2
                     self.physical_trait_2 = None
@@ -1032,18 +1035,7 @@ class Pelt():
             
             if traitcount > 0:
                 # Combine all trait lists into a single pool
-                trait_pool = (
-                    Pelt.physical_trait_teeth +
-                    Pelt.physical_trait_ear_type +
-                    Pelt.physical_trait_ear_fold +
-                    Pelt.physical_trait_headfur +
-                    Pelt.physical_trait_cheekfur +
-                    Pelt.physical_trait_mane +
-                    Pelt.physical_trait_fur_type +
-                    Pelt.physical_trait_muzzle_type +
-                    Pelt.physical_trait_body_type +
-                    Pelt.physical_trait_size
-                )
+                trait_pool = [trait for category in trait_categories for trait in category]
                 
                 # Select the first trait
                 trait1 = random.choice(trait_pool)
