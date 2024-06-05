@@ -953,7 +953,8 @@ class ProfileScreen(Screens):
             'TAILCROOKED': 'crooked tail',
             'TAILLONG': 'long tail',
             'TAILFEATHER': 'feathered tail',
-            'CLAWSLONG': 'unusually long claws'
+            'CLAWSLONG': 'unusually long claws',
+            'BACKFLUFF': 'fluffy back'
         }
 
         if the_cat.pelt.physical_trait_1 or the_cat.pelt.physical_trait_2:
