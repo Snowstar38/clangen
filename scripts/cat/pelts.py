@@ -59,17 +59,19 @@ class Pelt():
     yellow_eyes = ['YELLOW', 'AMBER', 'PALEYELLOW', 'GOLD', 'COPPER', 'GREENYELLOW', 'BRONZE', 'SILVER']
     blue_eyes = ['BLUE', 'DARKBLUE', 'CYAN', 'PALEBLUE', 'HEATHERBLUE', 'COBALT', 'SUNLITICE', 'GREY']
     green_eyes = ['PALEGREEN', 'GREEN', 'EMERALD', 'SAGE', 'HAZEL']
-    physical_trait_teeth = [ 'UPPERFANGS', 'SABRETEETH', 'UNDERBITE' ]
-    physical_trait_ear_type = [ 'SMALL', 'BIG', 'TALL', 'PANTHER' ]
+    
+    physical_trait_teeth = [ 'TEETHUPPER', 'TEETHSABRE', 'TEETHUNDERBITE' ]
+    physical_trait_ear_type = [ 'EARSMALL', 'EARBIG', 'EARTALL', 'EARPANTHER' ]
     physical_trait_ear_fold = [ 'FOLDBOTH', 'FOLDONE' ]
-    physical_trait_headfur = [ 'FORELOCK', 'COWLICK', 'MOHAWK' ]
-    physical_trait_cheekfur = [ 'LONG', 'POINTED' ]
-    physical_trait_mane = [ 'SILKY', 'FLUFFY', 'RUFF' ]
-    physical_trait_fur_type = [ 'WAVY', 'CURLY' ]
-    physical_trait_muzzle_type = [ 'SHORT', 'BROAD', 'LONG' ]
-    physical_trait_body_type = [ 'BROADSHOULDERS', 'COMPACT', 'WIRY', 'LITHE', 'SKINNY', 'BUFF' ]
-    physical_trait_size = [ 'TINY', 'SMALL', 'SHORT', 'TALL', 'LARGE', 'HUGE' ]
-    physical_trait_misc = [ 'EARTUFTS', 'POLYDACTYL', 'LASHESUPPER', 'LASHESLOWER', 'LONGWHISKERS', 'CROOKEDTAIL', 'LONGTAIL', 'FEATHERTAIL', 'LONGCLAWS' ]
+    physical_trait_headfur = [ 'HEADFORELOCK', 'HEADCOWLICK', 'HEADMOHAWK', 'HEADTUFT' ]
+    physical_trait_cheekfur = [ 'CHEEKLONG', 'CHEEKPOINTED' ]
+    physical_trait_mane = [ 'MANESILKY', 'MANEFLUFFY', 'MANERUFF' ]
+    physical_trait_fur_type = [ 'FURWAVY', 'FURCURLY' ]
+    physical_trait_muzzle_type = [ 'MUZZLESHORT', 'MUZZLEBROAD', 'MUZZLELONG' ]
+    physical_trait_body_type = [ 'BODYBROAD', 'BODYCOMPACT', 'BODYWIRY', 'BODYLITHE', 'BODYSKINNY', 'BODYBUFF' ]
+    physical_trait_size = [ 'SIZETINY', 'SIZESMALL', 'SIZESHORT', 'SIZETALL', 'SIZELARGE', 'SIZEHUGE' ]
+    physical_trait_misc = [ 'EARTUFTS', 'POLYDACTYL', 'LASHESUPPER', 'LASHESLOWER', 'WHISKERSLONG', 'TAILCROOKED', 'TAILLONG', 'TAILFEATHER', 'CLAWSLONG' ]
+    
     # scars1 is scars from other cats, other animals - scars2 is missing parts - scars3 is "special" scars that could only happen in a special event
     # bite scars by @wood pank on discord
     scars1 = ["ONE", "TWO", "THREE", "TAILSCAR", "SNOUT", "CHEEK", "SIDE", "THROAT", "TAILBASE", "BELLY",
