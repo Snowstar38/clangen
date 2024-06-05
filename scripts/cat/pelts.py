@@ -989,11 +989,28 @@ class Pelt():
                 if self.physical_trait_2 and not self.physical_trait_1:
                     self.physical_trait_1 = self.physical_trait_2
                     self.physical_trait_2 = None
+                
+                # Giving cats that inherited nothing a chance for new traits
+                if not self.physical_trait_1:
+                    trait_chance = int(random.random() * 100)
+                    if trait_chance <= game.config["cat_generation"]["physical_trait_chance"]:
+                        trait_pool = [trait for category in trait_categories for trait in category]
+                        trait1 = random.choice(trait_pool)
+                        print("Trait 1:", trait1)
+                        self.physical_trait_1 = trait1
+                        if trait_chance <= (0.1 * game.config["cat_generation"]["physical_trait_chance"]):
+                            for category in trait_categories:
+                                if trait1 in category:
+                                    trait_pool = [trait for trait in trait_pool if trait not in category]
+                                    break
+                            trait2 = random.choice(trait_pool)
+                            print("Trait 2:", trait1)
+                            self.physical_trait_2 = trait2
             else:
                 #if no parent traits, do as random
                 trait_chance = int(random.random() * 100)
                 if trait_chance <= game.config["cat_generation"]["physical_trait_chance"]:
-                    if trait_chance <= (0.25 * game.config["cat_generation"]["physical_trait_chance"]):
+                    if trait_chance <= (0.1 * game.config["cat_generation"]["physical_trait_chance"]):
                         traitcount = 2
                     else:
                         traitcount = 1
