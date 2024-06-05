@@ -391,7 +391,7 @@ def csv_load(all_cats):
                 if len(attr) > 42:
                     the_cat.pelt.physical_trait_2 = bool(attr[42])
                 if len(attr) > 43:
-                    the_cat.pelt.physical_trait_3 = bool(attr[43])
+                    the_cat.pelt.physical_trait_hidden = bool(attr[43])
                 if len(attr
                        ) > 44 and attr[44] is not None:  # KEEP THIS AT THE END
                     the_cat.former_apprentices = attr[44].split(';')
