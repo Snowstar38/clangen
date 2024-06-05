@@ -934,7 +934,20 @@ class Pelt():
             self.white_patches_tint = "none"
         
     def init_physical_traits(self, parents: tuple=()):
-        trait_categories = []
+        
+        trait_categories = [
+            Pelt.physical_trait_teeth,
+            Pelt.physical_trait_ear_type,
+            Pelt.physical_trait_ear_fold,
+            Pelt.physical_trait_headfur,
+            Pelt.physical_trait_cheekfur,
+            Pelt.physical_trait_mane,
+            Pelt.physical_trait_fur_type,
+            Pelt.physical_trait_muzzle_type,
+            Pelt.physical_trait_body_type,
+            Pelt.physical_trait_size
+        ]
+        
         if parents:
             par_traits = set()
             for p in parents:
@@ -947,19 +960,6 @@ class Pelt():
             par_traits.discard(None)
             
             # Check for conflicting traits from the same category
-            trait_categories = [
-                Pelt.physical_trait_teeth,
-                Pelt.physical_trait_ear_type,
-                Pelt.physical_trait_ear_fold,
-                Pelt.physical_trait_headfur,
-                Pelt.physical_trait_cheekfur,
-                Pelt.physical_trait_mane,
-                Pelt.physical_trait_fur_type,
-                Pelt.physical_trait_muzzle_type,
-                Pelt.physical_trait_body_type,
-                Pelt.physical_trait_size
-            ]
-            
             for category in trait_categories:
                 clash_traits = []
                 clash_traits = par_traits.intersection(category)
@@ -987,28 +987,17 @@ class Pelt():
             else:
                 #if no parent traits, do as random
                 trait_chance = int(random.random() * 100)
-                if trait_chance <= (0.5 * game.config["cat_generation"]["physical_trait_chance"]):
-                    traitcount = 2
-                elif trait_chance <= game.config["cat_generation"]["physical_trait_chance"]:
-                    traitcount = 1
+                if trait_chance <= game.config["cat_generation"]["physical_trait_chance"]:
+                    if trait_chance <= (0.25 * game.config["cat_generation"]["physical_trait_chance"]):
+                        traitcount = 2
+                    else:
+                        traitcount = 1
                 else:
                     traitcount = 0
                 
                 if traitcount > 0:
                     # Combine all trait lists into a single pool
-                    trait_pool = (
-                        Pelt.physical_trait_teeth +
-                        Pelt.physical_trait_ear_type +
-                        Pelt.physical_trait_ear_fold +
-                        Pelt.physical_trait_headfur +
-                        Pelt.physical_trait_cheekfur +
-                        Pelt.physical_trait_mane +
-                        Pelt.physical_trait_fur_type +
-                        Pelt.physical_trait_muzzle_type +
-                        Pelt.physical_trait_body_type +
-                        Pelt.physical_trait_size
-                    )
-                    
+                    trait_pool = [trait for category in trait_categories for trait in category]
                     # Select the first trait
                     trait1 = random.choice(trait_pool)
                     print("Trait 1:", trait1)
