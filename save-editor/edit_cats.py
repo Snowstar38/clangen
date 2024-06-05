@@ -11,7 +11,7 @@ import shutil
 # Define field classes
 name_fields = ['ID', 'name_prefix', 'name_suffix', 'specsuffix_hidden']
 appearance_fields = ['pelt_name', 'pelt_color', 'pelt_length', 'eye_colour', 'eye_colour2', 'skin', 'tortie_base', 'pattern', 'tortie_color', 'tortie_pattern',
-    'white_patches', 'points', 'vitiligo', 'scars', 'accessory', 'tint', 'white_patches_tint', 'reverse', 'opacity', 'physical_trait_1', 'physical_trait_2', 'physical_trait_hidden']
+    'white_patches', 'points', 'vitiligo', 'scars', 'physical_trait_1', 'physical_trait_2', 'physical_trait_hidden', 'accessory', 'tint', 'white_patches_tint', 'reverse', 'opacity']
 relationship_fields = ['parent1', 'parent2', 'adoptive_parents', 'mentor', 'former_mentor', 'patrol_with_mentor', 'mate', 'previous_mates', 'current_apprentice', 'former_apprentices', 'faded_offspring']
 stats_fields = ['status', 'dead', 'df', 'exiled', 'outside', 'backstory', 'moons', 'dead_moons', 'skill_dict', 'trait', 'facets', 'experience']
 
@@ -290,6 +290,12 @@ def update_cat_form(cat_id_to_edit):
                 options = vit
             elif widget.key == "white_patches":
                 options = white_patches
+            elif widget.key == 'physical_trait_1':
+                options = physical_traits
+            elif widget.key == 'physical_trait_2':
+                options = physical_traits
+            elif widget.key == 'physical_trait_hidden':
+                options = physical_traits
             elif widget.key == 'accessory':
                 options = accessories
             elif widget.key == 'skin':
@@ -392,6 +398,12 @@ def draw_form(i, key, value, column):
         options = vit
     elif key == "white_patches":
         options = white_patches
+    elif key == 'physical_trait_1':
+        options = physical_traits
+    elif key == 'physical_trait_2':
+        options = physical_traits
+    elif key == 'physical_trait_hidden':
+        options = physical_traits
     elif key == 'accessory':
         options = accessories
     elif key == 'skin':

@@ -48,6 +48,9 @@ desired_types = {
     'skin': str,
     'tint': str,
     'skill_dict': dict,
+    'physical_trait_1': str,
+    'physical_trait_2': str,
+    'physical_trait_hidden': str,
     'scars': list,
     'accessory': str,
     'experience': int,
@@ -60,9 +63,6 @@ desired_types = {
     'opacity': int,
     'prevent_fading': bool,
     'favourite': bool,
-    'physical_trait_1': str,
-    'physical_trait_2': str,
-    'physical_trait_hidden': str
 }
 
 number_string_fields = ["ID", "parent1", "parent2", "mentor"]
@@ -117,6 +117,9 @@ examples = {
     'skin': ["Select from dropdown"],
     'tint': ["Select from dropdown"],
     'skill_dict': ["example too long to fit"],
+    'physical_trait_1': ["Select from dropdown or leave blank"],
+    'physical_trait_2': ["Select from dropdown or leave blank"],
+    'physical_trait_hidden': ["Select from dropdown or leave blank"],
     'scars': ["[ ]", "['ONE']", "['CHEST', 'PAW']"],
     'accessory': ["Select from dropdown or leave blank"],
     'experience': ["0", "10", "300"],
@@ -128,10 +131,7 @@ examples = {
     'faded_offspring': ["[ ]", "['1']", "['1', '2', '3']"],
     'opacity': ["100"],
     'prevent_fading': ["False", "True"],
-    'favourite': ["False", "True"],
-    'physical_trait_1': ["TINY", "UNDERBITE"],
-    'physical_trait_2': ["TINY", "UNDERBITE"],
-    'physical_trait_hidden': ["TINY", "UNDERBITE"],
+    'favourite': ["False", "True"]
 }
 
 pelt_colours = [
@@ -166,6 +166,22 @@ mostly_white = ['VAN', 'ONEEAR', 'LIGHTSONG', 'TAIL', 'HEART', 'MOORISH', 'APRON
                 'SHOOTINGSTAR', 'EYESPOT', 'PEBBLE', 'TAILTWO', 'BUDDY', 'KROPKA']
                 
 white_patches =  little_white + mid_white + high_white + mostly_white + ['FULLWHITE']
+
+
+physical_trait_teeth = ['TEETHUPPER', 'TEETHSABRE', 'TEETHUNDERBITE']
+physical_trait_ear_type = ['EARSMALL', 'EARBIG', 'EARTALL', 'EARPANTHER']
+physical_trait_ear_fold = ['FOLDBOTH', 'FOLDONE']
+physical_trait_headfur = ['HEADFORELOCK', 'HEADCOWLICK', 'HEADMOHAWK', 'HEADTUFT']
+physical_trait_cheekfur = ['CHEEKLONG', 'CHEEKPOINTED']
+physical_trait_mane = ['MANESILKY', 'MANEFLUFFY', 'MANERUFF']
+physical_trait_fur_type = ['FURWAVY', 'FURCURLY']
+physical_trait_muzzle_type = ['MUZZLESHORT', 'MUZZLEBROAD', 'MUZZLELONG']
+physical_trait_body_type = ['BODYBROAD', 'BODYCOMPACT', 'BODYWIRY', 'BODYLITHE', 'BODYSKINNY', 'BODYBUFF']
+physical_trait_size = ['SIZETINY', 'SIZESMALL', 'SIZESHORT', 'SIZETALL', 'SIZELARGE', 'SIZEHUGE']
+physical_trait_misc = ['EARTUFTS', 'POLYDACTYL', 'LASHESUPPER', 'LASHESLOWER', 'WHISKERSLONG', 'TAILCROOKED', 'TAILLONG', 'TAILFEATHER', 'CLAWSLONG', 'BACKFLUFF']
+
+physical_traits = physical_trait_teeth + physical_trait_ear_type + physical_trait_ear_fold + physical_trait_headfur + physical_trait_cheekfur + physical_trait_mane + physical_trait_fur_type + physical_trait_muzzle_type + physical_trait_body_type + physical_trait_size + physical_trait_misc
+
 
 plant_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "LAUREL",
                     "BLUEBELLS", "NETTLE", "POPPY", "LAVENDER", "HERBS", "PETALS", "DRY HERBS",
@@ -230,5 +246,8 @@ options_values = {
     'skin': skin_sprites,
     'backstory': backstories,
     'tint': tint,
-    'white_patches_tint': white_patches_tint
+    'white_patches_tint': white_patches_tint,
+    'physical_trait_1': ["<None>"] + physical_traits,
+    'physical_trait_2': ["<None>"] + physical_traits,
+    'physical_trait_hidden': ["<None>"] + physical_traits
 }
