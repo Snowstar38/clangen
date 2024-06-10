@@ -13,6 +13,8 @@
 		"chance_of_special_group": 8,
 		"chance_romantic_not_mate": 25,
 		"influence_condition_events": 20,
+		"relationship_thought_chance": 20,
+		"kin_thought_chance": 20,
 		"comment":[
 			"chance_for_neutral - how high the chance is to make the interaction of the relationship to a 'neutral' instead of negative or positive",
 			"chance_of_special_group - 1/chance often when a group event is happening not all cats are considered, only a special group, which is defined in group_types.json",
@@ -258,8 +260,11 @@
 			"due to how it's written in the save files. So don't try to 'fix' it."
 		]
 	},
+	"event_generation": {
+		"debug_ensure_event_id": "gen_death_border_any1"
+	},
 	"death_related": {
-		"leader_death_chance": 75,
+		"leader_death_chance": 50,
 		"classic_death_chance": 500,
 		"expanded_death_chance": 380,
 		"cruel season_death_chance": 300,
