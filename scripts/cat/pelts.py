@@ -956,17 +956,18 @@ class Pelt:
             Pelt.physical_trait_size
         ]
         
-        if parents:
-            par_traits = set()
-            for p in parents:
-                if p:
-                    par_traits.add(p.pelt.physical_trait_1)
-                    par_traits.add(p.pelt.physical_trait_2)
-                    par_traits.add(p.pelt.physical_trait_hidden)
-            
-            # Remove any None values from par_traits
-            par_traits.discard(None)
-            
+        trait_pool = [(trait, category) for category in trait_categories for trait in category]
+        
+        par_traits = set()
+        for p in parents:
+                par_traits.add(p.pelt.physical_trait_1)
+                par_traits.add(p.pelt.physical_trait_2)
+                par_traits.add(p.pelt.physical_trait_hidden)
+        
+        # Remove any None values from par_traits
+        par_traits.discard(None)
+        
+        if par_traits:
             # Check for conflicting traits from the same category
             for category in trait_categories:
                 clash_traits = par_traits.intersection(category)
@@ -974,102 +975,46 @@ class Pelt:
                     chosen_trait = random.choice(list(clash_traits))
                     par_traits = par_traits.difference(clash_traits)
                     par_traits.add(chosen_trait)
-            
-            # Randomly select physical_trait_1 and physical_trait_2 from par_traits
-            if len(par_traits) > 0:
-                inherit_trait_chance = int(random.random() * 100)
-                if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
-                    self.physical_trait_1 = random.choice(list(par_traits))
-                    par_traits.remove(self.physical_trait_1)
-                    if len(par_traits) > 0:
-                        inherit_trait_chance = int(random.random() * 100)
-                        if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
-                            self.physical_trait_2 = random.choice(list(par_traits))
-                            par_traits.remove(self.physical_trait_2)
+            inherit_trait_chance = int(random.random() * 100)
+            if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                #Roll to inherit first trait, and if so, remove it from the list
+                self.physical_trait_1 = random.choice(list(par_traits))
+                par_traits.remove(self.physical_trait_1)
                 if len(par_traits) > 0:
-                    # +25% chance of any remaining genes being inherited as hidden
-                    inherit_trait_chance = int((random.random() * 100) - 25)
+                    #If we have a first trait, roll to inherit a second, and if we do, remove it from the list
+                    inherit_trait_chance = int(random.random() * 100)
                     if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
-                        self.physical_trait_hidden = random.choice(list(par_traits))
-                
-                # Giving cats that inherited nothing a chance for new traits
-                if not self.physical_trait_1:
-                    trait_chance = int(random.random() * 100)
-                    if trait_chance <= game.config["cat_generation"]["physical_trait_chance"]:
-                        trait_pool = [trait for category in trait_categories for trait in category]
-                        trait1 = random.choice(trait_pool)
-                        print("Trait 1:", trait1)
-                        self.physical_trait_1 = trait1
-                        if trait_chance <= (0.1 * game.config["cat_generation"]["physical_trait_chance"]):
-                            for category in trait_categories:
-                                if trait1 in category:
-                                    trait_pool = [trait for trait in trait_pool if trait not in category]
-                                    break
-                            trait2 = random.choice(trait_pool)
-                            print("Trait 2:", trait1)
-                            self.physical_trait_2 = trait2
-            else:
-                #if no parent traits, do as random
-                trait_chance = int(random.random() * 100)
-                if trait_chance <= game.config["cat_generation"]["physical_trait_chance"]:
-                    if trait_chance <= (0.1 * game.config["cat_generation"]["physical_trait_chance"]):
-                        traitcount = 2
-                    else:
-                        traitcount = 1
-                else:
-                    traitcount = 0
-                
-                if traitcount > 0:
-                    # Combine all trait lists into a single pool
-                    trait_pool = [trait for category in trait_categories for trait in category]
-                    # Select the first trait
-                    trait1 = random.choice(trait_pool)
-                    print("Trait 1:", trait1)
-                    self.physical_trait_1 = trait1
-                    
-                    if traitcount == 2:
-                        # Remove the category of the first trait from the trait pool
-                        for category in trait_categories:
-                            if trait1 in category:
-                                trait_pool = [trait for trait in trait_pool if trait not in category]
-                                break
-                        
-                        # Select the second trait from the remaining pool
-                        trait2 = random.choice(trait_pool)
-                        print("Trait 2:", trait2)
-                        self.physical_trait_2 = trait2
-                    else:
-                        self.physical_trait_2 = None
-                else:
-                    self.physical_trait_1 = None
-                    self.physical_trait_2 = None
-        else:
+                        self.physical_trait_2 = random.choice(list(par_traits))
+                        par_traits.remove(self.physical_trait_2)
+            if len(par_traits) > 0:
+                #If there are still leftover traits, roll to inherit as hidden with a +25% chance
+                inherit_trait_chance = int((random.random() * 100) - 25)
+                if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                    self.physical_trait_hidden = random.choice(list(par_traits))
+            
+        # Giving cats that inherited nothing a chance for new traits
+        if not self.physical_trait_1:
             trait_chance = int(random.random() * 100)
-            if trait_chance <= (0.5 * game.config["cat_generation"]["physical_trait_chance"]):
-                traitcount = 2
-            elif trait_chance <= game.config["cat_generation"]["physical_trait_chance"]:
-                traitcount = 1
+            if trait_chance <= game.config["cat_generation"]["physical_trait_chance"]:
+                if trait_chance <= (0.1 * game.config["cat_generation"]["physical_trait_chance"]):
+                    traitcount = 2
+                else:
+                    traitcount = 1
             else:
                 traitcount = 0
-            
-            if traitcount > 0:
-                # Combine all trait lists into a single pool
-                trait_pool = [trait for category in trait_categories for trait in category]
                 
-                # Select the first trait
-                trait1 = random.choice(trait_pool)
+            if traitcount > 0:
+                # Select the first trait and its category
+                trait1, category1 = random.choice(trait_pool)
                 print("Trait 1:", trait1)
                 self.physical_trait_1 = trait1
                 
                 if traitcount == 2:
-                    # Remove the category of the first trait from the trait pool
-                    for category in trait_categories:
-                        if trait1 in category:
-                            trait_pool = [trait for trait in trait_pool if trait not in category]
-                            break
+                    # Remove traits from the same category as the first trait
+                    trait_pool = [(trait, category) for trait, category in trait_pool if category != category1]
                     
                     # Select the second trait from the remaining pool
-                    trait2 = random.choice(trait_pool)
+                    trait2, category2 = random.choice(trait_pool)
                     print("Trait 2:", trait2)
                     self.physical_trait_2 = trait2
                 else:
