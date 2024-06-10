@@ -969,7 +969,6 @@ class Pelt:
             
             # Check for conflicting traits from the same category
             for category in trait_categories:
-                clash_traits = []
                 clash_traits = par_traits.intersection(category)
                 if len(clash_traits) > 1:
                     chosen_trait = random.choice(list(clash_traits))
@@ -992,9 +991,6 @@ class Pelt:
                     inherit_trait_chance = int((random.random() * 100) - 25)
                     if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
                         self.physical_trait_hidden = random.choice(list(par_traits))
-                if self.physical_trait_2 and not self.physical_trait_1:
-                    self.physical_trait_1 = self.physical_trait_2
-                    self.physical_trait_2 = None
                 
                 # Giving cats that inherited nothing a chance for new traits
                 if not self.physical_trait_1:

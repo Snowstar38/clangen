@@ -1140,23 +1140,22 @@ class ProfileScreen(Screens):
             'BACKFLUFF': 'fluffy back'
         }
 
-        if the_cat.pelt.physical_trait_1 or the_cat.pelt.physical_trait_2:
-            trait_list = []
-            if the_cat.pelt.physical_trait_1:
-                trait_list.append(the_cat.pelt.physical_trait_1)
-            if the_cat.pelt.physical_trait_2:
-                trait_list.append(the_cat.pelt.physical_trait_2)
-            
-            if trait_list:
-                output += "traits: "
-                for trait in trait_list:
-                    if trait in trait_descriptions:
-                        output += trait_descriptions[trait] + ", "
-                    else:
-                        output += trait + ", "  # In case the trait is not found in the dictionary
-                output = output.rstrip(", ")  # Remove the trailing comma and space
-                # NEWLINE ----------
-                output += "\n"
+        trait_list = []
+        if the_cat.pelt.physical_trait_1:
+            trait_list.append(the_cat.pelt.physical_trait_1)
+        if the_cat.pelt.physical_trait_2:
+            trait_list.append(the_cat.pelt.physical_trait_2)
+
+        if trait_list:
+            output += "traits: "
+            for trait in trait_list:
+                if trait in trait_descriptions:
+                    output += trait_descriptions[trait] + ", "
+                else:
+                    output += trait + ", "  # In case the trait is not found in the dictionary
+            output = output.rstrip(", ")  # Remove the trailing comma and space
+            # NEWLINE ----------
+            output += "\n"
 
         if the_cat.is_injured():
             if "recovering from birth" in the_cat.injuries:
