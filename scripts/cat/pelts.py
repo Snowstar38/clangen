@@ -987,11 +987,11 @@ class Pelt:
                         if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
                             self.physical_trait_2 = random.choice(list(par_traits))
                             par_traits.remove(self.physical_trait_2)
-                    if len(par_traits) > 0:
-                        # +25% chance of any remaining genes being inherited as hidden
-                        inherit_trait_chance = int((random.random() * 100) - 25)
-                        if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
-                            self.physical_trait_hidden = random.choice(list(par_traits))
+                if len(par_traits) > 0:
+                    # +25% chance of any remaining genes being inherited as hidden
+                    inherit_trait_chance = int((random.random() * 100) - 25)
+                    if inherit_trait_chance <= game.config["cat_generation"]["physical_trait_inherit_chance"]:
+                        self.physical_trait_hidden = random.choice(list(par_traits))
                 if self.physical_trait_2 and not self.physical_trait_1:
                     self.physical_trait_1 = self.physical_trait_2
                     self.physical_trait_2 = None
