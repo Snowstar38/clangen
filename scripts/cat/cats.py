@@ -1591,7 +1591,6 @@ class Cat:
                 ]
                 if cats_with_relationship:
                     other_cat = choice(cats_with_relationship)
-                    print("relationship thought: from ", self.ID, " to ", other_cat)
                 else:
                     pass
                 
