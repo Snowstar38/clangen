@@ -1964,10 +1964,7 @@ def event_text_adjust(
 
     # main_cat
     if "m_c" in text:
-        if main_cat:
-            replace_dict["m_c"] = (str(main_cat.name), choice(main_cat.pronouns))
-        else:
-            replace_dict["m_c"] = (str(Cat.name), choice(Cat.pronouns))
+        replace_dict["m_c"] = (str(main_cat.name), choice(main_cat.pronouns))
 
     # patrol_lead
     if "p_l" in text:
@@ -2476,6 +2473,10 @@ def generate_sprite(
             tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
             tint.fill(tuple(sprites.cat_tints["tint_colours"][cat.pelt.tint]))
             new_sprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_MULT)
+        if cat.pelt.tint != "none" and cat.pelt.tint in sprites.cat_tints["dilute_tint_colours"]:
+            tint = pygame.Surface((sprites.size, sprites.size)).convert_alpha()
+            tint.fill(tuple(sprites.cat_tints["dilute_tint_colours"][cat.pelt.tint]))
+            new_sprite.blit(tint, (0, 0), special_flags=pygame.BLEND_RGB_ADD)
 
         # draw white patches
         if cat.pelt.white_patches is not None:
