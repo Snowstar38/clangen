@@ -1088,40 +1088,40 @@ class Pregnancy_Events:
                 second_parent_relation = first_parent.create_one_relationship(
                     second_parent
                 )
+            if second_parent_relation.opposite_relationship:
+                average_romantic_love = (
+                    second_parent_relation.romantic_love
+                    + second_parent_relation.opposite_relationship.romantic_love
+                ) / 2
+                average_comfort = (
+                    second_parent_relation.comfortable
+                    + second_parent_relation.opposite_relationship.comfortable
+                ) / 2
+                average_trust = (
+                    second_parent_relation.trust
+                    + second_parent_relation.opposite_relationship.trust
+                ) / 2
 
-            average_romantic_love = (
-                second_parent_relation.romantic_love
-                + second_parent_relation.opposite_relationship.romantic_love
-            ) / 2
-            average_comfort = (
-                second_parent_relation.comfortable
-                + second_parent_relation.opposite_relationship.comfortable
-            ) / 2
-            average_trust = (
-                second_parent_relation.trust
-                + second_parent_relation.opposite_relationship.trust
-            ) / 2
+                if average_romantic_love >= 85:
+                    inverse_chance -= int(inverse_chance * 0.3)
+                elif average_romantic_love >= 55:
+                    inverse_chance -= int(inverse_chance * 0.2)
+                elif average_romantic_love >= 35:
+                    inverse_chance -= int(inverse_chance * 0.1)
 
-            if average_romantic_love >= 85:
-                inverse_chance -= int(inverse_chance * 0.3)
-            elif average_romantic_love >= 55:
-                inverse_chance -= int(inverse_chance * 0.2)
-            elif average_romantic_love >= 35:
-                inverse_chance -= int(inverse_chance * 0.1)
+                if average_comfort >= 85:
+                    inverse_chance -= int(inverse_chance * 0.3)
+                elif average_comfort >= 55:
+                    inverse_chance -= int(inverse_chance * 0.2)
+                elif average_comfort >= 35:
+                    inverse_chance -= int(inverse_chance * 0.1)
 
-            if average_comfort >= 85:
-                inverse_chance -= int(inverse_chance * 0.3)
-            elif average_comfort >= 55:
-                inverse_chance -= int(inverse_chance * 0.2)
-            elif average_comfort >= 35:
-                inverse_chance -= int(inverse_chance * 0.1)
-
-            if average_trust >= 85:
-                inverse_chance -= int(inverse_chance * 0.3)
-            elif average_trust >= 55:
-                inverse_chance -= int(inverse_chance * 0.2)
-            elif average_trust >= 35:
-                inverse_chance -= int(inverse_chance * 0.1)
+                if average_trust >= 85:
+                    inverse_chance -= int(inverse_chance * 0.3)
+                elif average_trust >= 55:
+                    inverse_chance -= int(inverse_chance * 0.2)
+                elif average_trust >= 35:
+                    inverse_chance -= int(inverse_chance * 0.1)
 
         # AGE
         # - decrease the inverse chance if the whole clan is really old
