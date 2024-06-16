@@ -1344,8 +1344,9 @@ def gather_cat_objects(
             out_set.add(event.patrol_apprentices[1])
         elif abbr == "clan":
             out_set.update([x for x in Cat.all_cats_list if not (x.dead or x.outside or x.exiled)])
-        elif abbr == "some_clan":
-            out_set.update([x for x in Cat.all_cats_list if not (x.dead or x.outside or x.exiled)])
+        elif abbr == "some_clan":  # 1 / 8 of clan cats are affected
+            clan_cats = [x for x in Cat.all_cats_list if not (x.dead or x.outside or x.exiled)]
+            out_set.update(sample(clan_cats, randint(1, round(len(clan_cats) / 8))))
         elif abbr == "patrol":
             out_set.update(event.patrol_cats)
         elif abbr == "multi":
@@ -1595,6 +1596,57 @@ def change_relationship_values(
                     if log_text not in rel.log:
                         rel.log.append(log_text)
 
+def get_kin_groups(self, dead_chance=None, use_dead_chance=False):
+    """
+    Retrieves the kin groups (close kin, kin, and distant kin) for the cat.
+
+    :param dead_chance: The chance of considering dead cats (optional).
+    :param use_dead_chance: Whether to include the dead_chance condition (default: False).
+    :return: A tuple containing three dictionaries: close_kin, kin, and distant_kin.
+             - close_kin: Dictionary of close kin groups (parents, siblings, children, mates, former mates).
+             - kin: Dictionary of kin groups (grandparents, aunts/uncles, cousins, grandkits).
+             - distant_kin: Dictionary of distant kin groups.
+    """
+    if use_dead_chance:
+        close_kin = {
+            "gen_parents": [self.all_cats.get(cat_id) for cat_id in self.get_parents() if not (self.all_cats.get(cat_id).dead and dead_chance != 1)],
+            "gen_siblings": [self.all_cats.get(cat_id) for cat_id in self.get_siblings() if not (self.all_cats.get(cat_id).dead and dead_chance != 1)],
+            "gen_children": [self.all_cats.get(cat_id) for cat_id in self.get_children() if not (self.all_cats.get(cat_id).dead and dead_chance != 1)],
+            "gen_mates": [self.all_cats.get(cat_id) for cat_id in self.mate if not (self.all_cats.get(cat_id).dead and dead_chance != 1)],
+            "gen_former_mates": [self.all_cats.get(cat_id) for cat_id in self.previous_mates if not (self.all_cats.get(cat_id).dead and dead_chance != 1)]
+        }
+        
+        kin = {
+            "gen_grandparents": [cat for cat in self.all_cats.values() if cat.is_grandparent(self) and not (cat.dead and dead_chance != 1)],
+            "gen_auntuncle": [cat for cat in self.all_cats.values() if self.is_uncle_aunt(cat) and not (cat.dead and dead_chance != 1)],
+            "gen_cousin": [cat for cat in self.all_cats.values() if self.is_cousin(cat) and not (cat.dead and dead_chance != 1)],
+            "gen_grandkits": [self.all_cats.get(cat_id) for cat_id in self.get_grandkits() if not (self.all_cats.get(cat_id).dead and dead_chance != 1)]
+        }
+        
+        distant_kin = {
+            "gen_distantkin": [self.all_cats.get(cat_id) for cat_id in self.get_distant_kin() if not (self.all_cats.get(cat_id).dead and dead_chance != 1)]
+        }
+    else:
+        close_kin = {
+            "gen_parents": [self.all_cats.get(cat_id) for cat_id in self.get_parents()],
+            "gen_siblings": [self.all_cats.get(cat_id) for cat_id in self.get_siblings()],
+            "gen_children": [self.all_cats.get(cat_id) for cat_id in self.get_children()],
+            "gen_mates": [self.all_cats.get(cat_id) for cat_id in self.mate],
+            "gen_former_mates": [self.all_cats.get(cat_id) for cat_id in self.previous_mates]
+        }
+        
+        kin = {
+            "gen_grandparents": [self.all_cats.get(cat_id) for cat_id in self.all_cats if self.all_cats.get(cat_id).is_grandparent(self)],
+            "gen_auntuncle": [self.all_cats.get(cat_id) for cat_id in self.all_cats if self.is_uncle_aunt(self.all_cats.get(cat_id))],
+            "gen_cousin": [self.all_cats.get(cat_id) for cat_id in self.all_cats if self.is_cousin(self.all_cats.get(cat_id))],
+            "gen_grandkits": [self.all_cats.get(cat_id) for cat_id in self.get_grandkits()]
+        }
+        
+        distant_kin = {
+            "gen_distantkin": [self.all_cats.get(cat_id) for cat_id in self.get_distant_kin()]
+        }
+    
+    return close_kin, kin, distant_kin
 
 # ---------------------------------------------------------------------------- #
 #                               Text Adjust                                    #

@@ -8,7 +8,8 @@ import bisect
 import itertools
 import os.path
 import sys
-from random import choice, randint, sample, random, choices, getrandbits, randrange
+import random
+from random import choice, randint, sample, getrandbits, randrange
 from typing import Dict, List, Any
 
 import ujson  # type: ignore
@@ -38,6 +39,7 @@ from scripts.utility import (
     event_text_adjust,
     update_sprite,
     leader_ceremony_text_adjust,
+    get_kin_groups
 )
 
 
@@ -1558,8 +1560,14 @@ class Cat:
         biome = game.switches["biome"]
         camp = game.switches["camp_bg"]
         dead_chance = getrandbits(4)
-        rel_thought_chance = randint(0, 100)
-        kin_thought_chance = randint(0, 100)
+        # Define the choices and their corresponding weights
+        thought_choices = ['relationship', 'kin', 'normal']
+        weights = [
+            game.config["relationship"]["relationship_thought_chance"],
+            game.config["relationship"]["kin_thought_chance"],
+            100 - (game.config["relationship"]["relationship_thought_chance"] + game.config["relationship"]["kin_thought_chance"])
+        ]
+        thought_type = random.choices(thought_choices, weights=weights)[0]
         try:
             season = game.clan.current_season
         except:
@@ -1581,60 +1589,60 @@ class Cat:
         i = 0
         # for cats inside the clan
         if where_kitty == "inside":
-            # Roll relationship-based thought
-            if rel_thought_chance <= game.config["relationship"]["relationship_thought_chance"]:
+            # Roll relation and kin thought chances
+            if thought_type == 'relationship':
                 cats_with_relationship = [
-                    cat_id for cat_id in all_cats
-                    if cat_id in self.relationships
-                    and cat_id != self.ID
-                    and not (all_cats.get(cat_id).dead and dead_chance != 1)
+                    Cat.all_cats[rel_cat] for rel_cat in all_cats
+                    if rel_cat in self.relationships
+                    and Cat.all_cats[rel_cat].ID != self.ID
+                    and not (all_cats.get(Cat.all_cats[rel_cat].ID).dead and dead_chance != 1)
                 ]
                 if cats_with_relationship:
-                    other_cat = choice(cats_with_relationship)
+                    chosen_cat = choice(cats_with_relationship)
+                    other_cat = chosen_cat.ID
+                    # print("relationship thought: from: ", self.name, " to: ", chosen_cat.name)
                 else:
-                    pass
+                    # if no cats available, roll again for a chance at a kin thought at a slightly higher chance
+                    # since we rolled a special thought already and couldn't get one
+                    thought_choices_reroll = ['kin', 'normal']
+                    weights_reroll = [
+                        (1.25 * game.config["relationship"]["kin_thought_chance"]),
+                        100 - game.config["relationship"]["kin_thought_chance"]
+                    ]
+                    thought_type = random.choices(thought_choices_reroll, weights=weights_reroll)[0]
                 
             # Roll kin-based thought
-            if kin_thought_chance <= game.config["relationship"]["kin_thought_chance"]:
+            if thought_type == 'kin':
                 kin_group_choice = randint(0, 100)
+                close_kin, kin, distant_kin = get_kin_groups(self, dead_chance, use_dead_chance=True)
                 
                 # 50% chance of choosing close kin
                 if kin_group_choice >= 50:
-                    close_kin = {
-                        "gen_parents": [cat_id for cat_id in self.get_parents() if not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_siblings": [cat_id for cat_id in self.get_siblings() if not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_children": [cat_id for cat_id in self.get_children() if not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_mates": [cat_id for cat_id in self.mate if not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_former_mates": [cat_id for cat_id in self.previous_mates if not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)]
-                    }
-                    close_kin_ids = [cat_id for sublist in close_kin.values() for cat_id in sublist]
-                    if close_kin_ids:
-                        other_cat = choice(close_kin_ids)
+                    close_kin_cats = [cat for sublist in close_kin.values() for cat in sublist]
+                    if close_kin_cats:
+                        chosen_cat = choice(close_kin_cats)
+                        other_cat = chosen_cat.ID
+                        #print("close kin thought: from: ", self.name, " to: ", chosen_cat.name)
                     else:
                         pass
                 
                 # 35% chance of choosing kin
                 elif kin_group_choice >= 15:
-                    kin = {
-                        "gen_grandparents": [cat_id for cat_id in Cat.all_cats if Cat.all_cats.get(cat_id).is_grandparent(self) and not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_auntuncle": [cat_id for cat_id in Cat.all_cats if self.is_uncle_aunt(Cat.all_cats.get(cat_id)) and not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_cousin": [cat_id for cat_id in Cat.all_cats if self.is_cousin(Cat.all_cats.get(cat_id)) and not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_grandkits": [cat_id for cat_id in self.get_grandkits() if not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)]
-                    }
-                    kin_ids = [cat_id for sublist in kin.values() for cat_id in sublist]
-                    if kin_ids:
-                        other_cat = choice(kin_ids)
+                    kin_cats = [cat for sublist in kin.values() for cat in sublist]
+                    if kin_cats:
+                        chosen_cat = choice(kin_cats)
+                        other_cat = chosen_cat.ID
+                        #print("kin thought: from: ", self.name, " to: ", chosen_cat.name)
                     else:
                         pass
                 
                 # 15% chance of choosing distant kin
                 elif kin_group_choice >= 0:
-                    distant_kin = {
-                        "gen_distantkin": [cat_id for cat_id in self.get_distant_kin() if not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)]
-                    }
-                    distant_kin_ids = [cat_id for sublist in distant_kin.values() for cat_id in sublist]
-                    if distant_kin_ids:
-                        other_cat = choice(distant_kin_ids)
+                    distant_kin_cats = [cat for sublist in distant_kin.values() for cat in sublist]
+                    if distant_kin_cats:
+                        chosen_cat = choice(distant_kin_cats)
+                        other_cat = chosen_cat.ID
+                        #print("distant kin thought: from: ", self.name, " to: ", chosen_cat.name)
                     else:
                         pass
                     
@@ -1654,63 +1662,62 @@ class Cat:
                         break
 
         elif where_kitty in ["starclan", "hell", "UR"]:
-            if game.clan:
-                if game.clan.clan_settings["dead_relations"]:
-                    # Roll relationship-based thought
-                    if rel_thought_chance <= game.config["relationship"]["relationship_thought_chance"]:
-                        cats_with_relationship = [
-                            cat_id for cat_id in all_cats
-                            if cat_id in self.relationships
-                            and cat_id != self.ID
-                        ]
-                        if cats_with_relationship:
-                            other_cat = choice(cats_with_relationship)
-                        else:
-                            pass
+            # Roll relation and kin thought chances
+            if thought_type == 'relationship':
+                cats_with_relationship = [
+                    Cat.all_cats[rel_cat] for rel_cat in all_cats
+                    if rel_cat in self.relationships
+                    and Cat.all_cats[rel_cat].ID != self.ID
+                ]
+                if cats_with_relationship:
+                    chosen_cat = choice(cats_with_relationship)
+                    other_cat = chosen_cat.ID
+                    # print("relationship thought: from: ", self.name, " to: ", chosen_cat.name)
+                else:
+                    # if no cats available, roll again for a chance at a kin thought at a slightly higher chance
+                    # since we rolled a special thought already and couldn't get one
+                    thought_choices_reroll = ['kin', 'normal']
+                    weights_reroll = [
+                        (1.25 * game.config["relationship"]["kin_thought_chance"]),
+                        100 - game.config["relationship"]["kin_thought_chance"]
+                    ]
+                    thought_type = random.choices(thought_choices_reroll, weights=weights_reroll)[0]
+                
             # Roll kin-based thought
-            if kin_thought_chance <= game.config["relationship"]["kin_thought_chance"]:
+            if thought_type == 'kin':
                 kin_group_choice = randint(0, 100)
+                close_kin, kin, distant_kin = get_kin_groups(self)
                 
                 # 50% chance of choosing close kin
                 if kin_group_choice >= 50:
-                    close_kin = {
-                        "gen_parents": list(self.get_parents()),
-                        "gen_siblings": list(self.get_siblings()),
-                        "gen_children": list(self.get_children()),
-                        "gen_mates": list(self.mate),
-                        "gen_former_mates": list(self.previous_mates)
-                    }
-                    close_kin_ids = [cat_id for sublist in close_kin.values() for cat_id in sublist]
-                    if close_kin_ids:
-                        other_cat = choice(close_kin_ids)
+                    close_kin_cats = [cat for sublist in close_kin.values() for cat in sublist]
+                    if close_kin_cats:
+                        chosen_cat = choice(close_kin_cats)
+                        other_cat = chosen_cat.ID
+                        #print("close kin thought: from: ", self.name, " to: ", chosen_cat.name)
                     else:
                         pass
                 
                 # 35% chance of choosing kin
                 elif kin_group_choice >= 15:
-                    kin = {
-                        "gen_grandparents": [cat_id for cat_id in Cat.all_cats if Cat.all_cats.get(cat_id).is_grandparent(self) and not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_auntuncle": [cat_id for cat_id in Cat.all_cats if self.is_uncle_aunt(Cat.all_cats.get(cat_id)) and not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_cousin": [cat_id for cat_id in Cat.all_cats if self.is_cousin(Cat.all_cats.get(cat_id)) and not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_grandkits": list(self.get_grandkits())
-                    }
-                    kin_ids = [cat_id for sublist in kin.values() for cat_id in sublist]
-                    if kin_ids:
-                        other_cat = choice(kin_ids)
+                    kin_cats = [cat for sublist in kin.values() for cat in sublist]
+                    if kin_cats:
+                        chosen_cat = choice(kin_cats)
+                        other_cat = chosen_cat.ID
+                        #print("kin thought: from: ", self.name, " to: ", chosen_cat.name)
                     else:
                         pass
                 
                 # 15% chance of choosing distant kin
                 elif kin_group_choice >= 0:
-                    distant_kin = {
-                        "gen_distantkin": list(self.get_distant_kin())
-                    }
-                    distant_kin_ids = [cat_id for sublist in distant_kin.values() for cat_id in sublist]
-                    if distant_kin_ids:
-                        other_cat = choice(distant_kin_ids)
+                    distant_kin_cats = [cat for sublist in distant_kin.values() for cat in sublist]
+                    if distant_kin_cats:
+                        chosen_cat = choice(distant_kin_cats)
+                        other_cat = chosen_cat.ID
+                        #print("distant kin thought: from: ", self.name, " to: ", chosen_cat.name)
                     else:
                         pass
-                    
+
                 else:
                     pass
             else:
@@ -1724,58 +1731,59 @@ class Cat:
         # for cats currently outside
         # it appears as for now, kittypets and loners can only think about outsider cats
         elif where_kitty == "outside":
-            # Roll relationship-based thought
-            if rel_thought_chance <= game.config["relationship"]["relationship_thought_chance"]:
+            # Roll relation and kin thought chances
+            if thought_type == 'relationship':
                 cats_with_relationship = [
-                    cat_id for cat_id in all_cats
-                    if cat_id in self.relationships
-                    and cat_id != self.ID
+                    Cat.all_cats[rel_cat] for rel_cat in all_cats
+                    if rel_cat in self.relationships
+                    and Cat.all_cats[rel_cat].ID != self.ID
                 ]
                 if cats_with_relationship:
-                    other_cat = choice(cats_with_relationship)
+                    chosen_cat = choice(cats_with_relationship)
+                    other_cat = chosen_cat.ID
+                    # print("relationship thought: from: ", self.name, " to: ", chosen_cat.name)
                 else:
-                    pass
+                    # if no cats available, roll again for a chance at a kin thought at a slightly higher chance
+                    # since we rolled a special thought already and couldn't get one
+                    thought_choices_reroll = ['kin', 'normal']
+                    weights_reroll = [
+                        (1.25 * game.config["relationship"]["kin_thought_chance"]),
+                        100 - game.config["relationship"]["kin_thought_chance"]
+                    ]
+                    thought_type = random.choices(thought_choices_reroll, weights=weights_reroll)[0]
+                
             # Roll kin-based thought
-            if kin_thought_chance <= game.config["relationship"]["kin_thought_chance"]:
+            if thought_type == 'kin':
                 kin_group_choice = randint(0, 100)
-
+                close_kin, kin, distant_kin = get_kin_groups(self)
+                
                 # 50% chance of choosing close kin
                 if kin_group_choice >= 50:
-                    close_kin = {
-                        "gen_parents": list(self.get_parents()),
-                        "gen_siblings": list(self.get_siblings()),
-                        "gen_children": list(self.get_children()),
-                        "gen_mates": list(self.mate),
-                        "gen_former_mates": list(self.previous_mates)
-                    }
-                    close_kin_ids = [cat_id for sublist in close_kin.values() for cat_id in sublist]
-                    if close_kin_ids:
-                        other_cat = choice(close_kin_ids)
+                    close_kin_cats = [cat for sublist in close_kin.values() for cat in sublist]
+                    if close_kin_cats:
+                        chosen_cat = choice(close_kin_cats)
+                        other_cat = chosen_cat.ID
+                        #print("close kin thought: from: ", self.name, " to: ", chosen_cat.name)
                     else:
                         pass
                 
                 # 35% chance of choosing kin
                 elif kin_group_choice >= 15:
-                    kin = {
-                        "gen_grandparents": [cat_id for cat_id in Cat.all_cats if Cat.all_cats.get(cat_id).is_grandparent(self) and not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_auntuncle": [cat_id for cat_id in Cat.all_cats if self.is_uncle_aunt(Cat.all_cats.get(cat_id)) and not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_cousin": [cat_id for cat_id in Cat.all_cats if self.is_cousin(Cat.all_cats.get(cat_id)) and not (Cat.all_cats.get(cat_id).dead and dead_chance != 1)],
-                        "gen_grandkits": list(self.get_grandkits())
-                    }
-                    kin_ids = [cat_id for sublist in kin.values() for cat_id in sublist]
-                    if kin_ids:
-                        other_cat = choice(kin_ids)
+                    kin_cats = [cat for sublist in kin.values() for cat in sublist]
+                    if kin_cats:
+                        chosen_cat = choice(kin_cats)
+                        other_cat = chosen_cat.ID
+                        #print("kin thought: from: ", self.name, " to: ", chosen_cat.name)
                     else:
                         pass
                 
                 # 15% chance of choosing distant kin
                 elif kin_group_choice >= 0:
-                    distant_kin = {
-                        "gen_distantkin": list(self.get_distant_kin())
-                    }
-                    distant_kin_ids = [cat_id for sublist in distant_kin.values() for cat_id in sublist]
-                    if distant_kin_ids:
-                        other_cat = choice(distant_kin_ids)
+                    distant_kin_cats = [cat for sublist in distant_kin.values() for cat in sublist]
+                    if distant_kin_cats:
+                        chosen_cat = choice(distant_kin_cats)
+                        other_cat = chosen_cat.ID
+                        #print("distant kin thought: from: ", self.name, " to: ", chosen_cat.name)
                     else:
                         pass
                     
@@ -2015,12 +2023,24 @@ class Cat:
             self.inheritance = Inheritance(self)
         return other_cat.ID in self.inheritance.siblings_kits.keys()
 
+    def get_uncle_aunts(self):
+        """Check if the cats are related as uncle/aunt and niece/nephew."""
+        if not self.inheritance:
+            self.inheritance = Inheritance(self)
+        return list(self.inheritance.parents_siblings.keys())
+
     def is_cousin(self, other_cat: Cat):
         """Check if this cat and other_cat are cousins."""
         if not self.inheritance:
             self.inheritance = Inheritance(self)
         return other_cat.ID in self.inheritance.cousins.keys()
-    
+
+    def get_cousins(self):
+        """Returns a list of the cat's cousins (ids)."""
+        if not self.inheritance:
+            self.inheritance = Inheritance(self)
+        return list(self.inheritance.cousins.keys())
+
     def get_grandkits(self):
         """Returns a list of the grandkits (ids)."""
         grandkits = []
@@ -2045,8 +2065,15 @@ class Cat:
         if cousin_allowed:
             return self.inheritance.all_involved
         return self.inheritance.all_but_cousins
-    
+
     def get_distant_kin(self, max_depth=2):
+        """
+        Recursively retrieves distant relatives up to a specified depth,
+        excluding close kin, kin, and in-laws.
+        
+        :param max_depth: The maximum depth to explore the relative tree. Default is 2.
+        :return: A list of ids of all distant relatives up to the specified depth.
+        """
         if not self.inheritance:
             self.inheritance = Inheritance(self)
         
@@ -2060,12 +2087,70 @@ class Cat:
             for relative_id in relatives:
                 relative_cat = Cat.all_cats.get(relative_id)
                 if relative_cat:
-                    new_relatives.update(recursive_get_relatives(relative_cat, depth + 1))
+                    # don't add in-laws or cousins' cousins as they cause possible distant_kin
+                    # to balloon out of control with older, larger Clans
+                    sibling_mates = [
+                        mate_id for sibling_id in self.get_siblings()
+                        for mate_id in Cat.all_cats.get(sibling_id).mate
+                    ]
+                    kit_parents = [
+                        parent_id for kit_id in self.get_children()
+                        for parent_id in Cat.all_cats.get(kit_id).get_parents()
+                    ]
+                    cousin_parents = [
+                        mate_id for cousin_id in self.get_cousins()
+                        for mate_id in Cat.all_cats.get(cousin_id).mate
+                    ]
+                    uncle_aunt_mates = [
+                        mate_id for aunt_uncle_id in self.get_uncle_aunts()
+                        for mate_id in Cat.all_cats.get(aunt_uncle_id).mate
+                    ]
+                    inlaws = sibling_mates + kit_parents + cousin_parents + uncle_aunt_mates
+                    if depth >= 1:
+                        # after the first round we don't want to be adding more cats' mates/cousins or it gets out of control
+                        inlaws.extend(self.mate)
+                        inlaws.extend(self.previous_mates)
+                        cousins = [
+                            cousin_id for cousin_id in self.get_cousins()
+                        ]
+                        inlaws.extend(cousins)
+                        child_mates = [
+                            mate_id for child_id in self.get_children()
+                            for mate_id in Cat.all_cats.get(child_id).mate
+                        ]
+                        inlaws.extend(child_mates)
+                    if relative_cat.ID not in inlaws:
+                        new_relatives.add(relative_cat.ID)
+                        new_relatives.update(recursive_get_relatives(relative_cat, depth + 1))
+                else:
+                    if relative_cat:
+                        new_relatives.add(relative_cat.ID)
+                        new_relatives.update(recursive_get_relatives(relative_cat, depth + 1))
             
-            relatives.update(new_relatives)
-            return relatives
+            return new_relatives  # Always return a set
         
-        return list(recursive_get_relatives(self, 0))
+        kin_ids = set()
+        kin_ids.update(self.get_parents())
+        kin_ids.update(self.get_siblings())
+        kin_ids.update(self.get_children())
+        kin_ids.update(self.mate)
+        kin_ids.update(self.previous_mates)
+        
+        for cat_id in Cat.all_cats:
+            if Cat.all_cats.get(cat_id).is_grandparent(self):
+                kin_ids.add(cat_id)
+            if self.is_uncle_aunt(Cat.all_cats.get(cat_id)):
+                kin_ids.add(cat_id)
+            if self.is_cousin(Cat.all_cats.get(cat_id)):
+                kin_ids.add(cat_id)
+        
+        kin_ids.update(self.get_grandkits())
+        distant_kin = list(recursive_get_relatives(self, 0))
+        distant_kin = [cat_id for cat_id in distant_kin if cat_id not in kin_ids]  # Remove close kin and kin
+        if self.ID in distant_kin:
+            # Extra sanity check just in case a cat is somehow related to themself
+            distant_kin.remove(self.ID)  # Remove the cat's own ID        
+        return distant_kin
 
     # ---------------------------------------------------------------------------- #
     #                                  conditions                                  #
@@ -2985,7 +3070,9 @@ class Cat:
         self.relationships = {}
         if os.path.exists(relation_directory):
             if not os.path.exists(relation_cat_directory):
-                self.init_all_relationships()
+                if not self.dead:
+                    #prevent dead cats with no relationships from having new ones randomly generated
+                    self.init_all_relationships()
                 for cat in Cat.all_cats.values():
                     if cat.ID != self.ID:
                         cat.create_one_relationship(self)
