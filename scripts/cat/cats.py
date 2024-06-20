@@ -624,7 +624,7 @@ class Cat:
             self.dead = True
             game.just_died.append(self.ID)
             death_thought = Thoughts.new_death_thought(self, darkforest, isoutside)
-            final_thought = event_text_adjust(self, death_thought, self)
+            final_thought = event_text_adjust(self, death_thought, main_cat=self)
             self.thought = final_thought
         if game.clan:
             if not game.clan.clan_settings["dead_relations"]:
