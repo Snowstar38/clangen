@@ -1,0 +1,23 @@
+{
+    "pelt_name": "Tortie",
+    "pelt_color": "GOLDEN-BROWN",
+    "eye_colour": "CYAN",
+    "eye_colour2": null,
+    "skin": "SALMON",
+    "tortie_base": "masked",
+    "pattern": "HEARTBEAT",
+    "tortie_color": "CREAM",
+    "tortie_pattern": "masked",
+    "white_patches": null,
+    "points": null,
+    "vitiligo": null,
+    "scars": [],
+    "physical_trait_1": null,
+    "physical_trait_2": null,
+    "physical_trait_hidden": null,
+    "accessory": "FORGET ME NOTS",
+    "tint": "blue",
+    "white_patches_tint": null,
+    "reverse": false,
+    "opacity": 100
+}
