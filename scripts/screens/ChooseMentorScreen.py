@@ -116,7 +116,7 @@ class ChooseMentorScreen(Screens):
                 self.show_only_same_skill_mentors = not self.show_only_same_skill_mentors
                 self.update_buttons()
                 self.update_cat_list()
-            elif event.ui_element == self.checkboxes.get("similar_personality"):
+            elif event.ui_element == self.checkboxes.get("show_similar_personality"):
                 self.show_only_similar_personality_mentors = not self.show_only_similar_personality_mentors
                 self.update_buttons()
                 self.update_cat_list()
@@ -316,6 +316,7 @@ class ChooseMentorScreen(Screens):
             object_id="#text_box_26_horizcenter",
             container=self.filter_container
         )
+        
         checkbox_y += checkbox_spacing
         
         self.checkboxes["show_similar_personality"] = UIImageButton(
