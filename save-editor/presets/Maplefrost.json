@@ -1,0 +1,23 @@
+{
+    "pelt_name": "Bengal",
+    "pelt_color": "CHOCOLATE",
+    "eye_colour": "BRONZE",
+    "eye_colour2": "BLUE",
+    "skin": "DARKSALMON",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "BLACKSTAR",
+    "points": "SEPIAPOINT",
+    "vitiligo": null,
+    "scars": [],
+    "physical_trait_1": null,
+    "physical_trait_2": null,
+    "physical_trait_hidden": null,
+    "accessory": null,
+    "tint": "red",
+    "white_patches_tint": "offwhite",
+    "reverse": false,
+    "opacity": 100
+}
