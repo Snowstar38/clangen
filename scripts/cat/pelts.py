@@ -73,7 +73,8 @@ class Pelt:
     physical_trait_muzzle_type = ['MUZZLESHORT', 'MUZZLEBROAD', 'MUZZLELONG']
     physical_trait_body_type = ['BODYBROAD', 'BODYCOMPACT', 'BODYWIRY', 'BODYLITHE', 'BODYSKINNY', 'BODYBUFF']
     physical_trait_size = ['SIZETINY', 'SIZESMALL', 'SIZESHORT', 'SIZETALL', 'SIZELARGE', 'SIZEHUGE']
-    physical_trait_misc = ['EARTUFTS', 'POLYDACTYL', 'LASHESUPPER', 'LASHESLOWER', 'WHISKERSLONG', 'TAILCROOKED', 'TAILLONG', 'TAILFEATHER', 'CLAWSLONG', 'BACKFLUFF']
+    physical_trait_tail = ['TAILCROOKED', 'TAILLONG', 'TAILFEATHER']
+    physical_trait_misc = ['EARTUFTS', 'POLYDACTYL', 'LASHESUPPER', 'LASHESLOWER', 'WHISKERSLONG', 'CLAWSLONG', 'BACKFLUFF']
     
     # scars1 is scars from other cats, other animals - scars2 is missing parts - scars3 is "special" scars that could only happen in a special event
     # bite scars by @wood pank on discord
@@ -953,7 +954,9 @@ class Pelt:
             Pelt.physical_trait_fur_type,
             Pelt.physical_trait_muzzle_type,
             Pelt.physical_trait_body_type,
-            Pelt.physical_trait_size
+            Pelt.physical_trait_size,
+            Pelt.physical_trait_tail,
+            Pelt.physical_trait_misc
         ]
         
         trait_pool = [(trait, category) for category in trait_categories for trait in category]
