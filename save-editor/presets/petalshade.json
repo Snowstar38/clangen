@@ -1,0 +1,25 @@
+{
+    "pelt_name": "Ticked",
+    "pelt_color": "LIGHTBROWN",
+    "eye_colour": "COPPER",
+    "eye_colour2": null,
+    "skin": "BLACK",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "BEARD",
+    "points": null,
+    "vitiligo": null,
+    "scars": [
+        "THREE"
+    ],
+    "physical_trait_1": null,
+    "physical_trait_2": null,
+    "physical_trait_hidden": "FOLDONE",
+    "accessory": null,
+    "tint": "red",
+    "white_patches_tint": null,
+    "reverse": false,
+    "opacity": 100
+}

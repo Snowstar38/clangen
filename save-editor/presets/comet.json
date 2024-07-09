@@ -1,0 +1,23 @@
+{
+    "pelt_name": "Bengal",
+    "pelt_color": "SILVER",
+    "eye_colour": "GREY",
+    "eye_colour2": null,
+    "skin": "BROWN",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "ROSINA",
+    "points": null,
+    "vitiligo": null,
+    "scars": [],
+    "physical_trait_1": null,
+    "physical_trait_2": null,
+    "physical_trait_hidden": null,
+    "accessory": null,
+    "tint": "dilute",
+    "white_patches_tint": "offwhite",
+    "reverse": true,
+    "opacity": 100
+}
