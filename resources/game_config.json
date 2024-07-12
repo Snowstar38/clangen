@@ -13,8 +13,8 @@
 		"chance_of_special_group": 8,
 		"chance_romantic_not_mate": 25,
 		"influence_condition_events": 20,
-		"relationship_thought_chance": 20,
-		"kin_thought_chance": 20,
+		"relationship_thought_chance": 25,
+		"kin_thought_chance": 25,
 		"comment":[
 			"chance_for_neutral - how high the chance is to make the interaction of the relationship to a 'neutral' instead of negative or positive",
 			"chance_of_special_group - 1/chance often when a group event is happening not all cats are considered, only a special group, which is defined in group_types.json",
@@ -74,9 +74,9 @@
 				"platonic": 0,
 				"dislike": 0,
 				"admiration": 0,
-				"comfortable": 15,
+				"comfortable": 50,
 				"jealousy": -15,
-				"trust": 65
+				"trust": 100
 			},
 			"mates_to_each_other": {
 				"romantic": 0,
@@ -193,7 +193,7 @@
 		"wildcard_tortie": 9,
 		"vit_chance": 8,
 		"random_point_chance": 5,
-		"physical_trait_chance": 16,
+		"physical_trait_chance": 30,
 		"physical_trait_inherit_chance": 50
 	},
 	"cat_name_controls": {
