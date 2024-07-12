@@ -67,7 +67,7 @@ class Pelt:
     physical_trait_ear_type = ['EARSMALL', 'EARBIG', 'EARTALL', 'EARPANTHER']
     physical_trait_ear_fold = ['FOLDBOTH', 'FOLDONE']
     physical_trait_headfur = ['HEADFORELOCK', 'HEADCOWLICK', 'HEADMOHAWK', 'HEADTUFT']
-    physical_trait_cheekfur = ['CHEEKLONG', 'CHEEKPOINTED', 'CHEEKROUNDED']
+    physical_trait_cheekfur = ['CHEEKLONG', 'CHEEKPOINTED', 'CHEEKFLUFF']
     physical_trait_mane = ['MANESILKY', 'MANEFLUFFY', 'MANERUFF']
     physical_trait_fur_type = ['FURWAVY', 'FURCURLY']
     physical_trait_muzzle_type = ['MUZZLESHORT', 'MUZZLEBROAD', 'MUZZLELONG']
