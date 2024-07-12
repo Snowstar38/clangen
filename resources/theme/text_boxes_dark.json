@@ -81,6 +81,12 @@
             "line_spacing": "0.95"
         }
     },
+    "#text_box_22_horizleft_spacing_100_dark": {
+        "prototype": "#text_box_22_horizleft_dark",
+        "misc": {
+            "line_spacing": "1"
+        }
+    },
     "#text_box_26_dark": {
         "prototype": "#default_dark",
         "font": {

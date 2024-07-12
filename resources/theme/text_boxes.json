@@ -156,6 +156,12 @@
             "line_spacing": "0.95"
         }
     },
+    "#text_box_22_horizleft_spacing_100": {
+        "prototype": "#text_box_22_horizleft",
+        "misc": {
+            "line_spacing": "1"
+        }
+    },
     "#text_box_26": {
         "prototype": "#text_box",
         "font": {
