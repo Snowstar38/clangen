@@ -948,6 +948,54 @@ class MakeClanScreen(Screens):
     def refresh_selected_cat_info(self, selected=None):
         # SELECTED CAT INFO
         if selected is not None:
+            trait_descriptions = {
+                'TEETHUPPER': 'long upper fangs',
+                'TEETHSABRE': 'sabre teeth',
+                'TEETHUNDERBITE': 'underbite',
+                'EARSMALL': 'small ears',
+                'EARBIG': 'big ears',
+                'EARTALL': 'tall ears',
+                'EARPANTHER': 'rounded ears',
+                'FOLDBOTH': 'folded ears',
+                'FOLDONE': 'one folded ear',
+                'HEADFORELOCK': 'forelock',
+                'HEADCOWLICK': 'cowlick',
+                'HEADMOHAWK': 'mohawk',
+                'HEADTUFT': 'tufted head fur',
+                'CHEEKLONG': 'long cheek fur',
+                'CHEEKPOINTED': 'pointed cheek fur',
+                'CHEEKROUNDED': 'rounded cheek fur',
+                'MANESILKY': 'silky mane',
+                'MANEFLUFFY': 'fluffy mane',
+                'MANERUFF': 'ruff',
+                'FURWAVY': 'wavy fur',
+                'FURCURLY': 'curly fur',
+                'MUZZLESHORT': 'short muzzle',
+                'MUZZLEBROAD': 'broad muzzle',
+                'MUZZLELONG': 'long muzzle',
+                'BODYBROAD': 'broad shoulders',
+                'BODYCOMPACT': 'compact',
+                'BODYWIRY': 'wiry',
+                'BODYLITHE': 'lithe',
+                'BODYSKINNY': 'skinny',
+                'BODYBUFF': 'muscular',
+                'SIZETINY': 'tiny',
+                'SIZESMALL': 'small',
+                'SIZESHORT': 'short',
+                'SIZETALL': 'tall',
+                'SIZELARGE': 'large',
+                'SIZEHUGE': 'huge',
+                'EARTUFTS': 'ear tufts',
+                'POLYDACTYL': 'polydactyl',
+                'LASHESUPPER': 'upper lashes',
+                'LASHESLOWER': 'lower lashes',
+                'WHISKERSLONG': 'long whiskers',
+                'TAILCROOKED': 'crooked tail',
+                'TAILLONG': 'long tail',
+                'TAILFEATHER': 'feathered tail',
+                'CLAWSLONG': 'unusually long claws',
+                'BACKFLUFF': 'fluffy back'
+            }
 
             if self.sub_screen == "choose leader":
                 self.elements["cat_name"].set_text(
@@ -956,16 +1004,33 @@ class MakeClanScreen(Screens):
             else:
                 self.elements["cat_name"].set_text(str(selected.name))
             self.elements["cat_name"].show()
+
+            # Create the trait description string
+            trait_list = []
+            if selected.pelt.physical_trait_1:
+                trait_list.append(selected.pelt.physical_trait_1)
+            if selected.pelt.physical_trait_2:
+                trait_list.append(selected.pelt.physical_trait_2)
+
+            trait_string = ""
+            if trait_list:
+                for trait in trait_list:
+                    if trait in trait_descriptions:
+                        trait_string += trait_descriptions[trait] + ", "
+                    else:
+                        trait_string += trait + ", "
+                trait_string = trait_string.rstrip(", ")
+
             self.elements["cat_info"].set_text(
                 selected.gender
                 + "\n"
-                + str(
-                    selected.age
-                    + "\n"
-                    + str(selected.personality.trait)
-                    + "\n"
-                    + str(selected.skills.skill_string())
-                )
+                + str(selected.age)
+                + "\n"
+                + str(selected.personality.trait)
+                + "\n"
+                + str(selected.skills.skill_string())
+                + "\n"
+                + trait_string
             )
             self.elements["cat_info"].show()
         else:
@@ -1155,7 +1220,7 @@ class MakeClanScreen(Screens):
         """Get tooltip for cat. Tooltip displays name, sex, age group, and trait."""
 
         return (
-            f"<b>{cat.name}</b><br>{cat.gender}<br>{cat.age}<br>{cat.personality.trait}"
+            f"<b>{cat.name}</b><br>{cat.gender}<br>{cat.age}<br>{cat.personality.trait}<br>{cat.pelt.physical_trait_1}<br>{cat.pelt.physical_trait_2}"
         )
 
     def open_game_mode(self):
@@ -1382,9 +1447,9 @@ class MakeClanScreen(Screens):
         # info for chosen cats:
         self.elements["cat_info"] = pygame_gui.elements.UITextBox(
             "",
-            scale(pygame.Rect((880, 500), (230, 250))),
+            scale(pygame.Rect((880, 475), (250, 300))),
             visible=False,
-            object_id=get_text_box_theme("#text_box_22_horizleft_spacing_95"),
+            object_id=get_text_box_theme("#text_box_22_horizleft_spacing_100"),
             manager=MANAGER,
         )
         self.elements["cat_name"] = pygame_gui.elements.UITextBox(
@@ -1446,9 +1511,9 @@ class MakeClanScreen(Screens):
         # info for chosen cats:
         self.elements["cat_info"] = pygame_gui.elements.UITextBox(
             "",
-            scale(pygame.Rect((880, 520), (230, 250))),
+            scale(pygame.Rect((880, 475), (250, 300))),
             visible=False,
-            object_id=get_text_box_theme("#text_box_22_horizleft_spacing_95"),
+            object_id=get_text_box_theme("#text_box_22_horizleft_spacing_100"),
             manager=MANAGER,
         )
         self.elements["cat_name"] = pygame_gui.elements.UITextBox(
@@ -1509,9 +1574,9 @@ class MakeClanScreen(Screens):
         # info for chosen cats:
         self.elements["cat_info"] = pygame_gui.elements.UITextBox(
             "",
-            scale(pygame.Rect((880, 520), (230, 250))),
+            scale(pygame.Rect((880, 475), (250, 300))),
             visible=False,
-            object_id=get_text_box_theme("#text_box_22_horizleft_spacing_95"),
+            object_id=get_text_box_theme("#text_box_22_horizleft_spacing_100"),
             manager=MANAGER,
         )
         self.elements["cat_name"] = pygame_gui.elements.UITextBox(
@@ -1577,9 +1642,9 @@ class MakeClanScreen(Screens):
         # info for chosen cats:
         self.elements["cat_info"] = pygame_gui.elements.UITextBox(
             "",
-            scale(pygame.Rect((880, 520), (230, 250))),
+            scale(pygame.Rect((880, 475), (250, 300))),
             visible=False,
-            object_id=get_text_box_theme("#text_box_22_horizleft_spacing_95"),
+            object_id=get_text_box_theme("#text_box_22_horizleft_spacing_100"),
             manager=MANAGER,
         )
         self.elements["cat_name"] = pygame_gui.elements.UITextBox(

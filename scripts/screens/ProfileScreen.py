@@ -1108,6 +1108,7 @@ class ProfileScreen(Screens):
             'HEADTUFT': 'tufted head fur',
             'CHEEKLONG': 'long cheek fur',
             'CHEEKPOINTED': 'pointed cheek fur',
+            'CHEEKROUNDED': 'rounded cheek fur',
             'MANESILKY': 'silky mane',
             'MANEFLUFFY': 'fluffy mane',
             'MANERUFF': 'ruff',
