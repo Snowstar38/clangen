@@ -5,7 +5,7 @@
 			"medium": 12,
 			"high": 16
 		},
-		"max_interaction": 6,
+		"max_interaction": 5,
 		"max_interaction_special": 8,
 		"compatibility_effect": 6,
 		"passive_influence_div": 1.5,
@@ -193,7 +193,7 @@
 		"wildcard_tortie": 9,
 		"vit_chance": 8,
 		"random_point_chance": 5,
-		"physical_trait_chance": 30,
+		"physical_trait_chance": 10,
 		"physical_trait_inherit_chance": 50
 	},
 	"cat_name_controls": {

@@ -240,6 +240,9 @@ def save_changes():
                     return
                 cat_to_edit[widget.key] = value
 
+    if 'facets' in cat_to_edit and (cat_to_edit['facets'] is None or cat_to_edit['facets'] == ''):
+        del cat_to_edit['facets']
+
     with open(filename, "w") as file:
         ujson.dump(cats, file, indent=4)
 
@@ -265,6 +268,18 @@ def update_cat_form(cat_id_to_edit):
 
     # Manually select the right options in the dropdowns
     for widget in window.grid_slaves():
+        cat_age = int(cat_to_edit.get('moons', 0))
+        trait_widget = next((w for w in window.grid_slaves() if isinstance(w, ttk.Combobox) and w.key == 'trait'), None)
+        if trait_widget:
+            if cat_age <= 5:
+                trait_widget['values'] = [''] + kit_traits
+            else:
+                trait_widget['values'] = [''] + normal_traits
+            if cat_to_edit.get('trait') in trait_widget['values']:
+                trait_widget.set(cat_to_edit.get('trait'))
+            else:
+                trait_widget.set('')
+
         if isinstance(widget, ttk.Combobox) and widget.key in cat_to_edit:
             if widget.key == "pelt_color":
                 options = pelt_colours
@@ -416,7 +431,12 @@ def draw_form(i, key, value, column):
         options = white_patches_tint
     elif key == 'status':
         options = statuses
-
+    elif key == 'trait':
+        cat_age = int(cat_to_edit.get('moons', 0))
+        if cat_age <= 5:
+            options = kit_traits
+        else:
+            options = normal_traits
     else:
         options = None
 

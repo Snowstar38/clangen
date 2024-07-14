@@ -182,6 +182,20 @@ physical_trait_misc = ['EARTUFTS', 'POLYDACTYL', 'LASHESUPPER', 'LASHESLOWER', '
 
 physical_traits = physical_trait_teeth + physical_trait_ear_type + physical_trait_ear_fold + physical_trait_headfur + physical_trait_cheekfur + physical_trait_mane + physical_trait_fur_type + physical_trait_muzzle_type + physical_trait_body_type + physical_trait_size + physical_trait_misc
 
+normal_traits = [
+    "troublesome", "lonesome", "fierce", "bloodthirsty", "cold", "childish", "playful",
+    "charismatic", "bold", "daring", "nervous", "righteous", "insecure", "strict",
+    "compassionate", "thoughtful", "ambitious", "confident", "adventurous", "calm",
+    "careful", "faithful", "loving", "loyal", "responsible", "shameless", "sneaky",
+    "strange", "vengeful", "wise", "arrogant", "competitive", "grumpy", "cunning",
+    "oblivious", "gloomy", "sincere", "flamboyant", "rebellious"
+]
+
+kit_traits = [
+    "unruly", "shy", "impulsive", "bullying", "attention-seeker", "charming",
+    "fearless", "noisy", "skittish", "quiet", "self-conscious", "daydreamer",
+    "sweet", "polite", "know-it-all", "bossy"
+]
 
 plant_accessories = ["MAPLE LEAF", "HOLLY", "BLUE BERRIES", "FORGET ME NOTS", "RYE STALK", "LAUREL",
                     "BLUEBELLS", "NETTLE", "POPPY", "LAVENDER", "HERBS", "PETALS", "DRY HERBS",

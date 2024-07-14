@@ -1,0 +1,23 @@
+{
+    "pelt_name": "Masked",
+    "pelt_color": "DARKBROWN",
+    "eye_colour": "SAGE",
+    "eye_colour2": null,
+    "skin": "DARKBROWN",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "FAROFA",
+    "points": null,
+    "vitiligo": null,
+    "scars": [],
+    "physical_trait_1": "EARTUFTS",
+    "physical_trait_2": "BODYBUFF",
+    "physical_trait_hidden": null,
+    "accessory": null,
+    "tint": "black",
+    "white_patches_tint": null,
+    "reverse": true,
+    "opacity": 100
+}
