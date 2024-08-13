@@ -1,0 +1,303 @@
+LightningClan
+
+LEADER
+
+⚧♀ Fogstar:
+	3 years old, sneaky, orphaned, good healer
+	Parents: Midnight
+	Apprentice: Floodpaw
+	Former Apprentice: Grayswirl
+	Friends: Floodpaw, Branchpaw, Palepaw, Longshade
+	Dislikes: Leopardpelt
+
+
+DEPUTY
+
+♂ Sandfreckle:
+	5 years old, cunning, formerly an outsider, confident with words
+	Parents: Greenstem and Firecreek
+	Mate: Cinderbrook
+	Former Apprentice: Paletwist
+	Best Friends: Cinderbrook, Littlefrond
+	Friend: Quillstem
+	Dislikes: Hazelrun, Timberleap, Goldenbranch
+
+
+MEDICINE CATS
+
+♀ Goldenbranch:
+	5 years old, daring, Clan founder, connection to StarClan and quick to help
+	Mate: Jasper
+	Former Apprentice: Fogstar
+	Best Friend: Cinderbrook
+	Friends: Lightbeam, Paletwist, Pebblespot, Leopardpelt, Stonecall, Hazeltrot
+	Dislikes: Quillstem, Lightningfern, Rosewood
+
+♀ Cinderbrook:
+	5 years old, faithful, Clanborn, clever and natural intuition
+	Parents: Hazeltrot and Fishripple
+	Mate: Sandfreckle
+	Best Friends: Sandfreckle, Hazeltrot
+	Friends: Ripplefur, Goldenbranch
+	Dislikes: Hazelrun, Pantherleaf
+
+
+MEDIATOR
+
+♀ Silverfleck:
+	5 years old, shameless, Clanborn, lore keeper
+	Parents: Hazeltrot and Fishripple
+	Mate: Eggtumble
+	Best Friend: Hazeltrot
+	Friends: Hazelrun, Bramblepaw, Bubblingspring
+	Dislikes: Whiteblink, Pebblespot
+
+
+WARRIORS
+
+♂ Bubblingspring:
+	6 years old, confident, formerly a loner, ghost sense
+	Mate: Stonecall
+	Former Apprentices: Pantherleaf, Creeksong
+	Best Friends: Timberleap, Longshade, Cottonthroat
+	Friends: Pebblespot, Lightningfern, Whiteblink
+	Enemy: Quillstem
+	Dislikes: Hazeltrot, Bramblepaw
+	Crushes: Cottonthroat
+
+♀ Stonecall:
+	6 years old, responsible, Clan founder, good climber and quick to make peace
+	Mate: Bubblingspring
+	Former Apprentices: Cinderbrook, Littlefrond
+	Best Friends: Timberleap, Littlefrond, Firecreek
+	Friends: Pebblespot, Bubblingspring, Cinderbrook, Hazeltrot, Tawnydeer, Sandfreckle
+	Enemy: Tawnydeer
+	Dislikes: Heathershard, Whiteblink
+	Crushes: Littlefrond
+
+♂ Littlefrond:
+	5 years old, thoughtful, Clanborn, great climber and good hunter
+	Parents: Ruststar and Lightningclaw
+	Former Apprentice: Violetmink
+	Best Friend: Stonecall
+	Friends: Sandfreckle, Quillstem
+	Crushes: Stonecall
+
+♀ Whiteblink:
+	5 years old, troublesome, Clanborn, good swimmer and helpful insight
+	Parents: Hazeltrot and Fishripple
+	Former Apprentices: Longshade, Heathershard
+	Best Friend: Hazeltrot
+	Friends: Lightningfern, Cinderbrook
+	Dislikes: Stonecall
+
+♂ Pantherleaf:
+	3 years old, daring, Clanborn, connection to StarClan
+	Parents: Rosewood and Leopardpelt
+	Former Apprentice: Tawnydeer
+	Friends: Rosewood, Gingersky, Cottonthroat
+	Dislikes: Bubblingspring
+
+♀ Gingersky:
+	3 years old, thoughtful, Clanborn, good teacher and splashes in puddles
+	Parents: Rosewood and Leopardpelt
+	Former Apprentice: Pebblespot
+	Best Friend: Rosewood
+	Friends: Leopardpelt, Pantherleaf
+
+♂ Paletwist:
+	3 years old, childish, Clanborn, great hunter
+	Parents: Goldenbranch and Jasper
+	Former Apprentice: Hazelrun
+	Best Friends: Firecreek, Sandfreckle
+	Friend: Lightbeam
+	Crushes: Sandfreckle
+
+♂ Bluefeather:
+	3 years old, bloodthirsty, Clanborn, good storyteller
+	Parents: Goldenbranch and Jasper
+	Former Apprentices: Timberleap, Strawcrunch
+	Friends: Goldenbranch, Paletwist, Cinderbrook, Longshade, Timberleap
+
+♀ Lightbeam:
+	3 years old, troublesome, Clanborn, prophecy seeker
+	Parents: Goldenbranch and Jasper
+	Former Apprentice: Bramblepaw
+	Friends: Goldenbranch, Gingersky
+
+♀ Longshade:
+	3 years old, troublesome, orphaned, great hunter
+	Parents: Midnight
+	Apprentice: Copperpaw
+	Best Friend: Fogstar
+	Friend: Sandfreckle
+	Dislikes: Hazelrun
+
+♀ Tawnydeer:
+	2 years old, nervous, Clanborn, deep StarClan bond
+	Parents: Rosewood and Leopardpelt
+	Friends: Leopardpelt, Rosewood
+	Dislikes: Stonecall
+	Crushes: Cinderbrook
+
+♀ Timberleap:
+	1 year old, ambitious, Clanborn, constantly climbing
+	Parents: Stonecall and Bubblingspring
+	Apprentice: Fogpaw
+	Best Friend: Bubblingspring
+	Friend: Stonecall
+
+♀ Pebblespot:
+	1 year old, loyal, Clanborn, den builder
+	Parents: Stonecall and Bubblingspring
+	Friends: Bubblingspring, Stonecall
+	Dislikes: Indigopetal, Longshade
+
+♀ Quillstem:
+	1 year old, strict, Clanborn, natural intuition
+	Parents: Cinderbrook and Sandfreckle
+	Apprentice: Branchpaw
+	Friend: Sandfreckle
+
+♂ Ripplefur:
+	1 year old, strange, Clanborn, great teacher
+	Parents: Cinderbrook and Sandfreckle
+	Apprentice: Palepaw
+	Best Friend: Sandfreckle
+	Friends: Cinderbrook, Quillstem, Gingersky
+
+♀ Lightningfern:
+	1 year old, adventurous, Clanborn, great teacher
+	Parents: Stormflash and Pinedapple
+
+♂ Creeksong:
+	1 year old, daring, Clanborn, ghost sight
+	Parents: Stormflash and Pinedapple
+
+♀ Indigopetal:
+	1 year old, troublesome, formerly a loner, splashes in puddles and good fighter
+
+♂ Spicy:
+	1 year old, confident, formerly a kittypet, good climber
+
+♂ Heathershard:
+	1 year old, insecure, outsider roots, good storyteller and splashes in puddles
+	Parents: Shell
+	Friend: Strawcrunch
+
+♂ Strawcrunch:
+	1 year old, bloodthirsty, outsider roots, great storyteller
+	Parents: Shell
+	Friend: Heathershard
+
+♂ Grayswirl:
+	1 year old, cold, outsider roots, keen eye
+	Parents: Bleak
+	Friend: Violetmink
+
+♀ Violetmink:
+	1 year old, loyal, outsider roots, great teacher
+	Parents: Bleak
+	Friend: Grayswirl
+
+♂ Hazelrun:
+	1 year old, troublesome, Clanborn, talented swimmer
+	Parents: Silverfleck and Eggtumble
+	Friend: Silverfleck
+	Dislikes: Tawnydeer
+
+
+APPRENTICES
+
+♀ Branchpaw:
+	6 moons old, grumpy, Clanborn, moss-ball hunter and lover of stories
+	Parents: Ashcloud and Fogstar
+	Friend: Fogstar
+
+♀ Palepaw:
+	6 moons old, insecure, Clanborn, quick to help
+	Parents: Ashcloud and Fogstar
+	Friend: Fogstar
+
+♂ Floodpaw:
+	6 moons old, cunning, Clanborn, interested in herbs
+	Parents: Ashcloud and Fogstar
+	Friend: Fogstar
+
+♂ Copperpaw:
+	6 moons old, fierce, Clanborn, avid play-fighter and picky nest builder
+	Parents: Ashcloud and Fogstar
+	Friend: Fogstar
+
+♂ Fogpaw:
+	6 moons old, childish, Clanborn, Dark Forest affinity
+	Parents: Ashcloud and Fogstar
+	Friend: Fogstar
+
+
+ELDERS
+
+♀ Hazeltrot:
+	14 years old, gloomy, Clan founder, oddly observant and careful listener
+	Mate: Fishripple
+	Best Friends: Silverfleck, Cinderbrook, Whiteblink, Stonecall, Goldenbranch
+	Friends: Firecreek, Littlefrond, Sandfreckle
+	Enemy: Tawnydeer
+	Dislikes: Cottonthroat
+
+♂ Leopardpelt:
+	13 years old, charismatic, Clan founder, splashes in puddles and oddly insightful
+	Mate: Rosewood
+	Former Apprentices: Goldenbranch, Lightbeam
+	Friends: Tawnydeer, Rosewood, Pantherleaf, Gingersky, Cinderbrook
+	Enemies: Goldenbranch, Silverfleck, Stonecall
+	Dislikes: Bubblingspring, Lightbeam, Sandfreckle
+
+♂ Firecreek:
+	13 years old, playful, Clan founder, natural intuition and quick to help
+	Mate: Greenstem
+	Former Apprentices: Sandfreckle, Whiteblink
+	Best Friend: Sandfreckle
+	Friends: Littlefrond, Cinderbrook, Paletwist, Hazeltrot, Leopardpelt, Whiteblink, Cottonthroat
+	Enemy: Stonecall
+	Dislikes: Rosewood, Silverfleck, Longshade, Fogstar, Indigopetal
+
+♀ Rosewood:
+	13 years old, loving, formerly a loner, good kitsitter
+	Mate: Leopardpelt
+	Best Friends: Gingersky, Pantherleaf, Stonecall
+	Friends: Leopardpelt, Bubblingspring
+	Dislikes: Goldenbranch, Cinderbrook, Paletwist, Quillstem
+
+
+Missing cats
+♀ Cottonthroat:
+	5 years old, loyal, Clanborn, formidable fighter and interested in Clan history
+	Parents: Ruststar and Lightningclaw
+	Former Apprentices: Bluefeather, Quillstem
+	Best Friend: Bubblingspring
+	Friend: Pantherleaf
+	Enemy: Timberleap
+	Dislikes: Quillstem, Pebblespot, Littlefrond, Paletwist
+	Crushes: Bubblingspring, Cinderbrook
+
+♀ Bramblepaw:
+	1 year old, strict, Clanborn, quick witted and careful listener
+	Parents: Silverfleck and Eggtumble
+
+Outsiders
+Loners
+♂ Axel:
+	11 years old, troublesome, formerly a loner, keen eye
+
+Kittypets
+♂ Jasper:
+	6 years old, loving, formerly a kittypet, very clever and valuable insight
+	Mate: Goldenbranch
+
+♀ Kong:
+	4 years old, compassionate, formerly a kittypet, good mediator
+
+♂ Coriander:
+	2 years old, insecure, formerly a kittypet, avid play-fighter
+

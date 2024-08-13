@@ -1,0 +1,137 @@
+Leader
+Ruststar: 6 years old, adventurous, Climber and Mediator
+Mate: Lightningclaw
+Former apprentices: Stonecall, Cottonthroat, Silverfleck
+Friends: Gray, Hazeltrot, Leopardpelt, Firecreek, Greenstem, Fishripple, Lightningclaw, Stonecall, Goldenbranch, Lightpaw, Littlefrond, Cottonthroat, Stormflash, Silverfleck, Cinderbrook, Whiteblink, Bubblingspring, Rosewood, Pantherleaf, Bluepaw
+Enemies: Pinedapple
+
+
+Deputy
+Leopardpelt: 11 years old, charismatic, Swimmer and Clairvoyant
+Mate: Rosewood
+Former apprentices: Goldenbranch, Stormflash, Lightbeam
+Friends: Ruststar, Littlefrond, Cinderbrook, Whiteblink, Sandfreckle, Rosewood, Pantherleaf, Gingersky
+Enemies: Stonecall, Goldenbranch, Silverfleck, Bubblingspring, Lightbeam
+
+
+Medicine cats
+Goldenbranch: 3 years old, adventurous, Star and Teacher
+Mate: Jasper
+Apprentice: Fogpaw
+Friends: Hazeltrot, Leopardpelt, Firecreek, Fishripple, Ruststar, Lightningclaw, Stonecall, Stormflash, Palepaw, Ashpaw, Bluepaw, Lightbeam
+Enemies: Gray
+
+Cinderbrook: 2 years old, faithful, Clever and Sense
+Parents: Hazeltrot and Fishripple
+Mate: Sandfreckle
+Friends: Hazeltrot, Firecreek, Fishripple, Cottonthroat, Whiteblink, Sandfreckle
+Enemies: Silverfleck
+
+
+Warriors
+Bubblingspring: 4 years old, confident, Ghost
+Mate: Stonecall
+Former apprentice: Pantherleaf
+Friends: Ruststar, Stonecall, Cottonthroat, Stormflash, Whiteblink, Longpaw
+Enemies: Fogpaw
+
+Stonecall: 3 years old, compassionate, Climber and Mediator
+Mate: Bubblingspring
+Former apprentices: Cinderbrook, Littlefrond
+Friends: Gray, Hazeltrot, Leopardpelt, Firecreek, Greenstem, Fishripple, Ruststar, Lightningclaw, Goldenbranch, Sandfreckle, Littlefrond, Cottonthroat, Stormflash, Cinderbrook, Whiteblink, Bubblingspring
+
+Sandfreckle: 2 years old, cunning, Speaker
+Parents: Greenstem and Firecreek
+Mate: Cinderbrook
+Apprentice: Palepaw
+Friends: Firecreek, Stonecall, Littlefrond, Cottonthroat, Stormflash, Cinderbrook, Pinedapple, Palepaw, Lightbeam, Fogpaw
+Enemies: Silverfleck
+
+Pinedapple: 2 years old, loyal, Insightful
+Parents: Greenstem and Firecreek
+Mate: Stormflash
+Former apprentice: Gingersky
+Friends: Greenstem, Sandfreckle, Ruststar, Hazeltrot, Stonecall, Littlefrond, Stormflash, Silverfleck, Whiteblink, Rosewood, Pantherleaf
+Enemies: Lyredawn
+
+Cottonthroat: 2 years old, cold, Fighter and Lore
+Parents: Ruststar and Lightningclaw
+Apprentice: Bluepaw
+Friends: Hazeltrot, Ruststar, Leopardpelt, Firecreek, Fishripple, Lightningclaw, Stonecall, Goldenbranch, Littlefrond, Stormflash, Cinderbrook, Whiteblink, Sandfreckle, Pinedapple, Bubblingspring, Rosewood, Gingersky, Ashpaw
+Enemies: Silverfleck, Lyredawn, Palepaw, Bluepaw
+
+Stormflash: 2 years old, adventurous, Camp and Insightful
+Parents: Ruststar and Lightningclaw
+Mate: Pinedapple
+Apprentice: Ashpaw
+Friends: Hazeltrot, Ruststar, Firecreek, Fishripple, Lightningclaw, Stonecall, Littlefrond, Cottonthroat, Silverfleck, Whiteblink, Pinedapple, Pantherleaf, Lightbeam
+
+Silverfleck: 2 years old, shameless, Lore
+Parents: Hazeltrot and Fishripple
+Friends: Hazeltrot, Ruststar, Fishripple, Goldenbranch, Cottonthroat, Stormflash, Cinderbrook, Whiteblink, Sandfreckle, Pinedapple, Lightbeam
+
+Whiteblink: 2 years old, nervous, Swimmer and Insightful
+Parents: Hazeltrot and Fishripple
+Apprentice: Longpaw
+Friends: Hazeltrot, Ruststar, Gray, Firecreek, Fishripple, Stonecall, Cottonthroat, Stormflash, Silverfleck, Cinderbrook, Bubblingspring
+Enemies: Lyredawn
+
+Pantherleaf: 1 year old, daring, Star
+Parents: Rosewood and Leopardpelt
+Friends: Leopardpelt, Ruststar, Rosewood, Gingersky
+
+Gingersky: 1 year old, thoughtful, Teacher and Swimmer
+Parents: Rosewood and Leopardpelt
+Friends: Leopardpelt, Firecreek, Pinedapple, Rosewood, Pantherleaf, Ashpaw, Lightbeam
+
+Lightbeam: 1 year old, troublesome, Prophet
+Parents: Goldenbranch and Jasper
+Friends: Goldenbranch, Sandfreckle, Stormflash, Gingersky, Palepaw, Ashpaw, Bluepaw
+
+
+Medicine cat apprentice
+Fogpaw: 8 moons old, lonesome, Healer
+Parents: Chorizo
+Friends: Sandfreckle, Lightbeam, Longpaw, Chorizo
+
+
+Apprentices
+Palepaw: 1 year old, childish, Hunter
+Parents: Goldenbranch and Jasper
+Friends: Firecreek, Stonecall, Goldenbranch, Sandfreckle, Pantherleaf, Ashpaw, Bluepaw, Lightbeam
+
+Ashpaw: 1 year old, rebellious, Teacher
+Parents: Goldenbranch and Jasper
+Friends: Goldenbranch, Sandfreckle, Cottonthroat, Palepaw, Bluepaw, Lightbeam
+
+Bluepaw: 1 year old, ambitious, Story
+Parents: Goldenbranch and Jasper
+Friends: Cinderbrook, Hazeltrot, Goldenbranch, Bubblingspring, Palepaw, Ashpaw, Lightbeam
+
+Longpaw: 8 moons old, loving, Hunter
+Parents: Chorizo
+Friends: Bubblingspring, Fogpaw, Chorizo
+
+
+Elders
+Hazeltrot: 11 years old, gloomy, Sense and Insightful
+Mate: Fishripple
+Former apprentice: Stormflash
+Friends: Leopardpelt, Firecreek, Greenstem, Fishripple, Ruststar, Lightningclaw, Stonecall, Goldenbranch, Sandfreckle, Pinedapple, Littlefrond, Cottonthroat, Stormflash, Silverfleck, Cinderbrook, Whiteblink, Fogpaw
+
+Firecreek: 10 years old, playful, Sense and Teacher
+Mate: Greenstem
+Former apprentices: Sandfreckle, Whiteblink, Pinedapple
+Friends: Gray, Hazeltrot, Leopardpelt, Greenstem, Fishripple, Ruststar, Lightningclaw, Stonecall, Goldenbranch, Lightpaw, Sandfreckle, Rowan, Creek, Pinedapple, Littlefrond, Cottonthroat, Silverfleck, Cinderbrook, Whiteblink, Gingersky, Lightbeam
+Enemies: Rosewood
+
+Rosewood: 10 years old, loving, Kit
+Mate: Leopardpelt
+Friends: Leopardpelt, Ruststar, Bubblingspring, Stonecall, Pinedapple, Littlefrond, Cottonthroat, Silverfleck, Pantherleaf, Gingersky
+
+
+Missing cats
+Littlefrond: 2 years old, thoughtful, Climber and Hunter
+Parents: Ruststar and Lightningclaw
+Friends: Ruststar, Firecreek, Lightningclaw, Stonecall, Cottonthroat, Stormflash, Sandfreckle, Pinedapple
+

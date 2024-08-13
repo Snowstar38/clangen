@@ -1,0 +1,333 @@
+OwlClan
+
+LEADER
+
+♂ Owlstar:
+	8 years old, wise, Clan founder, keen eye and great climber
+	Former Apprentices: Palefeather, Onyxsky
+	Best Friends: Palefeather, Rosedust, Creamhaven, Snaketail
+	Friends: Petalshade, Thrushstripe, Darksun
+	Enemy: Violetwisp
+	Dislikes: Dustypath, Onyxsky, Peach, Thrushwhisker
+	Crushes: Peach, Snaketail
+
+
+DEPUTY
+
+♀ Brightflame:
+	10 years old, fierce, Clan founder, good fighter
+	Mate: Otterfall
+	Apprentice: Brookpaw
+	Former Apprentice: Deermaple
+	Best Friends: Shimmersong, Deermaple
+	Friends: Thrushstripe, Petalshade, Owlstar
+	Dislikes: Foxwing, Shimmersong
+
+
+MEDICINE CATS
+
+♀ Peach:
+	9 years old, confident, formerly a rogue, careful listener
+	Former Apprentice: Doefreckle
+	Best Friend: Creamhaven
+	Friends: Palefeather, Rosedust, Doefreckle, Kingflash, Owlstar, Darksun
+	Dislikes: Dustypath, Snaketail
+
+♀ Doefreckle:
+	2 years old, loyal, orphaned, Dark Forest affinity
+	Parents: Black Widow
+	Apprentice: Bluepaw
+	Best Friend: Bluepaw
+	Friends: Plumpounce, Olivesilk, Peach
+	Crushes: Creamhaven
+
+
+WARRIORS
+
+♂ Thrushstripe:
+	9 years old, compassionate, Clan founder, great teacher and fast runner
+	Mate: Darksun
+	Apprentice: Alderpaw
+	Former Apprentices: Nimbuschill, Graypoppy
+	Best Friends: Pantherpaw, Snaketail, Petalshade
+	Friends: Darksun, Owlstar, Brightflame, Nimbuschill
+	Dislikes: Deermaple, Opalsky
+	Crushes: Nimbuschill
+
+♀ Petalshade:
+	9 years old, insecure, Clan founder, very clever and formidable fighter
+	Mate: Snaketail
+	Apprentice: Firepaw
+	Former Apprentice: Kingflash
+	Best Friends: Darksun, Owlstar, Thrushstripe, Nimbuschill, Brightflame
+	Friends: Snaketail, Kingflash, Anakin
+	Dislikes: Foxwing, Kingflash
+	Crushes: Owlstar
+
+♂ Otterfall:
+	9 years old, ambitious, formerly a kittypet, never sits still
+	Mate: Brightflame
+	Apprentice: Hailpaw
+	Former Apprentice: Creamhaven
+	Friends: Peach, Nimbuschill
+	Enemy: Anakin
+	Dislikes: Palefeather, Olivesilk, Heatherkit
+	Crushes: Petalshade
+
+⚧♀ Snaketail:
+	9 years old, insecure, Clan founder, great hunter and good mediator
+	Mate: Petalshade
+	Former Apprentices: Thrushwhisker, Sparrowmask
+	Best Friends: Owlstar, Thrushstripe
+	Friends: Petalshade, Shatterpaw, Nimbuschill, Darksun
+	Dislikes: Deermaple, Bluepaw, Darksun, Olivesilk, Thrushwhisker
+	Crushes: Owlstar
+
+♀ Darksun:
+	8 years old, cold, Clan founder, den builder
+	Mate: Thrushstripe
+	Apprentice: Cloudpaw
+	Former Apprentice: Dustypath
+	Best Friends: Thrushstripe, Foxwing
+	Friends: Sleekpaw, Bluepaw, Petalshade, Kingflash, Snaketail, Owlstar
+	Dislikes: Rosedust, Peach, Violetwisp
+
+♀ Shimmersong:
+	7 years old, adventurous, Clan founder, constantly climbing and steady paws
+	Mate: Lapismoon
+	Apprentice: Reedpaw
+	Former Apprentice: Foxwing
+	Best Friends: Onyxsky, Nimbuschill
+	Friends: Opalsky, Sparrowmask, Frostglimmer, Owlstar, Foxwing
+	Enemy: Brightflame
+	Dislikes: Anakin, Dustypath, Piper
+
+♀ Piper:
+	4 years old, compassionate, formerly a kittypet, good hunter
+	Apprentice: Flowerpaw
+	Former Apprentice: Violetwisp
+	Best Friend: Owlstar
+	Friends: Dustypath, Thrushstripe
+	Dislikes: Olivesilk
+
+♀ Violetwisp:
+	4 years old, adventurous, formerly a kittypet, good teacher
+	Mate: Hailmunch
+	Former Apprentices: Plumpounce, Frostglimmer
+	Friends: Hailpaw, Brookpaw, Darksun
+	Dislikes: Cloudpaw
+
+♂ Kingflash:
+	3 years old, bold, Clan founder, good fighter
+	Parents: Smoke
+	Former Apprentice: Olivesilk
+	Friends: Darksun, Owlstar, Petalshade, Brightflame
+	Dislikes: Olivesilk
+
+♂ Nimbuschill:
+	3 years old, compassionate, Clan founder, strange dreamer and helpful insight
+	Parents: Smoke
+	Former Apprentice: Opalsky
+	Friends: Piper, Snaketail
+	Dislikes: Firepaw
+
+♂ Anakin:
+	3 years old, bloodthirsty, Clan founder, moss-ball hunter
+	Parents: Smoke
+	Apprentice: Sleekpaw
+	Enemy: Reedpaw
+	Dislikes: Thrushwhisker
+
+♀ Silverfeather:
+	3 years old, strange, originally from another Clan, incredible runner and helpful insight
+	Friend: Rosedust
+
+♀ Thrushwhisker:
+	2 years old, compassionate, originally from another Clan, clever
+	Apprentice: Pantherpaw
+	Dislikes: Anakin, Petalshade
+
+⚧♂ Foxwing:
+	2 years old, lonesome, outsider roots, active imagination and interested in Clan history
+	Parents: Piper
+	Apprentice: Fogpaw
+	Friends: Dustypath, Deermaple
+	Dislikes: Anakin, Owlstar, Rosedust, Doefreckle
+
+♀ Deermaple:
+	2 years old, fierce, outsider roots, good swimmer and oddly observant
+	Parents: Piper
+	Friends: Foxwing, Brightflame
+	Dislikes: Olivesilk, Foxwing
+
+♂ Dustypath:
+	2 years old, lonesome, outsider roots, great kitsitter
+	Parents: Piper
+	Friends: Foxwing, Darksun
+	Dislikes: Brightflame, Shimmersong
+
+♂ Palefeather:
+	2 years old, thoughtful, Clanborn, keen eye and interested in Clan history
+	Parents: Peach and Owlstar
+	Best Friend: Owlstar
+	Friend: Peach
+	Dislikes: Plumpounce
+
+♀ Rosedust:
+	2 years old, lonesome, Clanborn, constantly climbing
+	Parents: Peach and Owlstar
+	Friends: Owlstar, Silverfeather
+	Dislikes: Creamhaven
+	Crushes: Silverfeather
+
+♂ Creamhaven:
+	2 years old, ambitious, Clanborn, natural intuition
+	Parents: Peach and Owlstar
+	Apprentice: Shatterpaw
+	Best Friend: Owlstar
+	Friend: Peach
+	Crushes: Violetwisp, Doefreckle
+
+♂ Plumpounce:
+	2 years old, adventurous, orphaned, steady paws
+	Parents: Black Widow
+	Friends: Doefreckle, Olivesilk
+	Dislikes: Violetwisp
+
+♀ Olivesilk:
+	2 years old, charismatic, orphaned, steady paws
+	Parents: Black Widow
+	Friend: Plumpounce
+	Dislikes: Anakin, Snaketail
+
+♂ Naga:
+	1 year old, loving, formerly a kittypet, fast runner and good storyteller
+
+♂ Graypoppy:
+	1 year old, troublesome, orphaned, very clever and constantly climbing
+	Parents: Morel
+	Friend: Dustypath
+
+♂ Sparrowmask:
+	1 year old, loyal, Clanborn, valuable insight and good kitsitter
+	Parents: Shimmersong and Lapismoon
+	Friends: Shimmersong, Frostglimmer, Onyxsky
+
+♀ Opalsky:
+	1 year old, compassionate, Clanborn, fast runner
+	Parents: Shimmersong and Lapismoon
+	Friends: Shimmersong, Onyxsky, Sparrowmask
+	Dislikes: Nimbuschill
+
+♂ Frostglimmer:
+	1 year old, charismatic, Clanborn, quick to help
+	Parents: Shimmersong and Lapismoon
+	Friends: Shimmersong, Onyxsky, Sparrowmask
+
+♀ Onyxsky:
+	1 year old, lonesome, Clanborn, good climber
+	Parents: Shimmersong and Lapismoon
+	Friends: Shimmersong, Opalsky, Frostglimmer
+	Crushes: Rosedust
+
+
+MEDICINE CAT APPRENTICE
+
+♀ Bluepaw:
+	9 moons old, loyal, Clanborn, fast runner
+	Parents: Darksun and Thrushstripe
+	Best Friend: Doefreckle
+	Friend: Darksun
+
+
+APPRENTICES
+
+♂ Cloudpaw:
+	10 moons old, cold, Clanborn, never sits still
+	Parents: Brightflame and Otterfall
+	Friend: Brightflame
+
+♀ Firepaw:
+	10 moons old, compassionate, Clanborn, good fighter
+	Parents: Brightflame and Otterfall
+	Friend: Brightflame
+
+♂ Pantherpaw:
+	9 moons old, nervous, Clanborn, good teacher
+	Parents: Darksun and Thrushstripe
+	Friend: Thrushstripe
+
+♀ Sleekpaw:
+	9 moons old, fierce, Clanborn, good hunter and oddly insightful
+	Parents: Darksun and Thrushstripe
+	Friends: Darksun, Thrushstripe, Bluepaw
+
+♂ Shatterpaw:
+	8 moons old, insecure, Clanborn, quick witted
+	Parents: Petalshade and Snaketail
+	Friend: Petalshade
+
+♀ Flowerpaw:
+	8 moons old, compassionate, Clanborn, quick witted
+	Parents: Petalshade and Snaketail
+	Friend: Petalshade
+
+♂ Hailpaw:
+	8 moons old, charismatic, Clanborn, never sits still
+	Parents: Violetwisp and Hailmunch
+	Friend: Violetwisp
+
+♂ Reedpaw:
+	8 moons old, sneaky, Clanborn, good storyteller and interested in Clan history
+	Parents: Violetwisp and Hailmunch
+
+♂ Alderpaw:
+	8 moons old, insecure, Clanborn, good teacher
+	Parents: Violetwisp and Hailmunch
+	Friend: Violetwisp
+
+♂ Fogpaw:
+	8 moons old, adventurous, Clanborn, active imagination
+	Parents: Violetwisp and Hailmunch
+	Friend: Violetwisp
+
+♀ Brookpaw:
+	8 moons old, righteous, Clanborn, good fighter
+	Parents: Violetwisp and Hailmunch
+	Friend: Violetwisp
+	Dislikes: Thrushwhisker
+
+
+KITS
+
+♀ Heatherkit:
+	4 moons old, self-conscious, outsider roots, active imagination
+	Parents: Owlstar
+
+♂ Talonkit:
+	4 moons old, shy, outsider roots, constantly climbing
+	Parents: Owlstar
+	Friend: Owlstar
+
+♀ Hollowkit:
+	4 moons old, sweet, outsider roots, interested in Clan history
+	Parents: Owlstar
+	Friend: Owlstar
+
+
+Outsiders
+Rogues
+♂ Murk:
+	8 years old, insecure, formerly a rogue, incredible runner
+
+Kittypets
+♀ Angel:
+	3 years old, childish, Clan founder, careful listener
+	Parents: Smoke
+
+♂ Guzma:
+	2 years old, daring, formerly a kittypet, avid play-fighter and picky nest builder
+
+♀ Panini:
+	5 years old, playful, formerly a kittypet, great kitsitter and steady paws
+

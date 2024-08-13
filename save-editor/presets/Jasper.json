@@ -1,0 +1,25 @@
+{
+    "pelt_name": "Masked",
+    "pelt_color": "BROWN",
+    "eye_colour": "CYAN",
+    "eye_colour2": null,
+    "skin": "PINK",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "DIGIT",
+    "points": "MINKPOINT",
+    "vitiligo": "BLEACHED",
+    "scars": [
+        "SNAKETWO"
+    ],
+    "physical_trait_1": "SIZEHUGE",
+    "physical_trait_2": "MANEFLUFFY",
+    "physical_trait_hidden": null,
+    "accessory": null,
+    "tint": "gray",
+    "white_patches_tint": null,
+    "reverse": true,
+    "opacity": 100
+}

@@ -95,6 +95,18 @@ def run_clanfile_ID_update():
 def run_edit_cats():
     run_script('edit_cats')
 
+def run_cat_export():
+    update_dir()
+    clan = clan_var.get()
+    if not clan:
+        messagebox.showwarning("No Clan Selected", "Please select a Clan from the dropdown menu before proceeding.")
+        return
+    response = os.system(f'python {script_dir}/cat_export.py "{clan}" "{save_dir}"')
+    if response != 0:
+        messagebox.showerror("Error", "An error occurred while trying to export the cat list. Please check that the necessary files exist.")
+    else:
+        messagebox.showinfo("Success", f"Cat list for {clan} has been exported successfully.")
+
 # Set the choices in the dropdown to be the clan names
 clan_dropdown['values'] = get_clan_names() 
 clan_dropdown.grid(column=1, row=0)
@@ -144,6 +156,10 @@ ToolTip(update_ID_list_button, "Update the saved list of cat IDs for the clan in
 choose_folder_button = ttk.Button(root, text="Choose Clangen Folder", command=choose_clangen_folder)
 choose_folder_button.grid(column=1, row=2)
 ToolTip(choose_folder_button, "Select the Clangen folder")
+
+cat_export_button = ttk.Button(root, text="Export Cat List", command=run_cat_export)
+cat_export_button.grid(column=0, row=6)  # Adjust the row as needed
+ToolTip(cat_export_button, "Export a detailed list of cats in the clan")
 
 quit_button = ttk.Button(root, text="Quit", command=root.destroy)
 quit_button.grid(column=1, row=5)

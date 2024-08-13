@@ -1,0 +1,23 @@
+{
+    "pelt_name": "TwoColour",
+    "pelt_color": "GREY",
+    "eye_colour": "COPPER",
+    "eye_colour2": null,
+    "skin": "BLUE",
+    "tortie_base": null,
+    "pattern": null,
+    "tortie_color": null,
+    "tortie_pattern": null,
+    "white_patches": "PAINTED",
+    "points": null,
+    "vitiligo": null,
+    "scars": [],
+    "physical_trait_1": "LASHESLOWER",
+    "physical_trait_2": "MUZZLEBROAD",
+    "physical_trait_hidden": null,
+    "accessory": null,
+    "tint": "black",
+    "white_patches_tint": "offwhite",
+    "reverse": true,
+    "opacity": 100
+}
