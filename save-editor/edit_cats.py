@@ -11,7 +11,7 @@ import shutil
 # Define field classes
 name_fields = ['ID', 'name_prefix', 'name_suffix', 'specsuffix_hidden']
 appearance_fields = ['pelt_name', 'pelt_color', 'pelt_length', 'eye_colour', 'eye_colour2', 'skin', 'tortie_base', 'pattern', 'tortie_color', 'tortie_pattern',
-    'white_patches', 'points', 'vitiligo', 'scars', 'physical_trait_1', 'physical_trait_2', 'physical_trait_hidden', 'accessory', 'tint', 'white_patches_tint', 'reverse', 'opacity']
+    'white_patches', 'points', 'vitiligo', 'scars', 'physical_trait_1', 'physical_trait_2', 'physical_trait_3', 'physical_trait_4', 'physical_trait_hidden', 'physical_trait_hidden_2', 'physical_trait_hidden_3', 'physical_trait_hidden_4', 'accessory', 'tint', 'white_patches_tint', 'reverse', 'opacity']
 relationship_fields = ['parent1', 'parent2', 'adoptive_parents', 'mentor', 'former_mentor', 'patrol_with_mentor', 'mate', 'previous_mates', 'current_apprentice', 'former_apprentices', 'faded_offspring']
 stats_fields = ['status', 'dead', 'df', 'exiled', 'outside', 'backstory', 'moons', 'dead_moons', 'skill_dict', 'trait', 'facets', 'experience']
 
@@ -309,7 +309,17 @@ def update_cat_form(cat_id_to_edit):
                 options = physical_traits
             elif widget.key == 'physical_trait_2':
                 options = physical_traits
+            elif widget.key == 'physical_trait_3':
+                options = physical_traits
+            elif widget.key == 'physical_trait_4':
+                options = physical_traits
             elif widget.key == 'physical_trait_hidden':
+                options = physical_traits
+            elif widget.key == 'physical_trait_hidden_2':
+                options = physical_traits
+            elif widget.key == 'physical_trait_hidden_3':
+                options = physical_traits
+            elif widget.key == 'physical_trait_hidden_4':
                 options = physical_traits
             elif widget.key == 'accessory':
                 options = accessories
@@ -417,7 +427,17 @@ def draw_form(i, key, value, column):
         options = physical_traits
     elif key == 'physical_trait_2':
         options = physical_traits
+    elif key == 'physical_trait_3':
+        options = physical_traits
+    elif key == 'physical_trait_4':
+        options = physical_traits
     elif key == 'physical_trait_hidden':
+        options = physical_traits
+    elif key == 'physical_trait_hidden_2':
+        options = physical_traits
+    elif key == 'physical_trait_hidden_3':
+        options = physical_traits
+    elif key == 'physical_trait_hidden_4':
         options = physical_traits
     elif key == 'accessory':
         options = accessories

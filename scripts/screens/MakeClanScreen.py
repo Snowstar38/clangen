@@ -1011,6 +1011,10 @@ class MakeClanScreen(Screens):
                 trait_list.append(selected.pelt.physical_trait_1)
             if selected.pelt.physical_trait_2:
                 trait_list.append(selected.pelt.physical_trait_2)
+            if selected.pelt.physical_trait_3:
+                trait_list.append(selected.pelt.physical_trait_3)
+            if selected.pelt.physical_trait_4:
+                trait_list.append(selected.pelt.physical_trait_4)
 
             trait_string = ""
             if trait_list:
@@ -1220,7 +1224,7 @@ class MakeClanScreen(Screens):
         """Get tooltip for cat. Tooltip displays name, sex, age group, and trait."""
 
         return (
-            f"<b>{cat.name}</b><br>{cat.gender}<br>{cat.age}<br>{cat.personality.trait}<br>{cat.pelt.physical_trait_1}<br>{cat.pelt.physical_trait_2}"
+            f"<b>{cat.name}</b><br>{cat.gender}<br>{cat.age}<br>{cat.personality.trait}<br>{cat.pelt.physical_trait_1}<br>{cat.pelt.physical_trait_2}<br>{cat.pelt.physical_trait_3}<br>{cat.pelt.physical_trait_4}"
         )
 
     def open_game_mode(self):
@@ -1642,7 +1646,7 @@ class MakeClanScreen(Screens):
         # info for chosen cats:
         self.elements["cat_info"] = pygame_gui.elements.UITextBox(
             "",
-            scale(pygame.Rect((880, 475), (250, 300))),
+            scale(pygame.Rect((880, 475), (250, 360))),
             visible=False,
             object_id=get_text_box_theme("#text_box_22_horizleft_spacing_100"),
             manager=MANAGER,
