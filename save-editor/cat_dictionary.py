@@ -181,16 +181,18 @@ white_patches =  little_white + mid_white + high_white + mostly_white + ['FULLWH
 physical_trait_teeth = ['TEETHUPPER', 'TEETHSABRE', 'TEETHUNDERBITE']
 physical_trait_ear_type = ['EARSMALL', 'EARBIG', 'EARTALL', 'EARPANTHER']
 physical_trait_ear_fold = ['FOLDBOTH', 'FOLDONE']
-physical_trait_headfur = ['HEADFORELOCK', 'HEADCOWLICK', 'HEADMOHAWK', 'HEADTUFT']
-physical_trait_cheekfur = ['CHEEKLONG', 'CHEEKPOINTED']
-physical_trait_mane = ['MANESILKY', 'MANEFLUFFY', 'MANERUFF']
-physical_trait_fur_type = ['FURWAVY', 'FURCURLY']
+physical_trait_headfur = ['HEADFORELOCK', 'HEADCOWLICK', 'HEADMOHAWK', 'HEADTUFT', 'HEADEMO']
+physical_trait_cheekfur = ['CHEEKLONG', 'CHEEKPOINTED', 'CHEEKFLUFF', 'CHEEKCURL']
+physical_trait_mane = ['MANESILKY', 'MANEFLUFFY', 'MANERUFF', 'MANEHORSE']
+physical_trait_fur_type = ['FURWAVY', 'FURCURLY', 'FURPATCHY', 'FURKINK']
 physical_trait_muzzle_type = ['MUZZLESHORT', 'MUZZLEBROAD', 'MUZZLELONG']
-physical_trait_body_type = ['BODYBROAD', 'BODYCOMPACT', 'BODYWIRY', 'BODYLITHE', 'BODYSKINNY', 'BODYBUFF']
+physical_trait_body_type = ['BODYBROAD', 'BODYWIRY', 'BODYLITHE', 'BODYSKINNY', 'BODYBUFF']
 physical_trait_size = ['SIZETINY', 'SIZESMALL', 'SIZESHORT', 'SIZETALL', 'SIZELARGE', 'SIZEHUGE']
-physical_trait_misc = ['EARTUFTS', 'POLYDACTYL', 'LASHESUPPER', 'LASHESLOWER', 'WHISKERSLONG', 'TAILCROOKED', 'TAILLONG', 'TAILFEATHER', 'CLAWSLONG', 'BACKFLUFF']
+physical_trait_tail = ['TAILCROOKED', 'TAILLONG', 'TAILFEATHER', 'TAILCURL', 'TAILTUFT']
+physical_trait_bodyfur = ['BACKFLUFF', 'BACKRIDGE', 'SHOULDERTUFT']
+physical_trait_misc = ['EARTUFTS', 'POLYDACTYL', 'LASHESUPPER', 'LASHESLOWER', 'WHISKERSLONG', 'CLAWSLONG', 'LEGTUFT']
 
-physical_traits = physical_trait_teeth + physical_trait_ear_type + physical_trait_ear_fold + physical_trait_headfur + physical_trait_cheekfur + physical_trait_mane + physical_trait_fur_type + physical_trait_muzzle_type + physical_trait_body_type + physical_trait_size + physical_trait_misc
+physical_traits = physical_trait_teeth + physical_trait_ear_type + physical_trait_ear_fold + physical_trait_headfur + physical_trait_cheekfur + physical_trait_mane + physical_trait_fur_type + physical_trait_muzzle_type + physical_trait_body_type + physical_trait_size + physical_trait_bodyfur + physical_trait_misc
 
 normal_traits = [
     "troublesome", "lonesome", "fierce", "bloodthirsty", "cold", "childish", "playful",
