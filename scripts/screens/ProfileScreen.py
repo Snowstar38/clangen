@@ -970,8 +970,6 @@ class ProfileScreen(Screens):
                 else:
                     output += trait + ", "  # In case the trait is not found in the dictionary
             output = output.rstrip(", ")  # Remove the trailing comma and space
-            # NEWLINE ----------
-            output += "\n"
             
         # MATE
         if len(the_cat.mate) > 0:
