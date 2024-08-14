@@ -1,0 +1,85 @@
+SmokeClan
+
+LEADER
+
+♂ Smokestar:
+	9 years old, insecure, Clan founder, oddly observant and steady paws
+	Former Apprentice: Amber
+	Best Friend: Amber
+	Dislikes: Hail
+
+
+WARRIORS
+
+♂ Hail:
+	6 years old, troublesome, formerly a kittypet, great speaker and good mediator
+	Former Apprentice: Creek
+	Friends: Smokestar, Amber
+	Dislikes: Creek, Azalea, Crouch, Prance
+
+♂ Crouch:
+	5 years old, cold, formerly a loner, learner of lore
+	Former Apprentice: Azalea
+	Best Friends: Pythonpaw, Creek, Prance
+	Friend: Azalea
+
+♂ Weed:
+	2 years old, cold, formerly a kittypet, good hunter and good kitsitter
+
+♀ Amber:
+	2 years old, insecure, abandoned, splashes in puddles
+	Former Apprentice: Prance
+	Best Friend: Smokestar
+	Dislikes: Azalea, Prance
+
+♂ Prance:
+	1 year old, compassionate, outsider roots, good swimmer
+	Parents: Crouch
+	Dislikes: Amber
+
+♂ Creek:
+	1 year old, adventurous, outsider roots, good fighter
+	Parents: Crouch
+	Friends: Crouch, Pythonpaw
+	Dislikes: Amber, Prance
+
+♀ Azalea:
+	1 year old, strict, outsider roots, lore keeper
+	Parents: Crouch
+	Friend: Pythonpaw
+	Dislikes: Smokestar, Prance
+
+
+MEDICINE CAT APPRENTICE
+
+♂ Pythonpaw:
+	1 year old, daring, outsider roots, splashes in puddles and oddly insightful
+	Parents: Crouch
+	Friend: Crouch
+	Dislikes: Skykit
+
+
+KITS
+
+♀ Skykit:
+	4 moons old, fearless, abandoned, picky nest builder
+
+♂ Sootkit:
+	4 moons old, shy, outsider roots, quick witted
+	Parents: Weed
+
+♀ Leafkit:
+	4 moons old, bossy, outsider roots, careful listener
+	Parents: Weed
+	Friend: Rabbitkit
+
+♂ Rabbitkit:
+	4 moons old, polite, outsider roots, never sits still and quick witted
+	Parents: Weed
+
+
+Outsiders
+Loners
+♂ Nari:
+	8 years old, wise, formerly a loner, good speaker and fast runner
+
