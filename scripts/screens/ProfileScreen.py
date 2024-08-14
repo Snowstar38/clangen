@@ -962,6 +962,7 @@ class ProfileScreen(Screens):
                         trait_list.append(the_cat.pelt.physical_trait_4)
 
         if trait_list:
+            output += "\n"
             output += "traits: "
             for trait in trait_list:
                 if trait in trait_descriptions:
