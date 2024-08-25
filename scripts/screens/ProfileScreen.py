@@ -906,7 +906,7 @@ class ProfileScreen(Screens):
             'HEADCOWLICK': 'cowlick',
             'HEADMOHAWK': 'mohawk',
             'HEADTUFT': 'tufted head fur',
-            'HEADEMO': 'emo-style head fur',
+            'HEADEMO': 'head fur covering eye',
             'CHEEKLONG': 'long cheek fur',
             'CHEEKPOINTED': 'pointed cheek fur',
             'CHEEKFLUFF': 'fluffy cheeks',
