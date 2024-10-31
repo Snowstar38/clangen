@@ -1050,10 +1050,10 @@ class Pelt:
                 if trait_chance <= (0.5 * game.config["cat_generation"]["physical_trait_chance"]):
                     traitcount = 2
                     trait_chance = int(random.random() * 100)
-                    if trait_chance <= (0.5 * game.config["cat_generation"]["physical_trait_chance"]):
+                    if trait_chance <= (0.25 * game.config["cat_generation"]["physical_trait_chance"]):
                         traitcount = 3
                         trait_chance = int(random.random() * 100)
-                        if trait_chance <= (0.5 * game.config["cat_generation"]["physical_trait_chance"]):
+                        if trait_chance <= (0.1 * game.config["cat_generation"]["physical_trait_chance"]):
                             traitcount = 4
                 else:
                     traitcount = 1
