@@ -976,51 +976,61 @@ class MakeClanScreen(Screens):
         if selected is not None:
             trait_descriptions = {
                 'TEETHUPPER': 'long upper fangs',
-                'TEETHSABRE': 'sabre teeth',
-                'TEETHUNDERBITE': 'underbite',
-                'EARSMALL': 'small ears',
-                'EARBIG': 'big ears',
-                'EARTALL': 'tall ears',
-                'EARPANTHER': 'rounded ears',
-                'FOLDBOTH': 'folded ears',
-                'FOLDONE': 'one folded ear',
-                'HEADFORELOCK': 'forelock',
-                'HEADCOWLICK': 'cowlick',
-                'HEADMOHAWK': 'mohawk',
-                'HEADTUFT': 'tufted head fur',
-                'CHEEKLONG': 'long cheek fur',
-                'CHEEKPOINTED': 'pointed cheek fur',
-                'CHEEKFLUFF': 'fluffy cheeks',
-                'MANESILKY': 'silky mane',
-                'MANEFLUFFY': 'fluffy mane',
-                'MANERUFF': 'ruff',
-                'FURWAVY': 'wavy fur',
-                'FURCURLY': 'curly fur',
-                'MUZZLESHORT': 'short muzzle',
-                'MUZZLEBROAD': 'broad muzzle',
-                'MUZZLELONG': 'long muzzle',
-                'BODYBROAD': 'broad shoulders',
-                'BODYCOMPACT': 'compact',
-                'BODYWIRY': 'wiry',
-                'BODYLITHE': 'lithe',
-                'BODYSKINNY': 'skinny',
-                'BODYBUFF': 'muscular',
-                'SIZETINY': 'tiny',
-                'SIZESMALL': 'small',
-                'SIZESHORT': 'short',
-                'SIZETALL': 'tall',
-                'SIZELARGE': 'large',
-                'SIZEHUGE': 'huge',
-                'EARTUFTS': 'ear tufts',
-                'POLYDACTYL': 'polydactyl',
-                'LASHESUPPER': 'upper lashes',
-                'LASHESLOWER': 'lower lashes',
-                'WHISKERSLONG': 'long whiskers',
-                'TAILCROOKED': 'crooked tail',
-                'TAILLONG': 'long tail',
-                'TAILFEATHER': 'feathered tail',
-                'CLAWSLONG': 'unusually long claws',
-                'BACKFLUFF': 'fluffy back'
+            'TEETHSABRE': 'sabre teeth',
+            'TEETHUNDERBITE': 'underbite',
+            'EARSMALL': 'small ears',
+            'EARBIG': 'big ears',
+            'EARTALL': 'tall ears',
+            'EARPANTHER': 'rounded ears',
+            'FOLDBOTH': 'folded ears',
+            'FOLDONE': 'one folded ear',
+            'HEADFORELOCK': 'forelock',
+            'HEADCOWLICK': 'cowlick',
+            'HEADMOHAWK': 'mohawk',
+            'HEADTUFT': 'tufted head fur',
+            'HEADEMO': 'emo-style head fur',
+            'CHEEKLONG': 'long cheek fur',
+            'CHEEKPOINTED': 'pointed cheek fur',
+            'CHEEKFLUFF': 'fluffy cheeks',
+            'CHEEKCURL': 'curled cheek fur',
+            'MANESILKY': 'silky mane',
+            'MANEFLUFFY': 'fluffy mane',
+            'MANERUFF': 'ruff',
+            'MANEHORSE': 'horse-like mane',
+            'FURWAVY': 'wavy fur',
+            'FURCURLY': 'curly fur',
+            'FURPATCHY': 'patchy fur',
+            'FURKINK': 'kinked fur',
+            'MUZZLESHORT': 'short muzzle',
+            'MUZZLEBROAD': 'broad muzzle',
+            'MUZZLELONG': 'long muzzle',
+            'BODYBROAD': 'broad shoulders',
+            'BODYWIRY': 'wiry',
+            'BODYLITHE': 'lithe',
+            'BODYSKINNY': 'skinny',
+            'BODYBUFF': 'muscular',
+            'BODYCOMPACT': 'compact',
+            'SIZETINY': 'tiny',
+            'SIZESMALL': 'small',
+            'SIZESHORT': 'short',
+            'SIZETALL': 'tall',
+            'SIZELARGE': 'large',
+            'SIZEHUGE': 'huge',
+            'EARTUFTS': 'ear tufts',
+            'POLYDACTYL': 'polydactyl',
+            'LASHESUPPER': 'upper lashes',
+            'LASHESLOWER': 'lower lashes',
+            'WHISKERSLONG': 'long whiskers',
+            'TAILCROOKED': 'crooked tail',
+            'TAILLONG': 'long tail',
+            'TAILFEATHER': 'feathered tail',
+            'TAILCURL': 'curled tail',
+            'TAILTUFT': 'tufted tail',
+            'CLAWSLONG': 'unusually long claws',
+            'BACKFLUFF': 'fluffy back',
+            'BACKRIDGE': 'fur ridge on back',
+            'SHOULDERTUFT': 'tufted shoulders',
+            'LEGTUFT': 'tufted legs'
             }
 
             if self.sub_screen == "choose leader":
@@ -1054,13 +1064,15 @@ class MakeClanScreen(Screens):
             self.elements["cat_info"].set_text(
                 selected.genderalign
                 + "\n"
-                + str(selected.age)
-                + "\n"
-                + str(selected.personality.trait)
-                + "\n"
-                + str(selected.skills.skill_string())
-                + "\n"
-                + trait_string
+                + str(
+                    selected.age
+                    + "\n"
+                    + str(selected.personality.trait)
+                    + "\n"
+                    + str(selected.skills.skill_string()
+                    + "\n"
+                    + trait_string
+                ))
             )
             self.elements["cat_info"].show()
         else:
@@ -1263,9 +1275,7 @@ class MakeClanScreen(Screens):
     def _get_cat_tooltip_string(self, cat: Cat):
         """Get tooltip for cat. Tooltip displays name, sex, age group, and trait."""
 
-        return (
-            f"<b>{cat.name}</b><br>{cat.gender}<br>{cat.age}<br>{cat.personality.trait}<br>{cat.pelt.physical_trait_1}<br>{cat.pelt.physical_trait_2}<br>{cat.pelt.physical_trait_3}<br>{cat.pelt.physical_trait_4}"
-        )
+        return f"<b>{cat.name}</b><br>{cat.genderalign}<br>{cat.age}<br>{cat.personality.trait}<br>{cat.pelt.physical_trait_1}<br>{cat.pelt.physical_trait_2}<br>{cat.pelt.physical_trait_3}<br>{cat.pelt.physical_trait_4}"
 
     def open_game_mode(self):
         # Clear previous screen
