@@ -5,7 +5,8 @@ from random import choice
 
 import ujson
 
-from scripts.cat.cats import Cat, Personality, BACKSTORIES
+from scripts.cat.cats import Cat, BACKSTORIES
+from ..cat.personality import Personality
 from scripts.cat.pelts import Pelt
 from scripts.cat_relations.inheritance import Inheritance
 from scripts.housekeeping.version import SAVE_VERSION_NUMBER
@@ -266,12 +267,18 @@ def json_load():
 
         # load the relationships
         try:
-            if not cat.dead:
-                cat.load_relationship_of_cat()
-                if cat.relationships is not None and len(cat.relationships) < 1:
-                    cat.init_all_relationships()
-            else:
-                cat.relationships = {}
+            if game.clan:
+                if game.clan.clan_settings["dead_relations"]:
+                    cat.load_relationship_of_cat()
+                    if cat.relationships is not None and len(cat.relationships) < 1:
+                        cat.init_all_relationships()
+                else:
+                    if not cat.dead:
+                        cat.load_relationship_of_cat()
+                        if cat.relationships is not None and len(cat.relationships) < 1:
+                            cat.init_all_relationships()
+                    else:
+                        cat.relationships = {}
         except Exception as e:
             logger.exception(
                 f"There was an error loading relationships for cat #{cat}."
