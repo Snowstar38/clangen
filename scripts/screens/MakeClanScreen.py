@@ -975,7 +975,7 @@ class MakeClanScreen(Screens):
         # SELECTED CAT INFO
         if selected is not None:
             trait_descriptions = {
-                'TEETHUPPER': 'long upper fangs',
+            'TEETHUPPER': 'long upper fangs',
             'TEETHSABRE': 'sabre teeth',
             'TEETHUNDERBITE': 'underbite',
             'EARSMALL': 'small ears',
@@ -2117,7 +2117,7 @@ class MakeClanScreen(Screens):
     def create_cat_info(self):
         self.elements["cat_name"] = pygame_gui.elements.UITextBox(
             "",
-            ui_scale(pygame.Rect((0, 10), (250, 60))),
+            ui_scale(pygame.Rect((0, 10), (300, 60))),
             visible=False,
             object_id=get_text_box_theme("#text_box_30_horizcenter"),
             manager=MANAGER,
@@ -2130,7 +2130,7 @@ class MakeClanScreen(Screens):
         # info for chosen cats:
         self.elements["cat_info"] = pygame_gui.elements.UITextBox(
             "",
-            ui_scale(pygame.Rect((440, 220), (175, 125))),
+            ui_scale(pygame.Rect((440, 190), (175, 170))),
             visible=False,
             object_id=get_text_box_theme("#text_box_26_horizcenter"),
             manager=MANAGER,
