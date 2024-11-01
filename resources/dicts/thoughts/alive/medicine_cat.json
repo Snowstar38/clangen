@@ -501,5 +501,41 @@
         "random_living_status": [
             "darkforest"
         ]
-    }     
+    },
+    {
+        "id": "med_cat_herbs_none",
+        "thoughts": [
+            "Feels a sense of dread as {PRONOUN/m_c/subject} {VERB/m_c/look/looks} at {PRONOUN/m_c/poss} empty herb stores",
+            "Desperately paws along the corners of their den, trying to find even a single poppy seed",
+            "Spends all day searching for herbs, returning empty-pawed at almost moonhigh"
+        ],
+        "herb_max_constraint": [
+            0
+        ]
+    },
+    {
+        "id": "medcat_lead_last_life",
+        "thoughts": [
+            "Can tell that r_c is on {PRONOUN/r_c/poss} last life",
+            "Urges r_c to be more cautious"
+        ],
+        "leader_life_constraint": [
+            1
+        ],
+        "random_status_constraint": [
+            "leader"
+        ]
+    },
+    {
+        "id": "medcat_no_deputy",
+        "thoughts": [
+            "Shares {PRONOUN/m_c/poss} thoughts with r_c on who should be the next deputy"
+        ],
+        "clan_missing_status_constraint": [
+            "deputy"
+        ],
+        "random_status_constraint": [
+            "leader"
+        ]
+    }
 ]
