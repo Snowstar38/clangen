@@ -1,5 +1,6 @@
 import traceback
 from random import choice
+from scripts.utility import get_alive_status_cats, check_herb_constraint
 from scripts.game_structure.game_essentials import game
 
 import ujson
@@ -96,27 +97,34 @@ class Thoughts:
         elif 'random_status_constraint' in thought and not random_cat:
             pass
         
-        # Constraints for empty positions of power in the Clan
-        # Only works for leader, deputy, and medicine cat
+        # Constraints for the presence or absence of statuses in the Clan
+        # Use clan_missing_status_constraint and clan_present_status_constraint to check
+        # if any cats with the status exist in the Clan
+        # Use random_status_constraint when referencing a specific cat (r_c) that must have the status
         if 'clan_missing_status_constraint' in thought:
             for status in thought['clan_missing_status_constraint']:
-                if status == 'medicine cat':
-                    missing_status = "med_cat_list"
-                else:
-                    missing_status = status
-                if game.clan:
-                    if getattr(game.clan, missing_status):
-                        print("FAIL", main_cat.name, missing_status, getattr(game.clan, missing_status))
-                        return False
-                    else:
-                        print("PASS", main_cat.name, missing_status, getattr(game.clan, missing_status))
-
-        # Constraints for size of herb store
-        if 'herb_max_constraint' in thought:
-            if game.clan:
-                herb_max = (thought['herb_max_constraint'])[0]
-                if herb_max < sum(game.clan.herbs.values()):
+                # Get all cats with the specified status
+                cats_with_status = get_alive_status_cats(main_cat, [status])
+                
+                if cats_with_status:  # If we found any cats with this status
                     return False
+
+        if 'clan_present_status_constraint' in thought:
+            for status in thought['clan_present_status_constraint']:
+                cats_with_status = get_alive_status_cats(main_cat, [status])
+                
+                if not cats_with_status:  # If we didn't find any cats with this status
+                    return False
+
+        # Constraints for herb supply level
+        # Accepts 'none', 'very low', 'low', 'adequate', 'full', 'excess'
+        if 'herb_supply_constraint' in thought:
+            print("HERB TEST 1")
+            if not check_herb_constraint(game.cat_class, thought['herb_supply_constraint']):
+                print("HERB TEST 2")
+                return False
+            else:
+                print("WORKING?", main_cat)
                 
         # Constraints for current leader's remaining lives
         # Multiple values can be accepted

@@ -52,7 +52,7 @@
     {
         "id": "warrior_gen_no_deputy_ambitious",
         "thoughts": [
-            "Desperately hopes r_c will choose them to be the new deputy"
+            "Desperately hopes r_c will choose {PRONOUN/m_c/object} to be the new deputy"
         ],
         "clan_missing_status_constraint": [
             "deputy"
@@ -434,6 +434,34 @@
         ],
         "random_living_status": [
             "living"
+        ]
+    },
+    {
+        "id": "gen_no_deputy",
+        "thoughts": [
+            "Asks r_c if {PRONOUN/r_c/subject} {VERB/m_c/think/thinks} {PRONOUN/m_c/subject} would make a good deputy"
+        ],
+        "random_status_constraint": [
+            "warrior",
+            "mediator",
+            "elder",
+            "medicine cat"
+        ],
+        "clan_missing_status_constraint": [
+            "deputy"
+        ]
+    },
+    {
+        "id": "gen_deputy",
+        "thoughts": [
+            "Stands with r_c in the clearing, waiting for the deputy to assign the day's patrols"
+        ],
+        "random_status_constraint": [
+            "warrior",
+            "apprentice"
+        ],
+        "clan_present_status_constraint": [
+            "deputy"
         ]
     }
 ]

@@ -72,7 +72,7 @@
         "main_trait_constraint": [
             "adventurous"
         ],
-        "random_status_constraint": [
+        "clan_present_status_constraint": [
             "kitten"
         ]
     },
@@ -180,11 +180,19 @@
     {
         "id": "charismatic_medicine_cat",
         "thoughts": [
-            "Is doing {PRONOUN/m_c/poss} daily checkup on the elders",
             "Is thinking of just the right way to ask another Clan's medicine cat for herbs"
         ],
         "main_trait_constraint": [
             "charismatic"
+        ]
+    },
+    {
+        "id": "charismatic_medicine_cat_elder",
+        "thoughts": [
+            "Is doing {PRONOUN/m_c/poss} daily checkup on the elders"
+        ],
+        "clan_present_status_constraint": [
+            "elder"
         ]
     },
     {
@@ -314,7 +322,7 @@
         "main_trait_constraint": [
             "loving"
         ],
-        "random_status_constraint":[
+        "clan_present_status_constraint":[
             "newborn"
         ]
     },
@@ -506,11 +514,30 @@
         "id": "med_cat_herbs_none",
         "thoughts": [
             "Feels a sense of dread as {PRONOUN/m_c/subject} {VERB/m_c/look/looks} at {PRONOUN/m_c/poss} empty herb stores",
-            "Desperately paws along the corners of their den, trying to find even a single poppy seed",
+            "Desperately paws along the corners of {PRONOUN/m_c/poss} den, trying to find even a single poppy seed",
             "Spends all day searching for herbs, returning empty-pawed at almost moonhigh"
         ],
-        "herb_max_constraint": [
-            0
+        "herb_supply_constraint": [
+            "none"
+        ]
+    },
+    {
+        "id": "med_cat_herbs_low",
+        "thoughts": [
+            "Is all too aware of how few herbs {PRONOUN/m_c/subject} {VERB/m_c/have/has}"
+        ],
+        "herb_supply_constraint": [
+            "very low",
+            "low"
+        ]
+    },
+    {
+        "id": "med_cat_herbs_excess",
+        "thoughts": [
+            "Is struggling to find enough space to store {PRONOUN/m_c/poss} herbs"
+        ],
+        "herb_supply_constraint": [
+            "excess"
         ]
     },
     {
