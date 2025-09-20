@@ -1,6 +1,6 @@
 from dataclasses import dataclass
 from enum import Enum
-from functools import cache
+from functools import lru_cache
 from math import ceil, floor
 from typing import Tuple, Dict, Union, Optional
 
@@ -205,14 +205,14 @@ def get_box(
     )
 
 
-@cache
+@lru_cache(maxsize=None)
 def _get_box(
     style: BoxData,
     scaled_dimensions: Tuple[int, int],
     sides: Union[bool, Tuple[bool, bool, bool, bool]] = True,
     use_extra_if_available=True,
     *,
-    scale
+    scale,
 ) -> pygame.Surface:
     """
     A wrapper for get_box that lets it be typehinted & still cache properly
