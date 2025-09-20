@@ -105,7 +105,7 @@ dev_tools = false
   [mates.poly]
     # which conditions all current mate relationships has to have towards the main cat + vice versa
     [mates.poly.current_mate_condition]
-      romance = 30
+      romance = 90
       like = 0
       respect = 0
       comfort = 15
@@ -113,7 +113,7 @@ dev_tools = false
 
     # which conditions all current mate relationships has to have towards the new possible mate + vise versa
     [mates.poly.mates_to_each_other]
-      romance = 0
+      romance = 90
       like = 15
       respect = 0
       comfort = 15
@@ -188,11 +188,11 @@ dev_tools = false
   primary_chance_unmated = 130
 
   # 1/chance that a mated cat to has an affair
-  random_affair_chance = 50
+  random_affair_chance = 80
 
   # special 1/chance for an unmated cat to have an affair
   # for this check, only other unmated cats can be the affair partner
-  unmated_random_affair_chance = 10
+  unmated_random_affair_chance = 20
 
   # The kit number is incremental. It is 1-6 as default so if you change these numbers, you should probably keep this in mind.
   # As in, your max kits number should probably be 5 more than the min kits number.
@@ -272,7 +272,7 @@ dev_tools = false
 
 [accessory_generation]
   # base 1/chance a cat generates with an accessory 
-  base_acc_chance = 150
+  base_acc_chance = 180
 
   # modifiers for accessories add or subtract from chance IN THE DENOMINATOR 
   #   i.e. 1/(chance + med_modifier + baby_modifier + elder_modifier + ...)
@@ -301,7 +301,7 @@ dev_tools = false
 
 [transition_related]
   # base 1/chance that a cat will trans their gender
-  base_trans_chance = 256
+  base_trans_chance = 512
 
   # modifiers for transitioning add or subtract from chance IN THE DENOMINATOR 
   #   i.e. 1/(chance + adolescent_modifier + older_modifier)
@@ -311,7 +311,7 @@ dev_tools = false
   adolescent_modifier = -128
 
   # modifies transition chance based on if cat is an adult or older
-  older_modifier = 256
+  older_modifier = 1024
 
 [fading]
   # age that a cat will complete fading
@@ -447,7 +447,7 @@ dev_tools = false
 
 [clan_creation]
   # Set this to -1 for it to be infinite
-  rerolls = 3
+  rerolls = -1
 
 [graduation]
   # base possible experience gain for apprentices
