@@ -130,7 +130,7 @@ class ChooseMentorScreen(Screens):
                 self.show_only_same_skill_mentors = not self.show_only_same_skill_mentors
                 self.update_buttons()
                 self.update_cat_list()
-            elif event.ui_element == self.checkboxes.get("similar_personality"):
+            elif event.ui_element == self.checkboxes.get("show_similar_personality"):
                 self.show_only_similar_personality_mentors = not self.show_only_similar_personality_mentors
                 self.update_buttons()
                 self.update_cat_list()
@@ -280,7 +280,7 @@ class ChooseMentorScreen(Screens):
         )
 
         # Reposition and style checkboxes and labels
-        checkbox_x = 553
+        checkbox_x = 503
         checkbox_y = 7
         checkbox_spacing = 50
 
@@ -314,16 +314,17 @@ class ChooseMentorScreen(Screens):
             container=self.filter_container,
             tool_tip_text="screens.choose_mentor.no_former_apprentices_tooltip",
         )
-        checkbox_y += checkbox_spacing
+        checkbox_x = 603
+        checkbox_y = 7
         self.same_skill_text = pygame_gui.elements.UITextBox(
             "screens.choose_mentor.same_skill",
-            ui_scale(pygame.Rect((checkbox_x - 70, checkbox_y), (200, -1))),
+            ui_scale(pygame.Rect((checkbox_x - 70, checkbox_y), (100, -1))),
             object_id="#text_box_26_horizcenter",
             container=self.filter_container,
         )
         checkbox_y += checkbox_spacing
         self.checkboxes["show_same_skill"] = UIImageButton(
-            ui_scale(pygame.Rect((checkbox_x, checkbox_y), (68, 68))),
+            ui_scale(pygame.Rect((checkbox_x, checkbox_y), (34, 34))),
             "",
             container=self.filter_container,
             tool_tip_text="screens.choose_mentor.same_skill_tooltip",
@@ -331,12 +332,12 @@ class ChooseMentorScreen(Screens):
         checkbox_y += checkbox_spacing
         self.similar_personality_text = pygame_gui.elements.UITextBox(
             "screens.choose_mentor.similar_personality",
-            ui_scale(pygame.Rect((checkbox_x - 70, checkbox_y), (200, -1))),
+            ui_scale(pygame.Rect((checkbox_x - 70, checkbox_y), (100, -1))),
             object_id="#text_box_26_horizcenter",
             container=self.filter_container,
         )
         self.checkboxes["show_similar_personality"] = UIImageButton(
-            ui_scale(pygame.Rect((checkbox_x, checkbox_y), (68, 68))),
+            ui_scale(pygame.Rect((checkbox_x, checkbox_y), (34, 34))),
             "",
             container=self.filter_container,
             tool_tip_text="screens.choose_mentor.similar_personality_tooltip",
