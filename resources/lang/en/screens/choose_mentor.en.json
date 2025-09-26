@@ -14,6 +14,10 @@
         "no_current_apprentices_tooltip": "Only show mentors with no current apprentices",
         "no_former_apprentices": "No former apprentices",
         "no_former_apprentices_tooltip": "Only show mentors who have not had an apprentice",
+        "same_skill": "Matching skills",
+        "same_skill_tooltip": "Only show mentors with matching skills",
+        "similar_personality": "Similar personalities",
+        "similar_personality_tooltip": "Only show mentors with similar personalities",
         "former_apps": {
             "zero": "",
             "one": "\n%{count} former app",
