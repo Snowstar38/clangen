@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING, Type, List
 
 import ujson
 
+from scripts.game_structure import constants
 from scripts.game_structure.game.save_load import safe_save
 from scripts.game_structure.game.settings.settings import game_setting_get
 from scripts.housekeeping.datadir import get_save_dir
@@ -48,8 +49,11 @@ def save_cats(clanname, cat_class: Type["Cat"], game: "Game"):
             inter_cat.save_history(history_dir)
             # after saving, dump the history info
             inter_cat.history = None
-        if not inter_cat.dead:
+        if constants.CONFIG["fun"]["dead_relations"]:
             inter_cat.save_relationship_of_cat(relationships_dir)
+        else:
+            if not inter_cat.dead:
+                inter_cat.save_relationship_of_cat(relationships_dir)
 
     safe_save(f"{get_save_dir()}/{clanname}/clan_cats.json", clan_cats)
 

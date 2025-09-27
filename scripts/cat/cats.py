@@ -2673,7 +2673,7 @@ class Cat:
             if inter_cat.ID in self.relationships:
                 continue
             # if they dead (dead cats have no relationships)
-            if self.dead or inter_cat.dead:
+            if self.dead or inter_cat.dead and not constants.CONFIG["fun"]["dead_relations"]:
                 continue
             # if they are not within the same group
             if self.status.group_ID != inter_cat.status.group_ID:
@@ -2781,9 +2781,11 @@ class Cat:
         self.relationships = {}
         if os.path.exists(relation_directory):
             if not os.path.exists(relation_cat_directory):
-                self.init_all_relationships()
-                for cat in Cat.all_cats.values():
-                    cat.create_one_relationship(self)
+                if not self.dead:
+                    self.init_all_relationships()
+                    for cat in Cat.all_cats.values():
+                        if cat.ID != self.ID and not cat.dead:
+                            cat.create_one_relationship(self)
                 return
             try:
                 with open(relation_cat_directory, "r", encoding="utf-8") as read_file:

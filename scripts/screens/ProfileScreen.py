@@ -34,6 +34,7 @@ from .enums import GameScreen
 from ..cat.enums import CatAge, CatRank, CatGroup
 from ..cat.sprites import sprites
 from ..clan_package.settings import get_clan_setting
+from ..game_structure import constants
 from ..game_structure.game.save_load import safe_save
 from ..game_structure.game.settings import game_setting_get
 from ..game_structure.game.switches import switch_set_value, switch_get_value, Switch
@@ -2177,8 +2178,9 @@ class ProfileScreen(Screens):
             pass
         elif self.open_tab == "relations":
             if self.the_cat.dead:
-                self.see_relationships_button.disable()
-                self.change_adoptive_parent_button.disable()
+                if not constants.CONFIG["fun"]["dead_relations"]:
+                    self.see_relationships_button.disable()
+                    self.change_adoptive_parent_button.disable()
             else:
                 self.see_relationships_button.enable()
                 self.change_adoptive_parent_button.enable()
