@@ -1293,8 +1293,85 @@ class MakeClanScreen(Screens):
 
     def _get_cat_tooltip_string(self, cat: Cat):
         """Get tooltip for cat. Tooltip displays name, sex, age group, and trait."""
-
-        return f"<b>{cat.name}</b><br>{cat.get_genderalign_string()}<br>{i18n.t('general.' + cat.age, count=1)}<br>{i18n.t('cat.personality.' + cat.personality.trait)}<br>{cat.skills.skill_string(short=True)}"
+        
+        trait_descriptions = {
+            'TEETHUPPER': 'long upper fangs',
+            'TEETHSABRE': 'sabre teeth',
+            'TEETHUNDERBITE': 'underbite',
+            'EARSMALL': 'small ears',
+            'EARBIG': 'big ears',
+            'EARTALL': 'tall ears',
+            'EARPANTHER': 'rounded ears',
+            'FOLDBOTH': 'folded ears',
+            'FOLDONE': 'one folded ear',
+            'HEADFORELOCK': 'forelock',
+            'HEADCOWLICK': 'cowlick',
+            'HEADMOHAWK': 'mohawk',
+            'HEADTUFT': 'tufted head fur',
+            'HEADEMO': 'emo-style head fur',
+            'CHEEKLONG': 'long cheek fur',
+            'CHEEKPOINTED': 'pointed cheek fur',
+            'CHEEKFLUFF': 'fluffy cheeks',
+            'CHEEKCURL': 'curled cheek fur',
+            'MANESILKY': 'silky mane',
+            'MANEFLUFFY': 'fluffy mane',
+            'MANERUFF': 'ruff',
+            'MANEHORSE': 'horse-like mane',
+            'FURWAVY': 'wavy fur',
+            'FURCURLY': 'curly fur',
+            'FURPATCHY': 'patchy fur',
+            'FURKINK': 'kinked fur',
+            'MUZZLESHORT': 'short muzzle',
+            'MUZZLEBROAD': 'broad muzzle',
+            'MUZZLELONG': 'long muzzle',
+            'BODYBROAD': 'broad shoulders',
+            'BODYWIRY': 'wiry',
+            'BODYLITHE': 'lithe',
+            'BODYSKINNY': 'skinny',
+            'BODYBUFF': 'muscular',
+            'BODYCOMPACT': 'compact',
+            'SIZETINY': 'tiny',
+            'SIZESMALL': 'small',
+            'SIZESHORT': 'short',
+            'SIZETALL': 'tall',
+            'SIZELARGE': 'large',
+            'SIZEHUGE': 'huge',
+            'EARTUFTS': 'ear tufts',
+            'POLYDACTYL': 'polydactyl',
+            'LASHESUPPER': 'upper lashes',
+            'LASHESLOWER': 'lower lashes',
+            'WHISKERSLONG': 'long whiskers',
+            'TAILCROOKED': 'crooked tail',
+            'TAILLONG': 'long tail',
+            'TAILFEATHER': 'feathered tail',
+            'TAILCURL': 'curled tail',
+            'TAILTUFT': 'tufted tail',
+            'CLAWSLONG': 'unusually long claws',
+            'BACKFLUFF': 'fluffy back',
+            'BACKRIDGE': 'fur ridge on back',
+            'SHOULDERTUFT': 'tufted shoulders',
+            'LEGTUFT': 'tufted legs'
+        }
+        
+        # Build trait string
+        traits = []
+        if cat.pelt.physical_trait_1:
+            traits.append(trait_descriptions.get(cat.pelt.physical_trait_1, cat.pelt.physical_trait_1))
+        if cat.pelt.physical_trait_2:
+            traits.append(trait_descriptions.get(cat.pelt.physical_trait_2, cat.pelt.physical_trait_2))
+        if cat.pelt.physical_trait_3:
+            traits.append(trait_descriptions.get(cat.pelt.physical_trait_3, cat.pelt.physical_trait_3))
+        if cat.pelt.physical_trait_4:
+            traits.append(trait_descriptions.get(cat.pelt.physical_trait_4, cat.pelt.physical_trait_4))
+        
+        trait_string = ", ".join(traits) if traits else ""
+        
+        base_info = f"<b>{cat.name}</b><br>{cat.genderalign}<br>{cat.age}<br>{cat.personality.trait}"
+        
+        if trait_string:
+            return f"{base_info}<br>{trait_string}"
+        else:
+            return base_info
 
     def open_game_mode(self):
         # Clear previous screen
