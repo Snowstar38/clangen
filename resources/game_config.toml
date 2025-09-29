@@ -263,7 +263,7 @@ dev_tools = false
   random_point_chance = 5
 
   #physical traits mod config
-  physical_trait_chance = 100
+  physical_trait_chance = 20
   physical_trait_inherit_chance = 50
 
 [cat_name_controls]
