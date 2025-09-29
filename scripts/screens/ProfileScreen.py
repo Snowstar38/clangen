@@ -802,6 +802,7 @@ class ProfileScreen(Screens):
             output += "\n"
             output += i18n.t("general.moons_age_in_death", count=the_cat.dead_for)
         else:
+            output += i18n.t("general.moons_age", count=the_cat.moons)
             # TRAITS
             trait_descriptions = {
                 'TEETHUPPER': 'long upper fangs',
