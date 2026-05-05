@@ -70,6 +70,7 @@
         "single parentage" = false
         "romantic with former mentor" = true
         "first cousin mates" = false
+        "dead relations" = false
     
     [clan.freshkill_tactics]
         low_rank = true

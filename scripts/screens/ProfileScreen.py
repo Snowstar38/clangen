@@ -2249,7 +2249,7 @@ class ProfileScreen(Screens):
             pass
         elif self.open_tab == "relations":
             if self.the_cat.dead:
-                if not constants.CONFIG["fun"]["dead_relations"]:
+                if not get_clan_setting("dead relations"):
                     self.see_relationships_button.disable()
                     self.change_adoptive_parent_button.disable()
             else:

@@ -23,6 +23,7 @@ from ..cat.personality import Personality
 from ..cat.skills import CatSkills
 from ..cat.status import StatusDict
 from ..housekeeping.datadir import get_save_dir
+from scripts.clan_package.settings import get_clan_setting
 
 logger = logging.getLogger(__name__)
 
@@ -342,7 +343,7 @@ def json_load():
 
         # load the relationships
         try:
-            if constants.CONFIG["fun"]["dead_relations"]:
+            if get_clan_setting("dead relations"):
                 cat.load_relationship_of_cat()
                 if cat.relationships is not None and len(cat.relationships) < 1 and not cat.dead:
                     cat.init_all_relationships()

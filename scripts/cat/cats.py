@@ -2651,7 +2651,7 @@ class Cat:
             if inter_cat.ID in self.relationships:
                 continue
             # if they dead (dead cats have no relationships)
-            if self.dead or inter_cat.dead and not constants.CONFIG["fun"]["dead_relations"]:
+            if self.dead or inter_cat.dead and not get_clan_setting("dead relations"):
                 continue
             # if they are not within the same group
             if self.status.group_ID != inter_cat.status.group_ID:
