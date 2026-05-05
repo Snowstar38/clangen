@@ -714,3 +714,45 @@ class CatSkills:
             new_skill = CatSkills.generate_new_catskills(rank, age)
 
         return new_skill
+
+
+def mentor_skill_compatibility(mentor, apprentice) -> bool:
+    """True if mentor and apprentice share at least one skill path
+    (primary or secondary, in any combination)."""
+    mentor_paths = {
+        s.path for s in (mentor.skills.primary, mentor.skills.secondary) if s
+    }
+    apprentice_paths = {
+        s.path for s in (apprentice.skills.primary, apprentice.skills.secondary) if s
+    }
+    return bool(mentor_paths & apprentice_paths)
+
+
+def get_mentor_compatibility(mentor, apprentice):
+    """Returns True / False / None for positive / negative / neutral
+    personality compatibility between mentor and apprentice."""
+    p1, p2 = mentor.personality, apprentice.personality
+
+    if p1.trait == p2.trait:
+        return None if p1.trait is None else True
+
+    compatibility_mapping = {
+        0: 4, 1: 3, 2: 2,
+        3: 1, 4: 1,
+        5: 0, 6: 0,
+        7: -1, 8: -1, 9: -1,
+        10: -2, 11: -2, 12: -2,
+        13: -3, 14: -3,
+        15: -4, 16: -4,
+    }
+
+    score = sum(
+        compatibility_mapping.get(abs(getattr(p1, facet) - getattr(p2, facet)), 0)
+        for facet in ("lawfulness", "sociability", "aggression", "stability")
+    )
+
+    if score <= -2:
+        return False
+    if score >= 5:
+        return True
+    return None
